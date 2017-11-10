@@ -1,0 +1,22 @@
+{
+  "listdatabase":{
+    "data": {
+      "bucket_name": "lmb-datalake-hdp-store-raw-nonprod",
+      "type": "raw",
+      "databases": [
+        "avaya",
+        "bilctr",
+        "data",
+        "icd",
+        "operations",
+        "otis",
+        "serview",
+        "serview2",
+        "systemone",
+        "user"
+      ]
+    }
+
+  }
+  
+}

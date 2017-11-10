@@ -1,0 +1,15 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<md-toolbar color="primary" id="#navbar">
+    <span>Liberty Mutual</span>
+    <span class="spacer"></span>
+    <span>
+        <button style="color:white" md-button [routerLink]="['sources']">Sources</button>
+        <button style="color:white" md-button [routerLink]="['profiling']">Profiling</button>
+        <button style="color:white" md-button [routerLink]="['fingerprint']">Fingerprint</button>
+        <button style="color:white" md-button [routerLink]="['curate']">Curate</button>
+        <button style="color:white" md-button [routerLink]="['catalog']">Catalog</button>
+        <button style="color:white" md-button [routerLink]="['knowledge-graph']">Knowledge-Graph</button>
+    </span>
+
+</md-toolbar>
+<router-outlet></router-outlet>

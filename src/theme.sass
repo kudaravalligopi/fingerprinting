@@ -1,0 +1,17 @@
+@import '~@angular/material/theming'
+@include mat-core()
+
+
+//mat-palette(color, default-value, lighter-shade, darker-shade)
+//color is from material colors
+$lm-tool-primary: mat-palette($mat-blue, 200, 50, 400)
+$lm-tool-accent: mat-palette($mat-light-blue, 500)
+$lm-tool-warn: mat-palette($mat-red, 500)
+
+
+//Bundle all colors into a theme
+$lm-tool-theme: mat-light-theme($lm-tool-primary, $lm-tool-accent, $lm-tool-warn)
+
+
+//export the theme to be used everywhere
+@include angular-material-theme($lm-tool-theme)
