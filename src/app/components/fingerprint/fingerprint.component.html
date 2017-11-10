@@ -22,12 +22,14 @@
         </mat-select>
       </mat-form-field>
       <br>
-      <button mat-raised-button color="accent" (click)="fingerprint()">Fingerprint Data</button>
+      <button mat-raised-button color="accent" (click)="fingerprint()" [ngStyle]="{'pointer-events':showProgressSpinner ? 'none' : 'auto'}">Fingerprint Data</button>
     </form>
   </section>
 </div>
-<div class="row">
-  <mat-progress-spinner mode="indeterminate" color="primary" [strokeWidth]="10"></mat-progress-spinner>
+<div class="row" *ngIf="showProgressSpinner">
+  <div class="col-sm-12">
+    <mat-progress-spinner mode="indeterminate" color="primary" [strokeWidth]="10" style="margin: 0 auto"></mat-progress-spinner>
+  </div>
 </div>
 <div class="row" *ngIf="fingerprintDataAcquired">
   <section id="outputs" class="col-mat-12">
