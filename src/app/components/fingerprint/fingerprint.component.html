@@ -24,7 +24,9 @@
     <div id="outputBox">
       <pre>{{fingerprintData | json}}</pre>
     </div>
-    <output-fingerprint-table [fingerprintResult]="fingerprintData"></output-fingerprint-table>>
+    <div *ngIf="fingerprintDataAcquired">
+      <output-fingerprint-table [fingerprintResult]="fingerprintData"></output-fingerprint-table>
+    </div>
     <div id="buttonsOP">
       <button mat-raised-button color="accent">Reset</button>
       <button mat-raised-button color="accent">Export</button>

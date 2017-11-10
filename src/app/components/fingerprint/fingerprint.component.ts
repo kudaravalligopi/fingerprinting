@@ -20,7 +20,7 @@ import { ApiService } from '../../services/api.service'
 })
 export class FingerprintComponent implements OnInit {
   title = `FingerPrint`
-
+  fingerprintDataAcquired:boolean = false
   zones: Zones[] = []
 
   sources: Sources
@@ -128,6 +128,7 @@ export class FingerprintComponent implements OnInit {
 
     this.fingerprintService.fingerprint(this.selectedColumns, this.selectedTable, this.selectedSource, this.selectedZone).subscribe(data=>{
       this.fingerprintData = JSON.parse(data)
+      this.fingerprintDataAcquired = true
       
     })
 
