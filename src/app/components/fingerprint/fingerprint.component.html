@@ -1,34 +1,43 @@
 <div class="row">
   <section id="inputs" class="col-mat-12">
     <form>
-      <mat-select placeholder="Select Data Zone" class="fingerprint-select" autofocus>
-        <mat-option *ngFor="let zone of zones" [value]="zone.id " (click)="selectZone(zone.name)">{{zone.name}}</mat-option>
-      </mat-select>
-      <mat-select placeholder="Select DB/Source" class="fingerprint-select">
-        <mat-option *ngFor="let source of sourceNames" [value]="source" (click)="selectSource(source)">{{source}}</mat-option>
-      </mat-select>
-      <mat-select placeholder="Select Data Table" class="fingerprint-select">
-        <mat-option *ngFor="let table of tableNames" [value]="table" (click)="selectTable(table)">{{table}}</mat-option>
-      </mat-select>
-      <mat-select placeholder="Select Data Columns" class="fingerprint-select">
-        <mat-option *ngFor="let column of columnNames" [value]="column" (click)="selectColumn(column)">{{column}}</mat-option>
-      </mat-select>
+      <mat-form-field>
+        <mat-select placeholder="Select Data Zone" class="fingerprint-select" autofocus>
+          <mat-option *ngFor="let zone of zones" [value]="zone.id " (click)="selectZone(zone.name)">{{zone.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select placeholder="Select DB/Source" class="fingerprint-select">
+          <mat-option *ngFor="let source of sourceNames" [value]="source" (click)="selectSource(source)">{{source}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select placeholder="Select Data Table" class="fingerprint-select">
+          <mat-option *ngFor="let table of tableNames" [value]="table" (click)="selectTable(table)">{{table}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select placeholder="Select Data Columns" class="fingerprint-select">
+          <mat-option *ngFor="let column of columnNames" [value]="column" (click)="selectColumn(column)">{{column}}</mat-option>
+        </mat-select>
+      </mat-form-field>
       <br>
       <button mat-raised-button color="accent" (click)="fingerprint()">Fingerprint Data</button>
     </form>
   </section>
 </div>
+<div class="row">
+  <mat-progress-spinner mode="indeterminate" color="primary" [strokeWidth]="10"></mat-progress-spinner>
+</div>
 <div class="row" *ngIf="fingerprintDataAcquired">
-
   <section id="outputs" class="col-mat-12">
     <div id="outputBox">
       <pre>{{fingerprintData | json}}</pre>
     </div>
-    
+
     <div id="buttonsOP">
-      <button mat-raised-button color="accent">Reset</button>
+      <button mat-raised-button color="accent" (click)="reset()">Reset</button>
       <button mat-raised-button color="accent">Export</button>
     </div>
-  
   </section>
 </div>
