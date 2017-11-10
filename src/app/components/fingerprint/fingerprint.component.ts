@@ -124,12 +124,12 @@ export class FingerprintComponent implements OnInit {
 
   public fingerprint() {
     this.fingerprintData = {}
+    this.fingerprintDataAcquired = false
     console.log('fingerprint clicked with column names as ' + this.selectedColumns + ' & table name as ' + this.selectedTable + ' & source name as ' + this.selectedSource + ' & zone name as ' + this.selectedZone)
 
     this.fingerprintService.fingerprint(this.selectedColumns, this.selectedTable, this.selectedSource, this.selectedZone).subscribe(data=>{
       this.fingerprintData = JSON.parse(data)
       this.fingerprintDataAcquired = true
-      
     })
 
   }
