@@ -18,15 +18,13 @@
     </form>
   </section>
 </div>
-<div class="row">
+<div class="row" *ngIf="fingerprintDataAcquired">
 
   <section id="outputs" class="col-mat-12">
     <div id="outputBox">
       <pre>{{fingerprintData | json}}</pre>
     </div>
-    <div *ngIf="fingerprintDataAcquired">
-      <output-fingerprint-table [fingerprintResult]="fingerprintData"></output-fingerprint-table>
-    </div>
+    
     <div id="buttonsOP">
       <button mat-raised-button color="accent">Reset</button>
       <button mat-raised-button color="accent">Export</button>

@@ -31,7 +31,6 @@ import { FingerprintService } from './services/fingerprint.service'
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 import  {MaterialModule} from './material.module';
 import { ConfigureSourceComponent } from './components/configure-source/configure-source.component';
-import { OutputFingerprintTableComponent } from './components/output-fingerprint-table/output-fingerprint-table.component'
 
 @NgModule({
   declarations: [
@@ -42,8 +41,7 @@ import { OutputFingerprintTableComponent } from './components/output-fingerprint
     CurateComponent,
     CatalogComponent,
     KnowledgeGraphComponent,
-    ConfigureSourceComponent,
-    OutputFingerprintTableComponent
+    ConfigureSourceComponent
   ],
   entryComponents: [
     ConfigureSourceComponent
