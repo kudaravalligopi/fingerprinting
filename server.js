@@ -32,7 +32,7 @@ app.get('*', (req, res) => {
  * Get port from environment and store in Express.
  */
 const port = process.env.PORT || '3000';
-const host = process.env.HOST || 'localhost'
+const host = process.env.HOST || 'ip-10-224-69-47.aws.lmig.com'
 app.set('port', port);
 app.set('hostname', host)
 

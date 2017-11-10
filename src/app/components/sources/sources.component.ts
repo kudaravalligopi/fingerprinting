@@ -5,7 +5,7 @@ import 'rxjs/add/operator/startWith';
 import 'rxjs/add/operator/map';
 
 //DialogBox
-import { MdDialog, MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { ConfigureSourceComponent } from '../configure-source/configure-source.component'
 
 
@@ -35,7 +35,7 @@ export class SourcesComponent implements OnInit {
 
 
 
-	constructor(public dialog: MdDialog) {
+	constructor(public dialog: MatDialog) {
 	}
 
 	public openDialog(): void {

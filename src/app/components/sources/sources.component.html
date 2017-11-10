@@ -10,9 +10,9 @@
       </td>
       <td>
 
-        <button md-mini-fab color="accent" (click)="addSource()">
+        <button mat-mini-fab color="accent" (click)="addSource()">
               <div mdTooltip="Add Source" mdTooltipPosition="after">
-            <md-icon class="md-24">add</md-icon>
+            <mat-icon class="mat-24">add</mat-icon>
           </div>
           </button>
 
@@ -20,23 +20,23 @@
     </tr>
     <tr>
       <td>
-        <md-form-field>
-          <input type="text" mdInput placeholder="Enter Name" [(ngModel)]="sourceName" />
-        </md-form-field>
+        <mat-form-field>
+          <input type="text" matInput placeholder="Enter Name" [(ngModel)]="sourceName" />
+        </mat-form-field>
       </td>
       <td>
         
-        <md-select placeholder="Select Source" [(ngModel)]="sourceType">
-          <md-option *ngFor="let option of options" [value]="option.value" >{{option.viewValue}}</md-option>
-        </md-select>
+        <mat-select placeholder="Select Source" [(ngModel)]="sourceType">
+          <mat-option *ngFor="let option of options" [value]="option.value" >{{option.viewValue}}</mat-option>
+        </mat-select>
         
       
 
       </td>
       <td>
-        <button md-raised-button color="accent" (click)="openDialog()">Configure</button>
+        <button mat-raised-button color="accent" (click)="openDialog()">Configure</button>
         &nbsp;
-        <button md-raised-button color="accent">Drop</button>
+        <button mat-raised-button color="accent">Drop</button>
       </td>
 
     </tr>

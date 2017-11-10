@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 
 //DialogBox
-import { MdDialog, MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 
 
@@ -16,8 +16,8 @@ export class ConfigureSourceComponent implements OnInit {
 	sourceType: string
 
 	constructor(
-		public dialogRef: MdDialogRef<ConfigureSourceComponent>,
-		@Inject(MD_DIALOG_DATA) public data: any
+		public dialogRef: MatDialogRef<ConfigureSourceComponent>,
+		@Inject(MAT_DIALOG_DATA) public data: any
 	) {
 
 	}
