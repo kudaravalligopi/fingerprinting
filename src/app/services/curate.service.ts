@@ -31,7 +31,6 @@ export class CurateService {
   selectTable(tableName: string, sourceName: string, zoneName: string):Observable<Columns>{
     return this.api.selectTable(tableName, sourceName, zoneName)
   }
-  fingerprint(columnName:string[] ,tableName: string, sourceName: string, zoneName: string):Observable<string> {
-    return this.api.fingerprint(columnName,tableName,sourceName,zoneName)
-  }
+
+  
 }

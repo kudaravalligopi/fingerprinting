@@ -125,20 +125,6 @@ export class FingerprintComponent implements OnInit {
     
   }
 
-  public fingerprint() {
-    this.showProgressSpinner = true
-    this.fingerprintData = {}
-    this.fingerprintDataAcquired = false
-    console.log('fingerprint clicked with column names as ' + this.selectedColumns + ' & table name as ' + this.selectedTable + ' & source name as ' + this.selectedSource + ' & zone name as ' + this.selectedZone)
-
-    this.curateService.fingerprint(this.selectedMultipleColumns, this.selectedTable, this.selectedSource, this.selectedZone).subscribe(data=>{
-      this.fingerprintData = JSON.parse(data)
-      this.showProgressSpinner = false
-      this.fingerprintDataAcquired = true
-    })
-
-  }
-
   reset() {
     this.fingerprintData = {}
     this.fingerprintDataAcquired = false

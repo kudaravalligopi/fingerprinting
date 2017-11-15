@@ -132,8 +132,6 @@ export class ApiService {
        throw err
       
      }
-    
-
   }
 
   private handleError(error: Response | any) {
