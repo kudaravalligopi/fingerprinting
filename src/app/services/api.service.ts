@@ -115,10 +115,6 @@ export class ApiService {
     Zone Name : ${zone}
     `);
 
-  // return this.http.get('http://10.224.69.47:3000/fingerprint/final').map(data=>{
-    //  console.log(data);
-//     return data.toString();
-//    })
 
      try{
        return this.http

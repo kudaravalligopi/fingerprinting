@@ -38,7 +38,7 @@ export class CurateComponent implements OnInit {
   selectedTable: string
   selectedColumns: string
   columnSelected: boolean = false
-
+  tagRows: any[] =['1']
   tags : any[]  =[
     "MIO",
     "SEC",
@@ -157,6 +157,15 @@ export class CurateComponent implements OnInit {
   selectTagCategory(tagCategory){
     this.tagCategory = tagCategory
     console.log(`TAG CATEGORY IS ${this.tagCategory}`);
+  }
+
+  add(row) {
+    row++
+    this.tagRows.push(row)
+  }
+
+  remove(row){
+    this.tagRows.splice(this.tagRows.indexOf(row),1)
   }
 
   reset() {

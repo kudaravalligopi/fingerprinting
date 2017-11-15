@@ -22,40 +22,47 @@
         </mat-select>
       </mat-form-field>
       <br>
-      <div class="row" *ngIf="columnSelected">
-        <!-- <div class="col-sm-1">
-
-        </div>
-        <div class="col-sm-1">
-
-        </div> -->
-        <div class="col-sm-6">
-          <mat-form-field>
-            <mat-select placeholder="Select Tag Type">
-              <mat-option *ngFor="let tagType of tags" [value]="tagType" (click)="selectTag(tagType)">{{tagType}}</mat-option>
-            </mat-select>
-          </mat-form-field>
-        </div>
-        <div class="col-sm-6">
-          <!-- MIO -->
-          <mat-form-field *ngIf="tagType == 'MIO'">  
-            <mat-select placeholder="Select Tag Category">
-              <mat-option *ngFor="let tagCategory of MIOCategories" [value]="tagCategory" (click)="selectTagCategory(tagCategory)">{{tagCategory}}</mat-option>
-            </mat-select>
-          </mat-form-field>
-          <mat-form-field *ngIf="tagType == 'SEC'">
-            <!-- SEC -->
-            <mat-select  placeholder="Select Tag Category">
-              <mat-option *ngFor="let tagCategory of SECCategories" [value]="tagCategory" (click)="selectTagCategory(tagCategory)">{{tagCategory}}</mat-option>
-            </mat-select>
-          </mat-form-field>
+      <!-- TAGS TO ADD -->
+      <div *ngFor="let row of tagRows; let i = index">
+        <div class="row" *ngIf="columnSelected">
+          <div class="col-sm-1">
+            <button mat-mini-fab color="primary" (click)="add(row)">
+              <mat-icon>add</mat-icon>
+            </button>
+          </div>
+          <div class="col-sm-1">
+            <button mat-mini-fab color="primary" (click)="remove(row)">
+              <mat-icon>remove</mat-icon>
+            </button>
+          </div>
+          <div class="col-sm-6">
+            <mat-form-field>
+              <mat-select placeholder="Select Tag Type">
+                <mat-option *ngFor="let tagType of tags" [value]="tagType" (click)="selectTag(tagType)">{{tagType}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-sm-6">
+            <!-- MIO -->
+            <mat-form-field *ngIf="tagType == 'MIO'">
+              <mat-select placeholder="Select Tag Category">
+                <mat-option *ngFor="let tagCategory of MIOCategories" [value]="tagCategory" (click)="selectTagCategory(tagCategory)">{{tagCategory}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field *ngIf="tagType == 'SEC'">
+              <!-- SEC -->
+              <mat-select placeholder="Select Tag Category">
+                <mat-option *ngFor="let tagCategory of SECCategories" [value]="tagCategory" (click)="selectTagCategory(tagCategory)">{{tagCategory}}</mat-option>
+              </mat-select>
+            </mat-form-field>
 
             <!-- DOM -->
             <mat-form-field *ngIf="tagType == 'DOM'">
-            <mat-select  placeholder="Select Tag Category">
-              <mat-option *ngFor="let tagCategory of SECCategories" [value]="tagCategory" (click)="selectTagCategory(tagCategory)">{{tagCategory}}</mat-option>
-            </mat-select>
-          </mat-form-field>
+              <mat-select placeholder="Select Tag Category">
+                <mat-option *ngFor="let tagCategory of SECCategories" [value]="tagCategory" (click)="selectTagCategory(tagCategory)">{{tagCategory}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
         </div>
       </div>
     </form>

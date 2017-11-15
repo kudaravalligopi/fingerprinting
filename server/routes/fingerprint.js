@@ -98,9 +98,12 @@ router.post('/final', (req, res) => {
     let zone = req.body.zoneName
     let source = req.body.sourceName
     let table = req.body.tableName
-    let column = req.body.columnName
+    let column = []
+    for(let i = 0; i< req.body.columnName.length; i++){
+        column[i] = `"${req.body.columnName[i]}"`
+    }
 
-    let dataString =  `{"data": {"table_name": "${table}", "database_name": "${source}", "bucket_name": "${zone}", "type": "raw", "colums": ["${column}"]}}`
+    let dataString =  `{"data": {"table_name": "${table}", "database_name": "${source}", "bucket_name": "${zone}", "type": "raw", "colums": [${column}]}}`
 
     const headers = {
         'Content-Type':'application/json'
