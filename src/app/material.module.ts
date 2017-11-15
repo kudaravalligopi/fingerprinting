@@ -9,6 +9,7 @@ import {
   MatSelectModule,
   MatInputModule,
   MatAutocompleteModule,
+  MatFormFieldModule,
   MatTooltipModule,
   MatDialogModule,
   MatTableModule,
