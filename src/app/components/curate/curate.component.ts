@@ -152,9 +152,11 @@ export class CurateComponent implements OnInit {
 
   selectTag(tagType){
     this.tagType = tagType
+    console.log(`TAG TYPE IS ${this.tagType}`);
   }
   selectTagCategory(tagCategory){
     this.tagCategory = tagCategory
+    console.log(`TAG CATEGORY IS ${this.tagCategory}`);
   }
 
   reset() {
