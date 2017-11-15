@@ -107,7 +107,7 @@ export class ApiService {
     //method which selects particular column
   }
 
-  public fingerprint(column: string, table: string, source: string, zone: string) {
+  public fingerprint(column: string[], table: string, source: string, zone: string) {
     console.log(`
     Column Name : ${column}
     Table Name : ${table}

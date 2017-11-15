@@ -17,7 +17,7 @@
         </mat-select>
       </mat-form-field>
       <mat-form-field>
-        <mat-select placeholder="Select Data Columns" class="fingerprint-select">
+        <mat-select placeholder="Select Data Columns" class="fingerprint-select" multiple>
           <mat-option *ngFor="let column of columnNames" [value]="column" (click)="selectColumn(column)">{{column}}</mat-option>
         </mat-select>
       </mat-form-field>
