@@ -26,6 +26,7 @@ import {HttpClientModule} from '@angular/common/http'
 //Services
 import { ApiService } from './services/api.service'
 import { FingerprintService } from './services/fingerprint.service'
+import {CurateService} from './services/curate.service'
 
 //Angular Material
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
@@ -61,7 +62,7 @@ import { ConfigureSourceComponent } from './components/configure-source/configur
     //Routings
     Routings
   ],
-  providers: [FingerprintComponent, ApiService, FingerprintService],
+  providers: [FingerprintComponent, ApiService, FingerprintService, CurateService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
