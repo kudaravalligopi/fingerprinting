@@ -37,7 +37,32 @@ export class CurateComponent implements OnInit {
   selectedSource: string
   selectedTable: string
   selectedColumns: string
-  
+  columnSelected: boolean = false
+
+  tags : any[]  =[
+    "MIO",
+    "SEC",
+    "DOM"
+  ]
+
+  MIOCategories: any[] = [
+    "MIO-INTERNAL_USE",
+    "MIO-PUBLIC",
+    "MIO-RESTRICTED_AND_CONFIDENTIAL",
+    "MIO-OTHER_CONFIDENTIAL"
+  ]
+
+  SECCategories: any[] = [
+    "SEC_LAST_NAME",
+    "SEC_COMMISSIONS",
+    "SEC_TIN",
+    "SEC_NOTES",
+    "SEC_EMAIL",
+    "SEC_AGE"
+  ]
+
+  tagType: string
+  tagCategory: string
 
   fingerprintData: any
 
@@ -122,7 +147,14 @@ export class CurateComponent implements OnInit {
 
   public selectColumn(columnName) {
     this.selectedColumns = columnName
-    
+    this.columnSelected = true
+  }
+
+  selectTag(tagType){
+    this.tagType = tagType
+  }
+  selectTagCategory(tagCategory){
+    this.tagCategory = tagCategory
   }
 
   reset() {

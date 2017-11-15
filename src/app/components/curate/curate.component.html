@@ -22,6 +22,33 @@
         </mat-select>
       </mat-form-field>
       <br>
+      <div class="row" *ngIf="columnSelected">
+        <div class="col-sm-1">
+          
+        </div>
+        <div class="col-sm-1">
+            
+        </div>
+        <div class="col-sm-5">
+            <mat-select>
+              <mat-option *ngFor="let tagType of tags" [value]="tagType" (click)="selectTag(tagType)">{{tagType}}</mat-option>
+            </mat-select>
+        </div>
+        <div class="col-sm-5">
+          <!-- MIO -->
+            <mat-select *ngIf="tagType == 'MIO'">
+                <mat-option *ngFor="let tagCategory of MIOCategories" [value]="tagCategory" (click)="selectTagCategory(tagCategory)">{{tagCategory}}</mat-option>
+            </mat-select>
+          <!-- SEC -->
+          <mat-select *ngIf="tagType == 'SEC'">
+              <mat-option *ngFor="let tagCategory of SECCategories" [value]="tagCategory" (click)="selectTagCategory(tagCategory)">{{tagCategory}}</mat-option>
+            </mat-select>
+          <!-- DOM -->
+          <mat-select *ngIf="tagType == 'DOM'">
+              <mat-option *ngFor="let tagCategory of SECCategories" [value]="tagCategory" (click)="selectTagCategory(tagCategory)">{{tagCategory}}</mat-option>
+            </mat-select>
+        </div>
+      </div>
     </form>
   </section>
 </div>

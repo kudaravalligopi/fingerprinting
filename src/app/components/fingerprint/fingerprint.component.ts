@@ -37,8 +37,7 @@ export class FingerprintComponent implements OnInit {
   selectedSource: string
   selectedTable: string
   selectedColumns: string
-  selectedMultipleColumns: string[]
-
+  selectedMultipleColumns: string[] = []
   fingerprintData: any
 
   constructor(private fingerprintService: FingerprintService, private api: ApiService) {
