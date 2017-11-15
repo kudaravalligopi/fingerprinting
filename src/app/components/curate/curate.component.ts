@@ -18,8 +18,8 @@ import { ApiService } from '../../services/api.service'
   styleUrls: ['./curate.component.sass'],
   providers: [ApiService, CurateService]
 })
-export class FingerprintComponent implements OnInit {
-  title = `FingerPrint`
+export class CurateComponent implements OnInit {
+  title = `Curate`
   fingerprintDataAcquired:boolean = false
   showProgressSpinner: boolean = false
   zones: Zones[] = []
