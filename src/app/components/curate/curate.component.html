@@ -45,7 +45,11 @@
 									</mat-form-field>
 								</div>
 								<div class="col-sm-5">
-									<!-- <p *ngFor="let tag of tags">{{tag}}</p> -->
+									<mat-form-field>
+										<mat-select placeholder="Select Tag Category" formControlName="tagCategory">
+											<mat-option *ngFor="let tagCategory of tagCategories" [value]="tagCategory" (click)="selectTagCategory(tagCategory)">{{tagCategory}}</mat-option>
+										</mat-select>
+									</mat-form-field>
 								</div>
 							</div>
 						</div>

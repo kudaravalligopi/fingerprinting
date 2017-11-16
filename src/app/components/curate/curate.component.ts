@@ -58,6 +58,7 @@ export class CurateComponent implements OnInit {
   ]
 
   tagTypes: string[]
+  tagCategories: string[]
   fingerprintData: any
 
 
@@ -76,30 +77,30 @@ export class CurateComponent implements OnInit {
   }
 
   public ngOnInit() {
-    this.tags = {
-      "MIO":[
-        "MIO-INTERNAL_USE",
-        "MIO-PUBLIC",
-        "MIO-RESTRICTED_AND_CONFIDENTIAL",
-        "MIO-OTHER_CONFIDENTIAL"
-      ],
-      "SEC":[
-        "SEC_LAST_NAME",
-        "SEC_COMMISSIONS",
-        "SEC_TIN",
-        "SEC_NOTES",
-        "SEC_EMAIL",
-        "SEC_AGE"
-      ]
-    }
+    // this.tags = {
+    //   "MIO":[
+    //     "MIO-INTERNAL_USE",
+    //     "MIO-PUBLIC",
+    //     "MIO-RESTRICTED_AND_CONFIDENTIAL",
+    //     "MIO-OTHER_CONFIDENTIAL"
+    //   ],
+    //   "SEC":[
+    //     "SEC_LAST_NAME",
+    //     "SEC_COMMISSIONS",
+    //     "SEC_TIN",
+    //     "SEC_NOTES",
+    //     "SEC_EMAIL",
+    //     "SEC_AGE"
+    //   ]
+    // }
 
-    console.log(`type of tags`);
+    // console.log(`type of tags`);
     
-    console.log(typeof(this.tags));
+    // console.log(typeof(this.tags));
 
-    console.log(`content of tags`);
+    // console.log(`content of tags`);
 
-    console.log(`${this.tags.MIO}`);
+    // console.log(`${this.tags.MIO}`);
     
     
     this.tags = this.makeArray(Object.keys(this.tags))
@@ -249,6 +250,48 @@ export class CurateComponent implements OnInit {
   selectTag(tagType){
     
     console.log(`TAG TYPE IS ${tagType}`);
+    switch(tagType){
+      case 'MIO':{
+        this.tagCategories = [
+          "MIO-INTERNAL_USE",
+          "MIO-PUBLIC",
+          "MIO-RESTRICTED_AND_CONFIDENTIAL",
+          "MIO-OTHER_CONFIDENTIAL"
+        ]
+        break
+      }
+      case 'SEC':{
+        this.tagCategories = [
+          "SEC-AGE",
+          "SEC-DATE_OF_BIRTH",
+          "SEC-DATE_OF_DEATH",
+          "SEC-SSN",
+          "SEC-NOTES",
+          "SEC-ACCOUNT_NUMBER",
+          "SEC-CLAIM_DATE",
+          "SEC-EMAIL",
+          "SEC-PASSWORD",
+          "SEC-FULL_NAME",
+          "SEC-COMMISSIONS",
+          "SEC-TIN",
+          "SEC-LAST_NAME",
+          "SEC-ACCT_NUM",
+          "SEC-MIDDLE_NAME",
+          "SEC-LOGIN",
+          "SEC-PHI"
+        ]
+        break
+      }
+      case 'DOM':{
+        this.tagCategories = [
+          "MIO-INTERNAL_USE",
+          "MIO-PUBLIC",
+          "MIO-RESTRICTED_AND_CONFIDENTIAL",
+          "MIO-OTHER_CONFIDENTIAL"
+        ]
+        break
+      }
+    }
   }
   selectTagCategory(tagCategory){
     
