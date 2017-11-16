@@ -45,30 +45,26 @@
 									</mat-form-field>
 								</div>
 								<div class="col-sm-5">
-									<mat-form-field>
-										<div class="col-sm-5">
-											<!-- MIO -->
-											<mat-form-field *ngIf="tagID == 'MIO'">
-												<mat-select placeholder="Select Tag Category" formControlName="tagCategory">
-													<mat-option *ngFor="let tagC of MIOCategories" [value]="tagC" (click)="selectTagCategory(tagC)">{{tagCategory}}</mat-option>
-												</mat-select>
-											</mat-form-field>
-											<mat-form-field *ngIf="tagID == 'SEC'">
-												<!-- SEC -->
-												<mat-select placeholder="Select Tag Category" formControlName="tagCategory">
-													<mat-option *ngFor="let tagC of SECCategories" [value]="tagC" (click)="selectTagCategory(tagC)">{{tagCategory}}</mat-option>
-												</mat-select>
-											</mat-form-field>
-		
-											<!-- DOM -->
-											<mat-form-field *ngIf="tagID == 'DOM'">
-												<mat-select placeholder="Select Tag Category" formControlName="tagCategory">
-													<mat-option *ngFor="let tagC of SECCategories" [value]="tagy" (click)="selectTagCategory(tagC)">{{tagCategory}}</mat-option>
-												</mat-select>
-											</mat-form-field>
-										</div>
-									</mat-form-field>
-								</div>
+										<!-- MIO -->
+										<mat-form-field *ngIf="tagID == 'MIO'">
+											<mat-select placeholder="Select Tag Category" formControlName="tagCategory">
+												<mat-option *ngFor="let tagCategory of MIOCategories" [value]="tagCategory" (click)="selectTagCategory(tagCategory)">{{tagCategory}}</mat-option>
+											</mat-select>
+										</mat-form-field>
+										<mat-form-field *ngIf="tagID == 'SEC'">
+											<!-- SEC -->
+											<mat-select placeholder="Select Tag Category" formControlName="tagCategory">
+												<mat-option *ngFor="let tagCategory of SECCategories" [value]="tagCategory" (click)="selectTagCategory(tagCategory)">{{tagCategory}}</mat-option>
+											</mat-select>
+										</mat-form-field>
+	
+										<!-- DOM -->
+										<mat-form-field *ngIf="tagID == 'DOM'">
+											<mat-select placeholder="Select Tag Category" formControlName="tagCategory">
+												<mat-option *ngFor="let tagCategory of SECCategories" [value]="tagCategory" (click)="selectTagCategory(tagCategory)">{{tagCategory}}</mat-option>
+											</mat-select>
+										</mat-form-field>
+									</div>
 								
 							</div>
 						</div>

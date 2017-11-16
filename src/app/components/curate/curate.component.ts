@@ -274,6 +274,8 @@ export class CurateComponent implements OnInit {
 
 
     console.log(sendOP);
+
+    
     
   }
   reset() {
