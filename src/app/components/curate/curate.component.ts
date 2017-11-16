@@ -39,7 +39,7 @@ export class CurateComponent implements OnInit {
   selectedColumns: string
   columnSelected: boolean = false
   
-  tags : string[]
+  tags : any
 
   MIOCategories: any[] = [
     "MIO-INTERNAL_USE",
