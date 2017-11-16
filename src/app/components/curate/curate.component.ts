@@ -266,6 +266,14 @@ export class CurateComponent implements OnInit {
     console.log(`TAG CATEGORY IS ${tagCategory}`);
   }
 
+
+  submitTag(){
+    let sendOP = this.curateForm.value
+
+
+    console.log(sendOP);
+    
+  }
   reset() {
     
     this.fingerprintDataAcquired = false

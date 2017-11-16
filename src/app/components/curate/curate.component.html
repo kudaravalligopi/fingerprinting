@@ -68,11 +68,11 @@
 		<mat-progress-spinner mode="indeterminate" color="primary" [strokeWidth]="8" style="margin: 0 auto"></mat-progress-spinner>
 	</div>
 </div>
-<div class="row" *ngIf="curateForm.valid">
+<div class="row">
 	<section id="outputs" class="col-mat-12">
 		<div id="buttonsOP">
-			<button mat-raised-button color="accent" (click)="reset()">Reset</button>
-			<button mat-raised-button color="accent">Export</button>
+			<button mat-raised-button color="accent" (click)="submitTag()">Submit Tag Corrections</button>
+			<button mat-raised-button color="accent" disabled>Tag in Atlas</button>
 		</div>
 	</section>
 </div>
