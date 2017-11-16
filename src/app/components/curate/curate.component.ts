@@ -67,12 +67,14 @@ export class CurateComponent implements OnInit {
   public ngOnInit() {
     
     this.MIOCategories = [
+      "DISABLED_CORRECTION",
       "MIO-INTERNAL_USE",
       "MIO-PUBLIC",
       "MIO-RESTRICTED_AND_CONFIDENTIAL",
       "MIO-OTHER_CONFIDENTIAL"
     ]
     this.SECCategories = [
+      "DISABLED_CORRECTION",
       "SEC-AGE",
       "SEC-DATE_OF_BIRTH",
       "SEC-DATE_OF_DEATH",
@@ -92,7 +94,7 @@ export class CurateComponent implements OnInit {
       "SEC-PHI"
     ]
     this.DOMCategories = [
-      "DOM-BROKER",
+      "DISABLED_CORRECTION",
       "DOM-BILLING",
       "DOM-CLAIMS",
       "DOM-CUSTOMER",

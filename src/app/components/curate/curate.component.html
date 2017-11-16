@@ -3,7 +3,7 @@
 		<form [formGroup]="curateForm" novalidate>
 			<mat-form-field>
 				<mat-select placeholder="Select Data Zone" class="fingerprint-select" autofocus formControlName="zoneName">
-					<mat-option *ngFor="let zone of zones" [value]="zone.id " (click)="selectZone(zone.name)">{{zone.name}}</mat-option>
+					<mat-option *ngFor="let zone of zones" [value]="zone.name " (click)="selectZone(zone.name)">{{zone.name}}</mat-option>
 				</mat-select>
 			</mat-form-field>
 			<mat-form-field>
@@ -46,9 +46,27 @@
 								</div>
 								<div class="col-sm-5">
 									<mat-form-field>
-										<mat-select placeholder="Select Tag Category" formControlName="tagCategory">
-											<mat-option *ngFor="let tagC of tagCategories" [value]="tagC" (click)="selectTagCategory(tagC)">{{tagCategory}}</mat-option>
-										</mat-select>
+										<div class="col-sm-5">
+											<!-- MIO -->
+											<mat-form-field *ngIf="tagID == 'MIO'">
+												<mat-select placeholder="Select Tag Category" formControlName="tagCategory">
+													<mat-option *ngFor="let tagC of MIOCategories" [value]="tagC" (click)="selectTagCategory(tagC)">{{tagCategory}}</mat-option>
+												</mat-select>
+											</mat-form-field>
+											<mat-form-field *ngIf="tagID == 'SEC'">
+												<!-- SEC -->
+												<mat-select placeholder="Select Tag Category" formControlName="tagCategory">
+													<mat-option *ngFor="let tagC of SECCategories" [value]="tagC" (click)="selectTagCategory(tagC)">{{tagCategory}}</mat-option>
+												</mat-select>
+											</mat-form-field>
+		
+											<!-- DOM -->
+											<mat-form-field *ngIf="tagID == 'DOM'">
+												<mat-select placeholder="Select Tag Category" formControlName="tagCategory">
+													<mat-option *ngFor="let tagC of SECCategories" [value]="tagy" (click)="selectTagCategory(tagC)">{{tagCategory}}</mat-option>
+												</mat-select>
+											</mat-form-field>
+										</div>
 									</mat-form-field>
 								</div>
 								
