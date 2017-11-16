@@ -37,7 +37,16 @@
 										<mat-icon>remove</mat-icon>
 									</button>
 								</div>
-								<!-- -->
+								<div class="col-sm-5">
+									<mat-form-field>
+										<mat-select placeholder="Select Tag Type" formControlName="tagType">
+											<mat-option *ngFor="let tagType of tags" [value]="tagType" (click)="selectTag(tagType)">{{tagType}}</mat-option>
+										</mat-select>
+									</mat-form-field>
+								</div>
+								<div class="col-sm-5">
+									
+								</div>
 							</div>
 						</div>
 					</div>
@@ -45,7 +54,7 @@
 			</div>
 
 		</form>
-		
+
 	</section>
 	<pre>{{curateForm.value | json}}</pre>
 </div>
