@@ -1,87 +1,94 @@
 <div class="row">
-  <section id="inputs" class="col-mat-12">
-    <form>
-      <mat-form-field>
-        <mat-select placeholder="Select Data Zone" class="fingerprint-select" autofocus>
-          <mat-option *ngFor="let zone of zones" [value]="zone.id " (click)="selectZone(zone.name)">{{zone.name}}</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-select placeholder="Select DB/Source" class="fingerprint-select">
-          <mat-option *ngFor="let source of sourceNames" [value]="source" (click)="selectSource(source)">{{source}}</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-select placeholder="Select Data Table" class="fingerprint-select">
-          <mat-option *ngFor="let table of tableNames" [value]="table" (click)="selectTable(table)">{{table}}</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-select placeholder="Select Data Column" class="fingerprint-select">
-          <mat-option *ngFor="let column of columnNames" [value]="column" (click)="selectColumn(column)">{{column}}</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <br>
-      <!-- TAGS TO ADD -->
-      <div *ngFor="let row of tagRows; let i = index">
-        <div class="row" *ngIf="columnSelected">
-          <div class="col-sm-1">
-            <button mat-mini-fab color="primary" (click)="add(row)">
-              <mat-icon>add</mat-icon>
-            </button>
-          </div>
-          <div class="col-sm-1">
-            <button mat-mini-fab color="primary" (click)="remove(row)">
-              <mat-icon>remove</mat-icon>
-            </button>
-          </div>
-          <div class="col-sm-6">
-            <mat-form-field>
-              <mat-select placeholder="Select Tag Type">
-                <mat-option *ngFor="let tagType of tags" [value]="tagType" (click)="selectTag(tagType)">{{tagType}}</mat-option>
-              </mat-select>
-            </mat-form-field>
-          </div>
-          <div class="col-sm-6">
-            <!-- MIO -->
-            <mat-form-field *ngIf="tagType == 'MIO'">
-              <mat-select placeholder="Select Tag Category">
-                <mat-option *ngFor="let tagCategory of MIOCategories" [value]="tagCategory" (click)="selectTagCategory(tagCategory)">{{tagCategory}}</mat-option>
-              </mat-select>
-            </mat-form-field>
-            <mat-form-field *ngIf="tagType == 'SEC'">
-              <!-- SEC -->
-              <mat-select placeholder="Select Tag Category">
-                <mat-option *ngFor="let tagCategory of SECCategories" [value]="tagCategory" (click)="selectTagCategory(tagCategory)">{{tagCategory}}</mat-option>
-              </mat-select>
-            </mat-form-field>
+	<section id="inputs" class="col-mat-12">
+		<form [formGroup]="curateForm" novalidate>
+			<mat-form-field>
+				<mat-select placeholder="Select Data Zone" class="fingerprint-select" autofocus formControlName="zoneName">
+					<mat-option *ngFor="let zone of zones" [value]="zone.id " (click)="selectZone(zone.name)">{{zone.name}}</mat-option>
+				</mat-select>
+			</mat-form-field>
+			<mat-form-field>
+				<mat-select placeholder="Select DB/Source" class="fingerprint-select" formControlName="sourceName">
+					<mat-option *ngFor="let source of sourceNames" [value]="source" (click)="selectSource(source)">{{source}}</mat-option>
+				</mat-select>
+			</mat-form-field>
+			<mat-form-field>
+				<mat-select placeholder="Select Data Table" class="fingerprint-select" formControlName="tableName">
+					<mat-option *ngFor="let table of tableNames" [value]="table" (click)="selectTable(table)">{{table}}</mat-option>
+				</mat-select>
+			</mat-form-field>
+			<mat-form-field>
+				<mat-select placeholder="Select Data Column" class="fingerprint-select" formControlName="columnName">
+					<mat-option *ngFor="let column of columnNames" [value]="column" (click)="selectColumn(column)">{{column}}</mat-option>
+				</mat-select>
+			</mat-form-field>
+			<br>
+			<div *ngIf="columnSelected">
+				<div formArrayName="tagInfo">
+					<div *ngFor="let tags of curateForm.controls.tagInfo.controls; let i = index">
+						<div [formGroupName]="i">
+							<div class="row">
+								<div class="col-sm-1">
+									<button mat-mini-fab color="primary" (click)="addNewTag()">
+										<mat-icon>add</mat-icon>
+									</button>
+								</div>
+								<div class="col-sm-1">
+									<button mat-mini-fab color="primary" (click)="removeTag(i)" *ngIf="curateForm.controls.tagInfo.controls.length > 1">
+										<mat-icon>remove</mat-icon>
+									</button>
+								</div>
+								<div class="col-sm-5">
+									<mat-form-field>
+										<mat-select placeholder="Select Tag Type" formControlName="tagType">
+											<mat-option *ngFor="let tagType of tags" [value]="tagType" (click)="selectTag(tagType)">{{tagType}}</mat-option>
+										</mat-select>
+									</mat-form-field>
+								</div>
+								<div class="col-sm-5">
+									<!-- MIO -->
+									<mat-form-field *ngIf="tagType == 'MIO'">
+										<mat-select placeholder="Select Tag Category" formControlName="tagCategory">
+											<mat-option *ngFor="let tagCategory of MIOCategories" [value]="tagCategory" (click)="selectTagCategory(tagCategory)">{{tagCategory}}</mat-option>
+										</mat-select>
+									</mat-form-field>
+									<mat-form-field *ngIf="tagType == 'SEC'">
+										<!-- SEC -->
+										<mat-select placeholder="Select Tag Category"  formControlName="tagCategory">
+											<mat-option *ngFor="let tagCategory of SECCategories" [value]="tagCategory" (click)="selectTagCategory(tagCategory)">{{tagCategory}}</mat-option>
+										</mat-select>
+									</mat-form-field>
 
-            <!-- DOM -->
-            <mat-form-field *ngIf="tagType == 'DOM'">
-              <mat-select placeholder="Select Tag Category">
-                <mat-option *ngFor="let tagCategory of SECCategories" [value]="tagCategory" (click)="selectTagCategory(tagCategory)">{{tagCategory}}</mat-option>
-              </mat-select>
-            </mat-form-field>
-          </div>
-        </div>
-      </div>
-    </form>
-  </section>
+									<!-- DOM -->
+									<mat-form-field *ngIf="tagType == 'DOM'">
+										<mat-select placeholder="Select Tag Category"  formControlName="tagCategory">
+											<mat-option *ngFor="let tagCategory of SECCategories" [value]="tagCategory" (click)="selectTagCategory(tagCategory)">{{tagCategory}}</mat-option>
+										</mat-select>
+									</mat-form-field>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</form>
+		<pre>{{curateForm.value | json}}</pre>
+	</section>
 </div>
 <div class="row" *ngIf="showProgressSpinner">
-  <div class="col-sm-12">
-    <mat-progress-spinner mode="indeterminate" color="primary" [strokeWidth]="8" style="margin: 0 auto"></mat-progress-spinner>
-  </div>
+	<div class="col-sm-12">
+		<mat-progress-spinner mode="indeterminate" color="primary" [strokeWidth]="8" style="margin: 0 auto"></mat-progress-spinner>
+	</div>
 </div>
 <div class="row" *ngIf="fingerprintDataAcquired">
-  <section id="outputs" class="col-mat-12">
-    <div id="outputBox">
-      <pre>{{fingerprintData | json}}</pre>
-    </div>
+	<section id="outputs" class="col-mat-12">
+		<div id="outputBox">
+			<pre>{{fingerprintData | json}}</pre>
+		</div>
 
-    <div id="buttonsOP">
-      <button mat-raised-button color="accent" (click)="reset()">Reset</button>
-      <button mat-raised-button color="accent">Export</button>
-    </div>
-  </section>
+		<div id="buttonsOP">
+			<button mat-raised-button color="accent" (click)="reset()">Reset</button>
+			<button mat-raised-button color="accent">Export</button>
+		</div>
+	</section>
 </div>

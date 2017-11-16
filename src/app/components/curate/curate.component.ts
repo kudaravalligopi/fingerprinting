@@ -10,7 +10,7 @@ import { Columns } from '../../models/columns'
 
 import { ApiService } from '../../services/api.service'
 
-
+import { FormGroup, FormControl, Validators, FormBuilder, FormArray } from '@angular/forms';
 
 @Component({
   selector: 'app-curate',
@@ -66,21 +66,79 @@ export class CurateComponent implements OnInit {
 
   fingerprintData: any
 
-  constructor(private curateService: CurateService, private api: ApiService) {
+
+  //Reactive Forms
+
+  curateForm: FormGroup
+  zoneName: FormControl
+  sourceName: FormControl
+  tableName: FormControl
+  columnName: FormControl
+
+  
+
+  constructor(private curateService: CurateService, private api: ApiService, public formBuilder: FormBuilder) {
 
   }
 
   public ngOnInit() {
-    //to get all zones on initialize of component
-    this.curateService
-      .getAllZones()
-      .subscribe(
-      (zones) => {
-        this.zones = zones
-      }
-      )
+    
+    this.getZones()
+    this.createFormControls()
+    this.createForm()
 
   }
+
+  //to get all zones on initialize of component
+  getZones(){
+    this.curateService
+    .getAllZones()
+    .subscribe(
+    (zones) => {
+      this.zones = zones
+    }
+    )
+  }
+
+  createForm() {
+    this.curateForm = new FormGroup({
+      zoneName: this.zoneName,
+      sourceName: this.sourceName,
+      tableName: this.tableName,
+      columnName: this.columnName,
+      tagInfo: this.formBuilder.array([
+        this.initTagInfo()
+      ])
+    })
+  }
+
+  createFormControls(){
+    this.zoneName = new FormControl('', Validators.required)
+    this.sourceName = new FormControl('', Validators.required)
+    this.tableName = new FormControl('', Validators.required)
+    this.columnName = new FormControl('', Validators.required)
+  }
+
+  //Adding and removing new tags
+  initTagInfo() {
+    return this.formBuilder.group({
+      tagType: ['', Validators.required],
+      tagCategory: ['', Validators.required]
+    })
+  }
+
+  addNewTag() {
+    const tagInfo = <FormArray>this.curateForm.controls['tagInfo']
+    tagInfo.push(this.initTagInfo())
+  }
+
+  removeTag(i: number) {
+    const tagInfo = <FormArray>this.curateForm.controls['tagInfo']
+    tagInfo.removeAt(i)
+  }
+
+
+
 
   public selectZone(zoneName: string) {
     this.sourceNames = []

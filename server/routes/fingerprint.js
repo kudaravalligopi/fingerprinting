@@ -94,49 +94,55 @@ console.log(getColumnsCommand)
 
 router.post('/final', (req, res) => {
     console.log('IN FINGRERPRINT DATA ENDPOINT')
-
-    let zone = req.body.zoneName
-    let source = req.body.sourceName
-    let table = req.body.tableName
-    let column = []
-    for(let i = 0; i< req.body.columnName.length; i++){
-        column[i] = `"${req.body.columnName[i]}"`
-    }
-
-    let dataString =  `{"data": {"table_name": "${table}", "database_name": "${source}", "bucket_name": "${zone}", "type": "raw", "colums": [${column}]}}`
-
-    const headers = {
-        'Content-Type':'application/json'
+    try {
+        let zone = req.body.zoneName
+        let source = req.body.sourceName
+        let table = req.body.tableName
+        let column = []
+        for(let i = 0; i< req.body.columnName.length; i++){
+            column[i] = `"${req.body.columnName[i]}"`
+        }
+    
+        let dataString =  `{"data": {"table_name": "${table}", "database_name": "${source}", "bucket_name": "${zone}", "type": "raw", "colums": [${column}]}}`
+    
+        const headers = {
+            'Content-Type':'application/json'
+        }
+        
+        console.log(dataString)    
+    
+        const options = {
+            url: 'http://10.224.69.47:8080/v1/autotagging/submit',
+            method: 'POST',
+            headers: headers,
+            body: dataString
+        };
+    
+        function callback(error, response, body) {
+            if(!error && response.statusCode == 200){
+                console.log(body)
+                console.log('type of response is : ')
+                console.log(typeof(body))
+                let jBody = 
+                res.json(body)
+            }
+            if(error) {
+                console.log('An Error has occured')
+                console.log(error)
+                console.log('With Status Code')
+                console.log(response.statusCode)
+            }
+        }
+    
+        request(options, callback)
+    
+    
+    } catch(err){
+        console.log('an error has occured')
+        console.log(err)
+        res.json({"Error":err})
     }
     
-    console.log(dataString)    
-
-    const options = {
-        url: 'http://10.224.69.47:8080/v1/autotagging/submit',
-        method: 'POST',
-        headers: headers,
-        body: dataString
-    };
-
-    function callback(error, response, body) {
-        if(!error && response.statusCode == 200){
-            console.log(body)
-            console.log('type of response is : ')
-            console.log(typeof(body))
-            let jBody = 
-            res.json(body)
-        }
-        if(error) {
-            console.log('An Error has occured')
-            console.log(error)
-            console.log('With Status Code')
-            console.log(response.statusCode)
-        }
-    }
-
-    request(options, callback)
-
-
 })
 
 
