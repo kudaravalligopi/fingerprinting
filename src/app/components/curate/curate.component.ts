@@ -240,50 +240,40 @@ export class CurateComponent implements OnInit {
   selectTag(tagType){
     this.tagID = tagType
     console.log(`TAG TYPE IS ${this.tagID}`);
-    switch(this.tagID){
-      case 'MIO':{
-        this.MIOCategories = [
-          "MIO-INTERNAL_USE",
-          "MIO-PUBLIC",
-          "MIO-RESTRICTED_AND_CONFIDENTIAL",
-          "MIO-OTHER_CONFIDENTIAL"
-        ]
-        break
-      }
-      case 'SEC':{
-        this.SECCategories = [
-          "SEC-AGE",
-          "SEC-DATE_OF_BIRTH",
-          "SEC-DATE_OF_DEATH",
-          "SEC-SSN",
-          "SEC-NOTES",
-          "SEC-ACCOUNT_NUMBER",
-          "SEC-CLAIM_DATE",
-          "SEC-EMAIL",
-          "SEC-PASSWORD",
-          "SEC-FULL_NAME",
-          "SEC-COMMISSIONS",
-          "SEC-TIN",
-          "SEC-LAST_NAME",
-          "SEC-ACCT_NUM",
-          "SEC-MIDDLE_NAME",
-          "SEC-LOGIN",
-          "SEC-PHI"
-        ]
-        break
-      }
-      case 'DOM':{
-        this.DOMCategories = [
-          "DOM-BROKER",
-          "DOM-BILLING",
-          "DOM-CLAIMS",
-          "DOM-CUSTOMER",
-          "DOM-GEOGRAPHIC_AREA",
-          "DOM-COMMUNICATION"
-        ]
-        break
-      }
-    }
+    this.MIOCategories = [
+      "MIO-INTERNAL_USE",
+      "MIO-PUBLIC",
+      "MIO-RESTRICTED_AND_CONFIDENTIAL",
+      "MIO-OTHER_CONFIDENTIAL"
+    ]
+    this.SECCategories = [
+      "SEC-AGE",
+      "SEC-DATE_OF_BIRTH",
+      "SEC-DATE_OF_DEATH",
+      "SEC-SSN",
+      "SEC-NOTES",
+      "SEC-ACCOUNT_NUMBER",
+      "SEC-CLAIM_DATE",
+      "SEC-EMAIL",
+      "SEC-PASSWORD",
+      "SEC-FULL_NAME",
+      "SEC-COMMISSIONS",
+      "SEC-TIN",
+      "SEC-LAST_NAME",
+      "SEC-ACCT_NUM",
+      "SEC-MIDDLE_NAME",
+      "SEC-LOGIN",
+      "SEC-PHI"
+    ]
+    this.DOMCategories = [
+      "DOM-BROKER",
+      "DOM-BILLING",
+      "DOM-CLAIMS",
+      "DOM-CUSTOMER",
+      "DOM-GEOGRAPHIC_AREA",
+      "DOM-COMMUNICATION"
+    ]
+
   }
   selectTagCategory(tagCategory){
     
