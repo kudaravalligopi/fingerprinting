@@ -35,60 +35,80 @@ router.get('/zones', (req, res) => {
 
 
 router.post('/sources', (req, res) => {
+    try{
+        var op;
+        console.log(req.body.zoneName)
+        let getSourcesCommand = `http://10.224.69.47:8080/v1/s3/listdatabase?bucket_name=${req.body.zoneName}`
+        exec('curl '+getSourcesCommand, (error, stdout, stderr)=>{
+            op = JSON.parse(stdout)
+            console.log(typeof(op))
+            console.log(op)
+            res.json(op)//To send JSON Back
+            console.log('stderr: '+stderr)
+            if(error){
+                console.log(error)
+            }
+    
+        })
+    }catch(err){
+        console.log('an error has occured')
+        console.log(err)
+        res.json({"Error":err})
+    }
     
     
-    var op;
-    console.log(req.body.zoneName)
-    let getSourcesCommand = `http://10.224.69.47:8080/v1/s3/listdatabase?bucket_name=${req.body.zoneName}`
-    exec('curl '+getSourcesCommand, (error, stdout, stderr)=>{
-        op = JSON.parse(stdout)
-        console.log(typeof(op))
-        console.log(op)
-        res.json(op)//To send JSON Back
-        console.log('stderr: '+stderr)
-        if(error){
-            console.log(error)
-        }
-
-    })
 
 });
 
 router.post('/tables', (req, res) => {
         
-    
-    
-    //to get tables based on source selected
+    try{
+        //to get tables based on source selected
     let getTablesCommand = `http://10.224.69.47:8080/v1/s3/listtables?bucket_name=${req.body.zoneName}&database_name=${req.body.sourceName}`
-console.log(getTablesCommand)
-    exec('curl "' + getTablesCommand+'"',{maxBuffer:1024*1024}, (error, stdout, stderr)=>{
-        op = JSON.parse(stdout)
-        console.log(op)
-        res.json(op)
-        if(error !== null){
-            console.log(error)
-        }
-    })
+    console.log(getTablesCommand)
+        exec('curl "' + getTablesCommand+'"',{maxBuffer:1024*1024}, (error, stdout, stderr)=>{
+            op = JSON.parse(stdout)
+            console.log(op)
+            res.json(op)
+            if(error !== null){
+                console.log(error)
+            }
+        })
+    }
+    catch(err){
+        console.log('an error has occured')
+        console.log(err)
+        res.json({"Error":err})
+    }
+
+    
     
 
 });
 
 router.post('/columns', (req, res) => {
     
-
-//     //to get columns based on table selected
+    try {
+        //     //to get columns based on table selected
     let getColumnsCommand = `curl "http://10.224.69.47:8080/v1/s3/rawzone/listcolumns?bucket_name=${req.body.zoneName}&database_name=${req.body.sourceName}&table_name=${req.body.tableName}"`
-console.log(getColumnsCommand)
+    console.log(getColumnsCommand)
+    
+        exec(getColumnsCommand,{maxBuffer:1024*1024}, (error, stdout, stderr)=>{
+            
+            op = JSON.parse(stdout)
+            console.log(op)
+            res.json(op)        
+            if(error !== null){
+                console.log(error)
+            }
+        })
+    }
+    catch(err){
+        console.log('an error has occured')
+        console.log(err)
+        res.json({"Error":err})
+    }
 
-    exec(getColumnsCommand,{maxBuffer:1024*1024}, (error, stdout, stderr)=>{
-        
-        op = JSON.parse(stdout)
-        console.log(op)
-        res.json(op)        
-        if(error !== null){
-            console.log(error)
-        }
-    })
 
 });
 
