@@ -102,7 +102,7 @@ export class CurateComponent implements OnInit {
     console.log(`${this.tags.MIO}`);
     
     
-    this.tags = this.makeArray(this.tags)
+    this.tags = this.makeArray(Object.keys(this.tags))
     this.getZones()
     this.createFormControls()
     this.createForm()
