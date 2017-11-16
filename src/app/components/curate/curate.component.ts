@@ -247,15 +247,15 @@ export class CurateComponent implements OnInit {
     console.log(`TAG TYPE IS ${this.tagID}`);
     switch(this.tagID)  {
       case 'MIO' :{
-        this.tagCategories[tagType] = this.MIOCategories
+        this.tagCategories = this.MIOCategories
         break
       }
       case 'SEC' :{
-        this.tagCategories[tagType] = this.SECCategories
+        this.tagCategories = this.SECCategories
         break
       }
       case 'DOM' :{
-        this.tagCategories[tagType] = this.DOMCategories
+        this.tagCategories = this.DOMCategories
         break
       }
     }
