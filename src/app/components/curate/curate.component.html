@@ -47,7 +47,7 @@
 								<div class="col-sm-5">
 									<mat-form-field>
 										<mat-select placeholder="Select Tag Category" formControlName="tagCategory">
-											<mat-option *ngFor="let tagCategory of tagCategories.i" [value]="tagCategory" (click)="selectTagCategory(tagCategory)">{{tagCategory}}</mat-option>
+											<mat-option *ngFor="let tagC of tagCategories[i]" [value]="tagC" (click)="selectTagCategory(tagC)">{{tagCategory}}</mat-option>
 										</mat-select>
 									</mat-form-field>
 								</div>
@@ -68,12 +68,8 @@
 		<mat-progress-spinner mode="indeterminate" color="primary" [strokeWidth]="8" style="margin: 0 auto"></mat-progress-spinner>
 	</div>
 </div>
-<div class="row" *ngIf="fingerprintDataAcquired">
+<div class="row" *ngIf="curateForm.valid">
 	<section id="outputs" class="col-mat-12">
-		<div id="outputBox">
-			<pre>{{fingerprintData | json}}</pre>
-		</div>
-
 		<div id="buttonsOP">
 			<button mat-raised-button color="accent" (click)="reset()">Reset</button>
 			<button mat-raised-button color="accent">Export</button>
