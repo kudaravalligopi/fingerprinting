@@ -40,7 +40,9 @@
 								<div class="col-sm-5">
 									<mat-form-field>
 										<mat-select placeholder="Select Tag Type" formControlName="tagType">
-											<mat-option *ngFor="let tagType of tags" [value]="tagType" (click)="selectTag(tagType)">{{tagType}}</mat-option>
+											<mat-option value="MIO" (click)="selectTag('MIO')">MIO</mat-option>
+											<mat-option value="SEC" (click)="selectTag('SEC')">SEC</mat-option>
+											<mat-option value="DOM" (click)="selectTag('DOM')">DOM</mat-option>
 										</mat-select>
 									</mat-form-field>
 								</div>
