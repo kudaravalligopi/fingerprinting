@@ -61,7 +61,7 @@
 										<!-- DOM -->
 										<mat-form-field *ngIf="tagID == 'DOM'">
 											<mat-select placeholder="Select Tag Category" formControlName="tagCategory">
-												<mat-option *ngFor="let tagCategory of SECCategories" [value]="tagCategory" (click)="selectTagCategory(tagCategory)">{{tagCategory}}</mat-option>
+												<mat-option *ngFor="let tagCategory of DOMCategories" [value]="tagCategory" (click)="selectTagCategory(tagCategory)">{{tagCategory}}</mat-option>
 											</mat-select>
 										</mat-form-field>
 									</div>
