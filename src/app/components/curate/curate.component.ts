@@ -76,11 +76,7 @@ export class CurateComponent implements OnInit {
   }
 
   public ngOnInit() {
-    this.tags = [
-      "MIO",
-      "SEC",
-      "DOM"
-    ]
+    this.tags = ["MIO", "SEC", "DOM"]
     this.getZones()
     this.createFormControls()
     this.createForm()
