@@ -57,7 +57,7 @@ export class CurateComponent implements OnInit {
     "SEC_AGE"
   ]
 
-
+  tagTypes: string[]
   fingerprintData: any
 
 
@@ -76,6 +76,8 @@ export class CurateComponent implements OnInit {
   }
 
   public ngOnInit() {
+
+    this.tagTypes = ['MIO','SEC','DOM']
     this.tags = {
       "MIO":[
         "MIO-INTERNAL_USE",
