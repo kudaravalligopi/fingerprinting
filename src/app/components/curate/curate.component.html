@@ -40,14 +40,14 @@
 								<div class="col-sm-5">
 									<mat-form-field>
 										<mat-select placeholder="Select Tag Type" formControlName="tagType">
-											<mat-option *ngFor="let tag of tagTypes; let i = index" [value]="tag" (click)="selectTag(tag, i)">{{tag}}</mat-option>
+											<mat-option *ngFor="let tag of tagTypes; let i = index" [value]="tag" (click)="selectTag(tag)">{{tag}}</mat-option>
 										</mat-select>
 									</mat-form-field>
 								</div>
 								<div class="col-sm-5">
 									<mat-form-field>
 										<mat-select placeholder="Select Tag Category" formControlName="tagCategory">
-											<mat-option *ngFor="let tagC of tagCategories['i']" [value]="tagC" (click)="selectTagCategory(tagC)">{{tagCategory}}</mat-option>
+											<mat-option *ngFor="let tagC of tagCategories.tagID" [value]="tagC" (click)="selectTagCategory(tagC)">{{tagCategory}}</mat-option>
 										</mat-select>
 									</mat-form-field>
 								</div>
