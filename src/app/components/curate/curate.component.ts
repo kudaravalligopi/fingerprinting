@@ -41,21 +41,11 @@ export class CurateComponent implements OnInit {
   
   tags: any
 
-  MIOCategories: any[] = [
-    "MIO-INTERNAL_USE",
-    "MIO-PUBLIC",
-    "MIO-RESTRICTED_AND_CONFIDENTIAL",
-    "MIO-OTHER_CONFIDENTIAL"
-  ]
+  tagID: string
 
-  SECCategories: any[] = [
-    "SEC_LAST_NAME",
-    "SEC_COMMISSIONS",
-    "SEC_TIN",
-    "SEC_NOTES",
-    "SEC_EMAIL",
-    "SEC_AGE"
-  ]
+  MIOCategories: any[]
+  SECCategories: any[]
+  DOMCategories: any[]
 
   tagTypes: string[]
   tagCategories: string[]
@@ -248,11 +238,11 @@ export class CurateComponent implements OnInit {
   }
 
   selectTag(tagType){
-    
-    console.log(`TAG TYPE IS ${tagType}`);
-    switch(tagType){
+    this.tagID = tagType
+    console.log(`TAG TYPE IS ${this.tagID}`);
+    switch(this.tagID){
       case 'MIO':{
-        this.tagCategories = [
+        this.MIOCategories = [
           "MIO-INTERNAL_USE",
           "MIO-PUBLIC",
           "MIO-RESTRICTED_AND_CONFIDENTIAL",
@@ -261,7 +251,7 @@ export class CurateComponent implements OnInit {
         break
       }
       case 'SEC':{
-        this.tagCategories = [
+        this.SECCategories = [
           "SEC-AGE",
           "SEC-DATE_OF_BIRTH",
           "SEC-DATE_OF_DEATH",
@@ -283,7 +273,7 @@ export class CurateComponent implements OnInit {
         break
       }
       case 'DOM':{
-        this.tagCategories = [
+        this.DOMCategories = [
           "DOM-BROKER",
           "DOM-BILLING",
           "DOM-CLAIMS",
