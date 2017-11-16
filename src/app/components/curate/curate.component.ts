@@ -39,11 +39,7 @@ export class CurateComponent implements OnInit {
   selectedColumns: string
   columnSelected: boolean = false
   
-  tags : string[]  = [
-    "MIO",
-    "SEC",
-    "DOM"
-  ]
+  tags : string[]
 
   MIOCategories: any[] = [
     "MIO-INTERNAL_USE",
@@ -80,7 +76,11 @@ export class CurateComponent implements OnInit {
   }
 
   public ngOnInit() {
-    
+    this.tags = [
+      "MIO",
+      "SEC",
+      "DOM"
+    ]
     this.getZones()
     this.createFormControls()
     this.createForm()
