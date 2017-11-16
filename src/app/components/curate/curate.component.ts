@@ -76,8 +76,6 @@ export class CurateComponent implements OnInit {
   }
 
   public ngOnInit() {
-
-    this.tagTypes = ['MIO','SEC','DOM']
     this.tags = {
       "MIO":[
         "MIO-INTERNAL_USE",
@@ -241,7 +239,11 @@ export class CurateComponent implements OnInit {
 
   public selectColumn(columnName) {
     this.selectedColumns = columnName
+
+    this.tagTypes = ['MIO','SEC','DOM']
     this.columnSelected = true
+
+    
   }
 
   selectTag(tagType){
