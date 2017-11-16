@@ -48,10 +48,8 @@ export class CurateComponent implements OnInit {
   DOMCategories: any[]
 
   tagTypes: string[]
-  tagCategories: string[]
-  fingerprintData: any
-
-
+  tagCategories: object
+  
   //Reactive Forms
 
   curateForm: FormGroup
@@ -67,33 +65,40 @@ export class CurateComponent implements OnInit {
   }
 
   public ngOnInit() {
-    // this.tags = {
-    //   "MIO":[
-    //     "MIO-INTERNAL_USE",
-    //     "MIO-PUBLIC",
-    //     "MIO-RESTRICTED_AND_CONFIDENTIAL",
-    //     "MIO-OTHER_CONFIDENTIAL"
-    //   ],
-    //   "SEC":[
-    //     "SEC_LAST_NAME",
-    //     "SEC_COMMISSIONS",
-    //     "SEC_TIN",
-    //     "SEC_NOTES",
-    //     "SEC_EMAIL",
-    //     "SEC_AGE"
-    //   ]
-    // }
-
-    // console.log(`type of tags`);
     
-    // console.log(typeof(this.tags));
-
-    // console.log(`content of tags`);
-
-    // console.log(`${this.tags.MIO}`);
-    
-    
-    // this.tags = this.makeArray(Object.keys(this.tags))
+    this.MIOCategories = [
+      "MIO-INTERNAL_USE",
+      "MIO-PUBLIC",
+      "MIO-RESTRICTED_AND_CONFIDENTIAL",
+      "MIO-OTHER_CONFIDENTIAL"
+    ]
+    this.SECCategories = [
+      "SEC-AGE",
+      "SEC-DATE_OF_BIRTH",
+      "SEC-DATE_OF_DEATH",
+      "SEC-SSN",
+      "SEC-NOTES",
+      "SEC-ACCOUNT_NUMBER",
+      "SEC-CLAIM_DATE",
+      "SEC-EMAIL",
+      "SEC-PASSWORD",
+      "SEC-FULL_NAME",
+      "SEC-COMMISSIONS",
+      "SEC-TIN",
+      "SEC-LAST_NAME",
+      "SEC-ACCT_NUM",
+      "SEC-MIDDLE_NAME",
+      "SEC-LOGIN",
+      "SEC-PHI"
+    ]
+    this.DOMCategories = [
+      "DOM-BROKER",
+      "DOM-BILLING",
+      "DOM-CLAIMS",
+      "DOM-CUSTOMER",
+      "DOM-GEOGRAPHIC_AREA",
+      "DOM-COMMUNICATION"
+    ]
     this.getZones()
     this.createFormControls()
     this.createForm()
@@ -237,42 +242,23 @@ export class CurateComponent implements OnInit {
     
   }
 
-  selectTag(tagType){
+  selectTag(tagType, index){
     this.tagID = tagType
     console.log(`TAG TYPE IS ${this.tagID}`);
-    this.MIOCategories = [
-      "MIO-INTERNAL_USE",
-      "MIO-PUBLIC",
-      "MIO-RESTRICTED_AND_CONFIDENTIAL",
-      "MIO-OTHER_CONFIDENTIAL"
-    ]
-    this.SECCategories = [
-      "SEC-AGE",
-      "SEC-DATE_OF_BIRTH",
-      "SEC-DATE_OF_DEATH",
-      "SEC-SSN",
-      "SEC-NOTES",
-      "SEC-ACCOUNT_NUMBER",
-      "SEC-CLAIM_DATE",
-      "SEC-EMAIL",
-      "SEC-PASSWORD",
-      "SEC-FULL_NAME",
-      "SEC-COMMISSIONS",
-      "SEC-TIN",
-      "SEC-LAST_NAME",
-      "SEC-ACCT_NUM",
-      "SEC-MIDDLE_NAME",
-      "SEC-LOGIN",
-      "SEC-PHI"
-    ]
-    this.DOMCategories = [
-      "DOM-BROKER",
-      "DOM-BILLING",
-      "DOM-CLAIMS",
-      "DOM-CUSTOMER",
-      "DOM-GEOGRAPHIC_AREA",
-      "DOM-COMMUNICATION"
-    ]
+    switch(this.tagID)  {
+      case 'MIO' :{
+        this.tagCategories[index] = this.MIOCategories
+        break
+      }
+      case 'SEC' :{
+        this.tagCategories[index] = this.SECCategories
+        break
+      }
+      case 'DOM' :{
+        this.tagCategories[index] = this.DOMCategories
+        break
+      }
+    }
 
   }
   selectTagCategory(tagCategory){
