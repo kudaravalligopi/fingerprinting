@@ -266,7 +266,6 @@ export class CurateComponent implements OnInit {
     console.log(`TAG CATEGORY IS ${tagCategory}`);
   }
 
-
   reset() {
     
     this.fingerprintDataAcquired = false
