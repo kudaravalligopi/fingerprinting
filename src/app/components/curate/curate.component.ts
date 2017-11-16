@@ -268,7 +268,7 @@ export class CurateComponent implements OnInit {
 
 
   reset() {
-    this.fingerprintData = {}
+    
     this.fingerprintDataAcquired = false
   }
 
