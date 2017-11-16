@@ -284,10 +284,12 @@ export class CurateComponent implements OnInit {
       }
       case 'DOM':{
         this.tagCategories = [
-          "MIO-INTERNAL_USE",
-          "MIO-PUBLIC",
-          "MIO-RESTRICTED_AND_CONFIDENTIAL",
-          "MIO-OTHER_CONFIDENTIAL"
+          "DOM-BROKER",
+          "DOM-BILLING",
+          "DOM-CLAIMS",
+          "DOM-CUSTOMER",
+          "DOM-GEOGRAPHIC_AREA",
+          "DOM-COMMUNICATION"
         ]
         break
       }
