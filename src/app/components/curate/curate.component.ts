@@ -102,11 +102,25 @@ export class CurateComponent implements OnInit {
     console.log(`${this.tags.MIO}`);
     
     
-    
+    this.tags = this.makeArray(this.tags)
     this.getZones()
     this.createFormControls()
     this.createForm()
 
+  }
+
+
+
+  makeArray(obj) {
+
+    if(!Array.isArray(obj)){
+      return [obj]
+    }
+    else {
+      return obj
+    }
+
+    
   }
 
   //to get all zones on initialize of component
