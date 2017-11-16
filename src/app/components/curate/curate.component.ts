@@ -38,8 +38,8 @@ export class CurateComponent implements OnInit {
   selectedTable: string
   selectedColumns: string
   columnSelected: boolean = false
-  tagRows: any[] =['1']
-  tags : any[]  =[
+  
+  tags : string[]  = [
     "MIO",
     "SEC",
     "DOM"
