@@ -215,14 +215,6 @@ export class CurateComponent implements OnInit {
     console.log(`TAG CATEGORY IS ${tagCategory}`);
   }
 
-  add(row) {
-    row++
-    this.tagRows.push(row)
-  }
-
-  remove(row){
-    this.tagRows.splice(this.tagRows.indexOf(row),1)
-  }
 
   reset() {
     this.fingerprintData = {}
