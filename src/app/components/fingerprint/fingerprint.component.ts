@@ -158,17 +158,11 @@ export class FingerprintComponent implements OnInit {
   }
 
 
-  public selectColumn(columnName) {
-    this.selectedColumns = columnName
-    this.selectedMultipleColumns.push(columnName)
-  }
-
   public fingerprint() {
     this.showProgressSpinner = true
     this.fingerprintData = {}
     this.fingerprintDataAcquired = false
-    console.log('fingerprint clicked with column names as ' + this.selectedColumns + ' & table name as ' + this.selectedTable + ' & source name as ' + this.selectedSource + ' & zone name as ' + this.selectedZone)
-
+    
     let sendOP = this.fingerprintForm.value
     let zName = sendOP.zoneName
     let sName = sendOP.sourceName

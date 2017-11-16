@@ -61,8 +61,6 @@ export class CurateComponent implements OnInit {
     "SEC_AGE"
   ]
 
-  tagType: string
-  tagCategory: string
 
   fingerprintData: any
 
@@ -209,12 +207,12 @@ export class CurateComponent implements OnInit {
   }
 
   selectTag(tagType){
-    this.tagType = tagType
-    console.log(`TAG TYPE IS ${this.tagType}`);
+    
+    console.log(`TAG TYPE IS ${tagType}`);
   }
   selectTagCategory(tagCategory){
-    this.tagCategory = tagCategory
-    console.log(`TAG CATEGORY IS ${this.tagCategory}`);
+    
+    console.log(`TAG CATEGORY IS ${tagCategory}`);
   }
 
   add(row) {

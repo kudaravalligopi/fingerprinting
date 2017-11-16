@@ -24,7 +24,7 @@
 			<br>
 			<div *ngIf="columnSelected">
 				<div formArrayName="tagInfo">
-					<div *ngFor="let tags of curateForm.controls.tagInfo; let i = index">
+					<div *ngFor="let tags of curateForm.controls.tagInfo.controls; let i = index">
 						<div [formGroupName]="i">
 							<div class="row">
 								<div class="col-sm-1">
@@ -37,34 +37,7 @@
 										<mat-icon>remove</mat-icon>
 									</button>
 								</div>
-								<div class="col-sm-5">
-									<mat-form-field>
-										<mat-select placeholder="Select Tag Type" formControlName="tagType">
-											<mat-option *ngFor="let tagType of tags" [value]="tagType" (click)="selectTag(tagType)">{{tagType}}</mat-option>
-										</mat-select>
-									</mat-form-field>
-								</div>
-								<div class="col-sm-5">
-									<!-- MIO -->
-									<mat-form-field *ngIf="tagType == 'MIO'">
-										<mat-select placeholder="Select Tag Category" formControlName="tagCategory">
-											<mat-option *ngFor="let tagCategory of MIOCategories" [value]="tagCategory" (click)="selectTagCategory(tagCategory)">{{tagCategory}}</mat-option>
-										</mat-select>
-									</mat-form-field>
-									<mat-form-field *ngIf="tagType == 'SEC'">
-										<!-- SEC -->
-										<mat-select placeholder="Select Tag Category"  formControlName="tagCategory">
-											<mat-option *ngFor="let tagCategory of SECCategories" [value]="tagCategory" (click)="selectTagCategory(tagCategory)">{{tagCategory}}</mat-option>
-										</mat-select>
-									</mat-form-field>
-
-									<!-- DOM -->
-									<mat-form-field *ngIf="tagType == 'DOM'">
-										<mat-select placeholder="Select Tag Category"  formControlName="tagCategory">
-											<mat-option *ngFor="let tagCategory of SECCategories" [value]="tagCategory" (click)="selectTagCategory(tagCategory)">{{tagCategory}}</mat-option>
-										</mat-select>
-									</mat-form-field>
-								</div>
+								<!-- -->
 							</div>
 						</div>
 					</div>
