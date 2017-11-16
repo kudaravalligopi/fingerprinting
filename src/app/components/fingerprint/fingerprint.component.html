@@ -1,24 +1,25 @@
 <div class="row">
   <section id="inputs" class="col-mat-12">
-    <form>
+    <form [formGroup]="fingerprintForm" novalidate>
       <mat-form-field>
-        <mat-select placeholder="Select Data Zone" class="fingerprint-select" autofocus>
+        <mat-select placeholder="Select Data Zone" class="fingerprint-select" autofocus formControlName="zoneName">
           <mat-option *ngFor="let zone of zones" [value]="zone.id " (click)="selectZone(zone.name)">{{zone.name}}</mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field>
-        <mat-select placeholder="Select DB/Source" class="fingerprint-select">
+        <mat-select placeholder="Select DB/Source" class="fingerprint-select" formControlName="sourceName">
           <mat-option *ngFor="let source of sourceNames" [value]="source" (click)="selectSource(source)">{{source}}</mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field>
-        <mat-select placeholder="Select Data Table" class="fingerprint-select">
+        <mat-select placeholder="Select Data Table" class="fingerprint-select" formControlName="tableName">
           <mat-option *ngFor="let table of tableNames" [value]="table" (click)="selectTable(table)">{{table}}</mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field>
-        <mat-select placeholder="Select Data Columns" class="fingerprint-select" multiple>
-          <mat-option *ngFor="let column of columnNames" [value]="column" (click)="selectColumn(column)">{{column}}</mat-option>
+        <mat-select placeholder="Select Data Columns" class="fingerprint-select" multiple formControlName="columnName">
+            <!-- (click)="selectColumn(column)" -->
+          <mat-option *ngFor="let column of columnNames" [value]="column" >{{column}}</mat-option>
         </mat-select>
       </mat-form-field>
       <br>

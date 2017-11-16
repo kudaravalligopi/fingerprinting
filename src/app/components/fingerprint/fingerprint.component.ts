@@ -10,6 +10,8 @@ import { Columns } from '../../models/columns'
 
 import { ApiService } from '../../services/api.service'
 
+import { FormGroup, FormControl, Validators, FormBuilder, FormArray } from '@angular/forms';
+
 
 
 @Component({
@@ -40,21 +42,58 @@ export class FingerprintComponent implements OnInit {
   selectedMultipleColumns: string[] = []
   fingerprintData: any
 
+
+
+
+  //Reactive Form
+  fingerprintForm: FormGroup
+
+  zoneName : FormControl
+  sourceName : FormControl
+  tableName : FormControl
+  columnName : FormControl
+
+
+
   constructor(private fingerprintService: FingerprintService, private api: ApiService) {
 
   }
 
   public ngOnInit() {
-    //to get all zones on initialize of component
-    this.fingerprintService
-      .getAllZones()
-      .subscribe(
-      (zones) => {
-        this.zones = zones
-      }
-      )
-
+    
+    this.getZones()
+    this.createFormControls()
+    this.createForm()
+    
   }
+
+  //to get all zones on initialize of component
+  getZones() {
+    this.fingerprintService
+    .getAllZones()
+    .subscribe(
+    (zones) => {
+      this.zones = zones
+    }
+    )
+  }
+
+  createFormControls(){
+    this.zoneName = new FormControl('', [Validators.required])
+    this.sourceName = new FormControl('', [Validators.required])
+    this.tableName = new FormControl('', [Validators.required])
+    this.columnName = new FormControl('', [Validators.required])
+  }
+
+  createForm() {
+    this.fingerprintForm = new FormGroup({
+      zoneName: this.zoneName,
+      sourceName: this.sourceName,
+      tableName: this.tableName,
+      columnName: this.columnName
+    })
+  }
+
 
   public selectZone(zoneName: string) {
     this.sourceNames = []
@@ -130,7 +169,12 @@ export class FingerprintComponent implements OnInit {
     this.fingerprintDataAcquired = false
     console.log('fingerprint clicked with column names as ' + this.selectedColumns + ' & table name as ' + this.selectedTable + ' & source name as ' + this.selectedSource + ' & zone name as ' + this.selectedZone)
 
-    this.fingerprintService.fingerprint(this.selectedMultipleColumns, this.selectedTable, this.selectedSource, this.selectedZone).subscribe(data=>{
+    let sendOP = this.fingerprintForm.value
+    let zName = sendOP.zoneName
+    let sName = sendOP.sourceName
+    let tName = sendOP.tableName
+    let cName = sendOP.columnName
+    this.fingerprintService.fingerprint(cName, tName, sName, zName).subscribe(data=>{
       this.fingerprintData = JSON.parse(data)
       this.showProgressSpinner = false
       this.fingerprintDataAcquired = true
