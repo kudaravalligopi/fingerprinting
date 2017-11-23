@@ -8,10 +8,12 @@ import {CurateComponent} from './components/curate/curate.component'
 import {KnowledgeGraphComponent} from './components/knowledge-graph/knowledge-graph.component'
 import {ProfilingComponent} from './components/profiling/profiling.component'
 import {SourcesComponent} from './components/sources/sources.component'
+import {FingerprintOnDemandComponent} from './components/fingerprint-on-demand/fingerprint-on-demand.component'
 
 const appRoutes: Routes = [
     { path: '', component: FingerprintComponent },
     { path: 'fingerprint', component: FingerprintComponent },
+    { path: 'fingerprint-on-demand', component: FingerprintOnDemandComponent },
     { path: 'catalog', component: CatalogComponent },
     { path: 'curate', component: CurateComponent },
     { path: 'knowledge-graph', component: KnowledgeGraphComponent },

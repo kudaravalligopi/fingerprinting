@@ -1,6 +1,6 @@
 <div class="row">
   <section id="inputs" class="col-mat-12">
-    <form [formGroup]="fingerprintForm" novalidate>
+    <form [formGroup]="fingerprintForm" novalidate (ngSubmit)="fingerprint()">
       <mat-form-field>
         <mat-select placeholder="Select Data Zone" class="fingerprint-select" autofocus formControlName="zoneName">
           <mat-option *ngFor="let zone of zones" [value]="zone.id " (click)="selectZone(zone.name)">{{zone.name}}</mat-option>
@@ -23,7 +23,7 @@
         </mat-select>
       </mat-form-field>
       <br>
-      <button mat-raised-button color="accent" (click)="fingerprint()" [ngStyle]="{'pointer-events':showProgressSpinner ? 'none' : 'auto'}">Fingerprint Data</button>
+      <button mat-raised-button color="accent" type="submit" [ngStyle]="{'pointer-events':showProgressSpinner ? 'none' : 'auto'}" [disabled]="fingerprintForm.invalid">Fingerprint Data</button>
     </form>
   </section>
 </div>

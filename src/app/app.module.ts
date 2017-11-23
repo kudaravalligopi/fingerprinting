@@ -33,6 +33,7 @@ import {CurateService} from './services/curate.service'
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 import  {MaterialModule} from './material.module';
 import { ConfigureSourceComponent } from './components/configure-source/configure-source.component';
+import { FingerprintOnDemandComponent } from './components/fingerprint-on-demand/fingerprint-on-demand.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { ConfigureSourceComponent } from './components/configure-source/configur
     CurateComponent,
     CatalogComponent,
     KnowledgeGraphComponent,
-    ConfigureSourceComponent
+    ConfigureSourceComponent,
+    FingerprintOnDemandComponent
   ],
   entryComponents: [
     ConfigureSourceComponent

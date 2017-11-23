@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core'
 import { Http, Response } from '@angular/http' //For HTTP Requests
 import 'rxjs/add/operator/map' //Handling Received Data
@@ -15,12 +16,12 @@ import { FormGroup, FormControl, Validators, FormBuilder, FormArray } from '@ang
 
 
 @Component({
-  selector: 'app-fingerprint',
-  templateUrl: './fingerprint.component.html',
-  styleUrls: ['./fingerprint.component.sass'],
-  providers: [ApiService, FingerprintService]
+  selector: 'app-fingerprint-on-demand',
+  templateUrl: './fingerprint-on-demand.component.html',
+  styleUrls: ['./fingerprint-on-demand.component.sass']
 })
-export class FingerprintComponent implements OnInit {
+export class FingerprintOnDemandComponent implements OnInit {
+
   title = `FingerPrint`
   fingerprintDataAcquired:boolean = false
   showProgressSpinner: boolean = false
@@ -46,12 +47,13 @@ export class FingerprintComponent implements OnInit {
 
 
   //Reactive Form
-  fingerprintForm: FormGroup
+  fingerprintOnDemandForm: FormGroup
 
   zoneName : FormControl
   sourceName : FormControl
   tableName : FormControl
   columnName : FormControl
+  fingerprintType: FormControl
 
 
 
@@ -83,14 +85,16 @@ export class FingerprintComponent implements OnInit {
     this.sourceName = new FormControl('', [Validators.required])
     this.tableName = new FormControl('', [Validators.required])
     this.columnName = new FormControl('', [Validators.required])
+    this.fingerprintType = new FormControl('', [Validators.required])
   }
 
   createForm() {
-    this.fingerprintForm = new FormGroup({
+    this.fingerprintOnDemandForm = new FormGroup({
       zoneName: this.zoneName,
       sourceName: this.sourceName,
       tableName: this.tableName,
-      columnName: this.columnName
+      columnName: this.columnName,
+      fingerprintType: this.fingerprintType
     })
   }
 
@@ -169,7 +173,7 @@ export class FingerprintComponent implements OnInit {
     this.fingerprintDataAcquired = false
     console.log('fingerprint clicked with column names as ' + this.selectedColumns + ' & table name as ' + this.selectedTable + ' & source name as ' + this.selectedSource + ' & zone name as ' + this.selectedZone)
 
-    let sendOP = this.fingerprintForm.value
+    let sendOP = this.fingerprintOnDemandForm.value
     let zName = sendOP.zoneName
     let sName = sendOP.sourceName
     let tName = sendOP.tableName
