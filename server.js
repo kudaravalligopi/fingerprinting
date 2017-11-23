@@ -30,8 +30,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(passport.initialize())
 // Point static path to dist
 app.use(express.static(path.join(__dirname, 'dist')));
-// passport.authenticate('ldapauth', {session: false}),
-app.post('/login',  (req, res)=>{
+
+app.post('/login', passport.authenticate('ldapauth'), (req, res)=>{
   console.log(req.body)
   res.send({status:'ok'})
 })
