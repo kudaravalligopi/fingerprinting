@@ -48,7 +48,7 @@ export class CurateComponent implements OnInit {
   DOMCategories: any[]
 
   tagTypes: string[]
-  tagCategories: object
+  tagCategories: any[] = []
 
   //Reactive Forms
 
@@ -244,45 +244,27 @@ export class CurateComponent implements OnInit {
 
   }
 
-  selectTag(tagType) {
+  selectTag(tagType,index) {
     this.tagID = tagType
     console.log(`TAG TYPE IS ${this.tagID}`);
-    this.tagCategories["MIO"] = [
-      "DISABLED_CORRECTION",
-      "MIO-INTERNAL_USE",
-      "MIO-PUBLIC",
-      "MIO-RESTRICTED_AND_CONFIDENTIAL",
-      "MIO-OTHER_CONFIDENTIAL"
-    ]
-    this.tagCategories["SEC"]=[
-      "DISABLED_CORRECTION",
-      "SEC-AGE",
-      "SEC-DATE_OF_BIRTH",
-      "SEC-DATE_OF_DEATH",
-      "SEC-SSN",
-      "SEC-NOTES",
-      "SEC-ACCOUNT_NUMBER",
-      "SEC-CLAIM_DATE",
-      "SEC-EMAIL",
-      "SEC-PASSWORD",
-      "SEC-FULL_NAME",
-      "SEC-COMMISSIONS",
-      "SEC-TIN",
-      "SEC-LAST_NAME",
-      "SEC-ACCT_NUM",
-      "SEC-MIDDLE_NAME",
-      "SEC-LOGIN",
-      "SEC-PHI"
-    ]
-    this.tagCategories["DOM"]=[
-      "DISABLED_CORRECTION",
-      "DOM-BILLING",
-      "DOM-CLAIMS",
-      "DOM-CUSTOMER",
-      "DOM-GEOGRAPHIC_AREA",
-      "DOM-COMMUNICATION"
-    ]
 
+
+    if(this.tagCategories[index] == null ||this.tagCategories[index] == undefined )
+    switch(tagType){
+      case 'MIO':{
+        this.tagCategories.push(this.MIOCategories)
+        break
+      }
+      case 'SEC':{
+        this.tagCategories.push(this.SECCategories)
+        break
+      }
+      case 'DOM':{
+        this.tagCategories.push(this.DOMCategories)
+        break
+      }
+    }
+    
 
     console.log(`tag categories are`);
     console.log(this.tagCategories);

@@ -28,7 +28,7 @@
 						<div [formGroupName]="i">
 							<div class="row">
 								<div class="col-sm-1">
-									<button mat-mini-fab color="primary" (click)="addNewTag()" style="color: white">
+									<button mat-mini-fab color="primary" (click)="addNewTag()" style="color: white"*ngIf="curateForm.controls.tagInfo.controls.length < 4">
 										<mat-icon>add</mat-icon>
 									</button>
 								</div>
@@ -40,7 +40,7 @@
 								<div class="col-sm-5">
 									<mat-form-field>
 										<mat-select placeholder="Select Tag Type" formControlName="tagType">
-											<mat-option *ngFor="let tag of tagTypes; let i = index" [value]="tag" (click)="selectTag(tag)">{{tag}}</mat-option>
+											<mat-option *ngFor="let tag of tagTypes" [value]="tag" (click)="selectTag(tag,i)">{{tag}}</mat-option>
 										</mat-select>
 									</mat-form-field>
 								</div>
@@ -48,20 +48,20 @@
 									<!-- MIO -->
 									<mat-form-field *ngIf="tagID == 'MIO'">
 										<mat-select placeholder="Select Tag Category" formControlName="tagCategory">
-											<mat-option *ngFor="let tagC of tagCategories.MIO" [value]="tagC" (click)="selectTagCategory(tagC)">{{tagC}}</mat-option>
+											<mat-option *ngFor="let tagC of tagCategories[i]" [value]="tagC" (click)="selectTagCategory(tagC)">{{tagC}}</mat-option>
 										</mat-select>
 									</mat-form-field>
 									<mat-form-field *ngIf="tagID == 'SEC'">
 										<!-- SEC -->
 										<mat-select placeholder="Select Tag Category" formControlName="tagCategory">
-											<mat-option *ngFor="let tagD of tagCategories.SEC" [value]="tagD" (click)="selectTagCategory(tagD)">{{tagD}}</mat-option>
+											<mat-option *ngFor="let tagD of tagCategories[i]" [value]="tagD" (click)="selectTagCategory(tagD)">{{tagD}}</mat-option>
 										</mat-select>
 									</mat-form-field>
 
 									<!-- DOM -->
 									<mat-form-field *ngIf="tagID == 'DOM'">
 										<mat-select placeholder="Select Tag Category" formControlName="tagCategory">
-											<mat-option *ngFor="let tagDOM of tagCategories.DOM" [value]="tagDOM" (click)="selectTagCategory(tagDOM)">{{tagDOM}}</mat-option>
+											<mat-option *ngFor="let tagDOM of tagCategories[i]" [value]="tagDOM" (click)="selectTagCategory(tagDOM)">{{tagDOM}}</mat-option>
 										</mat-select>
 									</mat-form-field>
 								</div>
