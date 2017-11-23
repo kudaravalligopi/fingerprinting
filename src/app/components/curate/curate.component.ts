@@ -10,7 +10,7 @@ import { Columns } from '../../models/columns'
 
 import { ApiService } from '../../services/api.service'
 
-
+import { FormGroup, FormControl, Validators, FormBuilder, FormArray } from '@angular/forms';
 
 @Component({
   selector: 'app-curate',
@@ -38,49 +38,139 @@ export class CurateComponent implements OnInit {
   selectedTable: string
   selectedColumns: string
   columnSelected: boolean = false
-  tagRows: any[] =['1']
-  tags : any[]  =[
-    "MIO",
-    "SEC",
-    "DOM"
-  ]
+  
+  tags: any
 
-  MIOCategories: any[] = [
-    "MIO-INTERNAL_USE",
-    "MIO-PUBLIC",
-    "MIO-RESTRICTED_AND_CONFIDENTIAL",
-    "MIO-OTHER_CONFIDENTIAL"
-  ]
+  tagID: string
 
-  SECCategories: any[] = [
-    "SEC_LAST_NAME",
-    "SEC_COMMISSIONS",
-    "SEC_TIN",
-    "SEC_NOTES",
-    "SEC_EMAIL",
-    "SEC_AGE"
-  ]
+  MIOCategories: any[]
+  SECCategories: any[]
+  DOMCategories: any[]
 
-  tagType: string
-  tagCategory: string
+  tagTypes: string[]
+  tagCategories: object
+  
+  //Reactive Forms
 
-  fingerprintData: any
+  curateForm: FormGroup
+  zoneName: FormControl
+  sourceName: FormControl
+  tableName: FormControl
+  columnName: FormControl
 
-  constructor(private curateService: CurateService, private api: ApiService) {
+  
+
+  constructor(private curateService: CurateService, private api: ApiService, public formBuilder: FormBuilder) {
 
   }
 
   public ngOnInit() {
-    //to get all zones on initialize of component
-    this.curateService
-      .getAllZones()
-      .subscribe(
-      (zones) => {
-        this.zones = zones
-      }
-      )
+    
+    this.MIOCategories = [
+      "DISABLED_CORRECTION",
+      "MIO-INTERNAL_USE",
+      "MIO-PUBLIC",
+      "MIO-RESTRICTED_AND_CONFIDENTIAL",
+      "MIO-OTHER_CONFIDENTIAL"
+    ]
+    this.SECCategories = [
+      "DISABLED_CORRECTION",
+      "SEC-AGE",
+      "SEC-DATE_OF_BIRTH",
+      "SEC-DATE_OF_DEATH",
+      "SEC-SSN",
+      "SEC-NOTES",
+      "SEC-ACCOUNT_NUMBER",
+      "SEC-CLAIM_DATE",
+      "SEC-EMAIL",
+      "SEC-PASSWORD",
+      "SEC-FULL_NAME",
+      "SEC-COMMISSIONS",
+      "SEC-TIN",
+      "SEC-LAST_NAME",
+      "SEC-ACCT_NUM",
+      "SEC-MIDDLE_NAME",
+      "SEC-LOGIN",
+      "SEC-PHI"
+    ]
+    this.DOMCategories = [
+      "DISABLED_CORRECTION",
+      "DOM-BILLING",
+      "DOM-CLAIMS",
+      "DOM-CUSTOMER",
+      "DOM-GEOGRAPHIC_AREA",
+      "DOM-COMMUNICATION"
+    ]
+    this.getZones()
+    this.createFormControls()
+    this.createForm()
 
   }
+
+
+
+  makeArray(obj) {
+
+    if(!Array.isArray(obj)){
+      return [obj]
+    }
+    else {
+      return obj
+    }
+
+    
+  }
+
+  //to get all zones on initialize of component
+  getZones(){
+    this.curateService
+    .getAllZones()
+    .subscribe(
+    (zones) => {
+      this.zones = zones
+    }
+    )
+  }
+
+  createForm() {
+    this.curateForm = new FormGroup({
+      zoneName: this.zoneName,
+      sourceName: this.sourceName,
+      tableName: this.tableName,
+      columnName: this.columnName,
+      tagInfo: this.formBuilder.array([
+        this.initTagInfo()
+      ])
+    })
+  }
+
+  createFormControls(){
+    this.zoneName = new FormControl('', Validators.required)
+    this.sourceName = new FormControl('', Validators.required)
+    this.tableName = new FormControl('', Validators.required)
+    this.columnName = new FormControl('', Validators.required)
+  }
+
+  //Adding and removing new tags
+  initTagInfo() {
+    return this.formBuilder.group({
+      tagType: ['', Validators.required],
+      tagCategory: ['', Validators.required]
+    })
+  }
+
+  addNewTag() {
+    const tagInfo = <FormArray>this.curateForm.controls['tagInfo']
+    tagInfo.push(this.initTagInfo())
+  }
+
+  removeTag(i: number) {
+    const tagInfo = <FormArray>this.curateForm.controls['tagInfo']
+    tagInfo.removeAt(i)
+  }
+
+
+
 
   public selectZone(zoneName: string) {
     this.sourceNames = []
@@ -147,29 +237,49 @@ export class CurateComponent implements OnInit {
 
   public selectColumn(columnName) {
     this.selectedColumns = columnName
+
+    this.tagTypes = ['MIO','SEC','DOM']
     this.columnSelected = true
+
+    
   }
 
   selectTag(tagType){
-    this.tagType = tagType
-    console.log(`TAG TYPE IS ${this.tagType}`);
+    this.tagID = tagType
+    console.log(`TAG TYPE IS ${this.tagID}`);
+    switch(this.tagID)  {
+      case 'MIO' :{
+        this.tagCategories = this.MIOCategories
+        break
+      }
+      case 'SEC' :{
+        this.tagCategories = this.SECCategories
+        break
+      }
+      case 'DOM' :{
+        this.tagCategories = this.DOMCategories
+        break
+      }
+    }
+
   }
   selectTagCategory(tagCategory){
-    this.tagCategory = tagCategory
-    console.log(`TAG CATEGORY IS ${this.tagCategory}`);
+    
+    console.log(`TAG CATEGORY IS ${tagCategory}`);
   }
 
-  add(row) {
-    row++
-    this.tagRows.push(row)
-  }
 
-  remove(row){
-    this.tagRows.splice(this.tagRows.indexOf(row),1)
-  }
+  submitTag(){
+    let sendOP = this.curateForm.value
 
+
+    console.log(sendOP);
+
+    
+    
+  }
   reset() {
-    this.fingerprintData = {}
+    
     this.fingerprintDataAcquired = false
   }
 
