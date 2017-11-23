@@ -9,7 +9,7 @@ const LdapStrategy = require('passport-ldapauth')
 
 const OPTS = {
   server : {
-    url:'ldap://ldapad.lmig.cim:389',
+    url:'ldap://ldapad.lmig.com:389',
     searchBase: 'dc=lm,dc=lmig,dc=com',
     searchFilter:'(UserPrincipalName={{username}}*)',
     searchScope: 'ldap3.SUBT'
