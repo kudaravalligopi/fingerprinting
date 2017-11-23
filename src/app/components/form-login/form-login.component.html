@@ -1,0 +1,12 @@
+<h3 class="form-title">Login</h3>
+<form [formGroup]="loginForm" novalidate (ngSubmit) = "login()">     
+  <mat-form-field class="full-width">
+    <input matInput type="text" placeholder="User Name" formControlName = "username" [ngClass]="{'input-valid':username.valid && username.touched}"/>
+    <mat-icon matSuffix color="primary" *ngIf="username.invalid && username.touched">error_outline</mat-icon>
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <input matInput type="password" placeholder="Password" formControlName = "password" [ngClass]="{'input-valid':password.valid && password.touched}"/>
+    <mat-icon matSuffix color="primary" *ngIf="password.invalid && password.touched">error_outline</mat-icon>
+  </mat-form-field>
+  <button mat-raised-button color="primary" type="submit" [ngClass]="{'form-valid':loginForm.valid, 'form-invalid':loginForm.invalid}">Submit</button>
+</form>

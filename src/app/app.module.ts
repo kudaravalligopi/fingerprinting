@@ -35,6 +35,7 @@ import  {MaterialModule} from './material.module';
 import { ConfigureSourceComponent } from './components/configure-source/configure-source.component';
 import { FingerprintOnDemandComponent } from './components/fingerprint-on-demand/fingerprint-on-demand.component';
 import { HomeComponent } from './components/home/home.component';
+import { FormLoginComponent } from './components/form-login/form-login.component';
 
 @NgModule({
   declarations: [
@@ -47,10 +48,12 @@ import { HomeComponent } from './components/home/home.component';
     KnowledgeGraphComponent,
     ConfigureSourceComponent,
     FingerprintOnDemandComponent,
-    HomeComponent
+    HomeComponent,
+    FormLoginComponent
   ],
   entryComponents: [
-    ConfigureSourceComponent
+    ConfigureSourceComponent,
+    FormLoginComponent
   ],
   imports: [
     BrowserModule,

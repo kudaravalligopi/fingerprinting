@@ -4,23 +4,42 @@ const path = require('path');
 const http = require('http');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const passport = require('passport')
+const LdapStrategy = require('passport-ldapauth')
+
+const OPTS = {
+  server : {
+    url:'ldap://ldapad.lmig.cim:389',
+    searchBase: 'dc=lm,dc=lmig,dc=com',
+    searchFilter:'(UserPrincipalName={{username}}*)',
+    searchScope: 'ldap3.SUBT'
+  }
+}
 
 // Get our API routes
 const fingerprint = require('./server/routes/fingerprint');
-
+const login = require('./server/routes/login')
 const app = express();
+
+passport.use(new LdapStrategy(OPTS))
+
 
 // Parsers for POST data
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-
+app.use(passport.initialize())
 // Point static path to dist
 app.use(express.static(path.join(__dirname, 'dist')));
 
+app.post('/login', passport.authenticate('ldapauth', {session: false}), (req, res)=>{
+  console.log(req.body)
+  res.send({status:'ok'})
+})
 
 app.use(cors())
 // Set our api routes
 app.use('/fingerprint', fingerprint);
+
 
 
 // Catch all other routes and return the index file

@@ -32,6 +32,8 @@
     "json-server": "^0.12.1",
     "ldapjs": "^1.0.1",
     "node-sass": "^4.6.1",
+    "passport": "^0.4.0",
+    "passport-ldapauth": "^2.0.0",
     "request": "^2.83.0",
     "rxjs": "^5.5.2",
     "zone.js": "^0.8.18"

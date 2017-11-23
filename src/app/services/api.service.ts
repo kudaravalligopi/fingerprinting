@@ -136,5 +136,18 @@ export class ApiService {
 
   }
 
+  //login stuff
+  login(params){
+    let loginCreds = Object.values(params)
+    let loginCredsObj = {
+      "username": loginCreds[0].toString(),
+      "password": loginCreds[1].toString(),
+    }
+    return this.http.post('/login', loginCreds)
+  }
+
+  loginCheck(){
+    return this.http.get('/login/login-check')
+  }
 
 }
