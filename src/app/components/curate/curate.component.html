@@ -54,14 +54,14 @@
 									<mat-form-field *ngIf="tagID == 'SEC'">
 										<!-- SEC -->
 										<mat-select placeholder="Select Tag Category" formControlName="tagCategory">
-											<mat-option *ngFor="let tagC of SECCategories" [value]="tagC" (click)="selectTagCategory(tagC)">{{tagC}}</mat-option>
+											<mat-option *ngFor="let tagD of SECCategories" [value]="tagD" (click)="selectTagCategory(tagD)">{{tagD}}</mat-option>
 										</mat-select>
 									</mat-form-field>
 
 									<!-- DOM -->
 									<mat-form-field *ngIf="tagID == 'DOM'">
 										<mat-select placeholder="Select Tag Category" formControlName="tagCategory">
-											<mat-option *ngFor="let tagC of DOMCategories" [value]="tagC" (click)="selectTagCategory(tagC)">{{tagC}}</mat-option>
+											<mat-option *ngFor="let tagDOM of DOMCategories" [value]="tagDOM" (click)="selectTagCategory(tagDOM)">{{tagDOM}}</mat-option>
 										</mat-select>
 									</mat-form-field>
 								</div>
