@@ -6,9 +6,9 @@
         <button style="color:white" mat-button [routerLink]="['sources']" routerLinkActive="active-link">Sources</button>
         <button style="color:white" mat-button [routerLink]="['profiling']" routerLinkActive="active-link">Profiling</button>
         <button style="color:white" mat-button [matMenuTriggerFor]="menu">Fingerprint</button>
-        <mat-menu #menu="matMenu">
-            <button style="color:white" mat-button [routerLink]="['fingerprint']" routerLinkActive="active-link">Fingerprint Interactive</button>
-            <button style="color:white" mat-button [routerLink]="['fingerprint-on-demand']" routerLinkActive="active-link">Fingerprint On Demand</button>
+        <mat-menu #menu="matMenu" yPosition="below">
+            <button mat-menu-item [routerLink]="['fingerprint']" routerLinkActive="active-link">Fingerprint Interactive</button>
+            <button mat-menu-item [routerLink]="['fingerprint-on-demand']" routerLinkActive="active-link">Fingerprint On Demand</button>
         </mat-menu>
         <button style="color:white" mat-button [routerLink]="['curate']" routerLinkActive="active-link">Curate</button>
         <button style="color:white" mat-button [routerLink]="['catalog']" routerLinkActive="active-link">Catalog</button>
