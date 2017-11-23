@@ -153,6 +153,7 @@ export class FingerprintComponent implements OnInit {
         for (let i = 0; i < x.length; i++) {
           this.columnNames[i] = x[i]
         }
+        this.columnNames.sort()
       }
       )
   }
