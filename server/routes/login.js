@@ -6,7 +6,7 @@ const request = require('request')
 
 const ldap = require('ldapjs')
 const client = ldap.createClient({
-    url: 'ldap://ldapad.lmig.cim:389'
+    url: 'ldap://ldapad.lmig.com:389'
 })
 
 module.exports = router;
