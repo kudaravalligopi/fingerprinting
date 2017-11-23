@@ -34,6 +34,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 import  {MaterialModule} from './material.module';
 import { ConfigureSourceComponent } from './components/configure-source/configure-source.component';
 import { FingerprintOnDemandComponent } from './components/fingerprint-on-demand/fingerprint-on-demand.component';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { FingerprintOnDemandComponent } from './components/fingerprint-on-demand
     CatalogComponent,
     KnowledgeGraphComponent,
     ConfigureSourceComponent,
-    FingerprintOnDemandComponent
+    FingerprintOnDemandComponent,
+    HomeComponent
   ],
   entryComponents: [
     ConfigureSourceComponent
