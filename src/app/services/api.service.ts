@@ -143,6 +143,8 @@ export class ApiService {
       "username": loginCreds[0].toString(),
       "password": loginCreds[1].toString(),
     }
+    console.log(loginCredsObj);
+    
     return this.http.post('/login', loginCreds)
   }
 
