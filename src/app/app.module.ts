@@ -36,7 +36,7 @@ import { ConfigureSourceComponent } from './components/configure-source/configur
 import { FingerprintOnDemandComponent } from './components/fingerprint-on-demand/fingerprint-on-demand.component';
 import { HomeComponent } from './components/home/home.component';
 import { FormLoginComponent } from './components/form-login/form-login.component';
-
+import {Globals} from './globals'
 @NgModule({
   declarations: [
     AppComponent,
@@ -70,7 +70,7 @@ import { FormLoginComponent } from './components/form-login/form-login.component
     //Routings
     Routings
   ],
-  providers: [FingerprintComponent, ApiService, FingerprintService, CurateService],
+  providers: [FingerprintComponent, ApiService, FingerprintService, CurateService, Globals],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
