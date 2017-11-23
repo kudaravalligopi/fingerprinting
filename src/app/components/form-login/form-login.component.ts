@@ -37,7 +37,7 @@ export class FormLoginComponent implements OnInit {
   ngOnInit() {
     // console.log(`called by ${this.data.title}`);
   
-    this.title = this.data.title
+    
 
     //place to initialize form
     this.createFormControls()
@@ -61,7 +61,7 @@ export class FormLoginComponent implements OnInit {
     // this.apiCall.login()
     this.apiCall.login(this.loginForm.value).subscribe(data=>{
       this.globals.loggedIn = true
-      this.globals.username = data["username"]
+      
       this.dialogRef.close()
     })
     
