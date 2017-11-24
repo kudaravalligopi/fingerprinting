@@ -36,7 +36,8 @@ import { ConfigureSourceComponent } from './components/configure-source/configur
 import { FingerprintOnDemandComponent } from './components/fingerprint-on-demand/fingerprint-on-demand.component';
 import { HomeComponent } from './components/home/home.component';
 import { FormLoginComponent } from './components/form-login/form-login.component';
-import {Globals} from './globals'
+import {Globals} from './globals';
+import { OutputCurateComponent } from './components/output-curate/output-curate.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,11 +50,13 @@ import {Globals} from './globals'
     ConfigureSourceComponent,
     FingerprintOnDemandComponent,
     HomeComponent,
-    FormLoginComponent
+    FormLoginComponent,
+    OutputCurateComponent
   ],
   entryComponents: [
     ConfigureSourceComponent,
-    FormLoginComponent
+    FormLoginComponent,
+    OutputCurateComponent
   ],
   imports: [
     BrowserModule,

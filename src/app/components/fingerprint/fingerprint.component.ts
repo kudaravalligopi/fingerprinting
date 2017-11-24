@@ -132,6 +132,7 @@ export class FingerprintComponent implements OnInit {
         for (let i = 0; i < x.length; i++) {
           this.tableNames[i] = x[i]
         }
+        this.tableNames.sort()
       }
       )
   }

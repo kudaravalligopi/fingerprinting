@@ -42,6 +42,7 @@ export class FingerprintOnDemandComponent implements OnInit {
   selectedColumns: string
   selectedMultipleColumns: string[] = []
   fingerprintData: any
+  fingerprintFlowStatus: boolean = false
 
 
 
@@ -68,6 +69,7 @@ export class FingerprintOnDemandComponent implements OnInit {
     this.createForm()
     
   }
+  //Populate Selects
 
   //to get all zones on initialize of component
   getZones() {
@@ -79,25 +81,6 @@ export class FingerprintOnDemandComponent implements OnInit {
     }
     )
   }
-
-  createFormControls(){
-    this.zoneName = new FormControl('', [Validators.required])
-    this.sourceName = new FormControl('', [Validators.required])
-    this.tableName = new FormControl('', [Validators.required])
-    this.columnName = new FormControl('', [Validators.required])
-    this.fingerprintType = new FormControl('', [Validators.required])
-  }
-
-  createForm() {
-    this.fingerprintOnDemandForm = new FormGroup({
-      zoneName: this.zoneName,
-      sourceName: this.sourceName,
-      tableName: this.tableName,
-      columnName: this.columnName,
-      fingerprintType: this.fingerprintType
-    })
-  }
-
 
   public selectZone(zoneName: string) {
     this.sourceNames = []
@@ -119,6 +102,8 @@ export class FingerprintOnDemandComponent implements OnInit {
       )
   }
 
+
+
   public selectSource(sourceName: string) {
     console.log('Select Source clicked with source name as ' + sourceName)
     this.tableNames = []
@@ -136,66 +121,38 @@ export class FingerprintOnDemandComponent implements OnInit {
         for (let i = 0; i < x.length; i++) {
           this.tableNames[i] = x[i]
         }
-      }
-      )
-  }
-
-  public selectTable(tableName: string) {
-    console.log('Select Table clicked with table name as ' + tableName + ' & source name as ' + this.selectedSource + ' & zone name as ' + this.selectedZone)
-    this.columnNames = []
-    this.selectedTable = tableName
-
-    this.fingerprintService
-      .selectTable(this.selectedTable, this.selectedSource, this.selectedZone)
-      .subscribe(
-      (columns) => {
-        this.columns = columns
-        console.log(columns)
-        console.log(typeof (columns))
-        let x: string[] = Object.values(columns)
-        console.log(x)
-        for (let i = 0; i < x.length; i++) {
-          this.columnNames[i] = x[i]
-        }
-        this.columnNames.sort()
+        this.tableNames.sort()
       }
       )
   }
 
 
-  public selectColumn(columnName) {
-    this.selectedColumns = columnName
-    this.selectedMultipleColumns.push(columnName)
+  //Form Controls
+  createFormControls(){
+    this.zoneName = new FormControl('', [Validators.required])
+    this.sourceName = new FormControl('', [Validators.required])
+    this.tableName = new FormControl('', [Validators.required])
+    this.columnName = new FormControl('', [Validators.required])
+    this.fingerprintType = new FormControl('', [Validators.required])
   }
 
-  public fingerprint() {
-    this.showProgressSpinner = true
-    this.fingerprintData = {}
-    this.fingerprintDataAcquired = false
-    console.log('fingerprint clicked with column names as ' + this.selectedColumns + ' & table name as ' + this.selectedTable + ' & source name as ' + this.selectedSource + ' & zone name as ' + this.selectedZone)
-
-    let sendOP = this.fingerprintOnDemandForm.value
-    let zName = sendOP.zoneName
-    let sName = sendOP.sourceName
-    let tName = sendOP.tableName
-    let cName = sendOP.columnName
-    try {
-      this.fingerprintService.fingerprint(cName, tName, sName, zName).subscribe(data=>{
-        this.fingerprintData = JSON.parse(data)
-        this.showProgressSpinner = false
-        this.fingerprintDataAcquired = true
-      })
-    } catch(err) {
-      console.log(`Error in Fingerprint Call ${err}`);
-      
-    }
-    
-
+  createForm() {
+    this.fingerprintOnDemandForm = new FormGroup({
+      zoneName: this.zoneName,
+      sourceName: this.sourceName,
+      tableName: this.tableName,
+      columnName: this.columnName,
+      fingerprintType: this.fingerprintType
+    })
   }
 
-  reset() {
-    this.fingerprintData = {}
-    this.fingerprintDataAcquired = false
+  slideToggle(e){
+    this.fingerprintFlowStatus = !this.fingerprintFlowStatus
   }
+ 
+
+
+
+
 
 }
