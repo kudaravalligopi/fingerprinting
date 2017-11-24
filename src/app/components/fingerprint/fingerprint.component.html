@@ -1,46 +1,59 @@
-<div class="row">
-  <section id="inputs" class="col-mat-12">
-    <form [formGroup]="fingerprintForm" novalidate (ngSubmit)="fingerprint()">
-      <mat-form-field>
-        <mat-select placeholder="Select Data Zone" class="fingerprint-select" autofocus formControlName="zoneName">
-          <mat-option *ngFor="let zone of zones" [value]="zone.id " (click)="selectZone(zone.name)">{{zone.name}}</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-select placeholder="Select DB/Source" class="fingerprint-select" formControlName="sourceName">
-          <mat-option *ngFor="let source of sourceNames" [value]="source" (click)="selectSource(source)">{{source}}</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-select placeholder="Select Data Table" class="fingerprint-select" formControlName="tableName">
-          <mat-option *ngFor="let table of tableNames" [value]="table" (click)="selectTable(table)">{{table}}</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-select placeholder="Select Data Columns" class="fingerprint-select" multiple formControlName="columnName">
-            <!-- (click)="selectColumn(column)" -->
-          <mat-option *ngFor="let column of columnNames" [value]="column" >{{column}}</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <br>
-      <button mat-raised-button color="accent" type="submit" [ngStyle]="{'pointer-events':showProgressSpinner ? 'none' : 'auto'}" [disabled]="fingerprintForm.invalid">Fingerprint Data</button>
-    </form>
-  </section>
-</div>
-<div class="row" *ngIf="showProgressSpinner">
-  <div class="col-sm-12">
-    <mat-progress-spinner mode="indeterminate" color="primary" [strokeWidth]="5" style="margin: 0 auto"></mat-progress-spinner>
-  </div>
-</div>
-<div class="row" *ngIf="fingerprintDataAcquired">
-  <section id="outputs" class="col-mat-12">
-    <div id="outputBox">
-      <pre class="opBox">{{fingerprintData | json}}</pre>
+<div class="flex-container">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2 class="title">Interactive Fingerprinting</h2>
+        <h5 class="subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tincidunt erat id massa lobortis, eget porta justo
+          auctor.
+        </h5>
+      </div>
     </div>
+    <div class="row">
+      <section id="inputs" class="col-mat-12">
+        <form [formGroup]="fingerprintForm" novalidate (ngSubmit)="fingerprint()">
+          <mat-form-field>
+            <mat-select placeholder="Select Data Zone" class="fingerprint-select" autofocus formControlName="zoneName">
+              <mat-option *ngFor="let zone of zones" [value]="zone.id " (click)="selectZone(zone.name)">{{zone.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-select placeholder="Select DB/Source" class="fingerprint-select" formControlName="sourceName">
+              <mat-option *ngFor="let source of sourceNames" [value]="source" (click)="selectSource(source)">{{source}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-select placeholder="Select Data Table" class="fingerprint-select" formControlName="tableName">
+              <mat-option *ngFor="let table of tableNames" [value]="table" (click)="selectTable(table)">{{table}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-select placeholder="Select Data Columns" class="fingerprint-select" multiple formControlName="columnName">
+              <!-- (click)="selectColumn(column)" -->
+              <mat-option *ngFor="let column of columnNames" [value]="column">{{column}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <br>
+          <button mat-raised-button color="accent" type="submit" [ngStyle]="{'pointer-events':showProgressSpinner ? 'none' : 'auto'}"
+            [disabled]="fingerprintForm.invalid">Fingerprint Data</button>
+        </form>
+      </section>
+    </div>
+    <div class="row" *ngIf="showProgressSpinner">
+      <div class="col-sm-12">
+        <mat-progress-spinner mode="indeterminate" color="primary" [strokeWidth]="5" style="margin: 0 auto"></mat-progress-spinner>
+      </div>
+    </div>
+    <div class="row" *ngIf="fingerprintDataAcquired">
+      <section id="outputs" class="col-mat-12">
+        <div id="outputBox">
+          <pre class="opBox">{{fingerprintData | json}}</pre>
+        </div>
 
-    <div id="buttonsOP">
-      <button mat-raised-button color="accent" (click)="reset()">Reset</button>
-      <button mat-raised-button color="accent">Export</button>
+        <div id="buttonsOP">
+          <button mat-raised-button color="accent" (click)="reset()">Reset</button>
+          <button mat-raised-button color="accent">Export</button>
+        </div>
+      </section>
     </div>
-  </section>
+  </div>
 </div>
