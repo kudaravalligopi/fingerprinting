@@ -5,7 +5,7 @@
     <mat-icon matSuffix color="primary" *ngIf="username.invalid && username.touched">error_outline</mat-icon>
   </mat-form-field>
   <mat-form-field class="full-width">
-    <input matInput type="password" placeholder="Password" formControlName = "password" [ngClass]="{'input-valid':password.valid && password.touched}" password="password/>
+    <input matInput type="password" placeholder="Password" formControlName = "password" [ngClass]="{'input-valid':password.valid && password.touched}" password="password"/>
     <mat-icon matSuffix color="primary" *ngIf="password.invalid && password.touched">error_outline</mat-icon>
   </mat-form-field>
   <button mat-raised-button color="primary" type="submit" [ngClass]="{'form-valid':loginForm.valid, 'form-invalid':loginForm.invalid}">Submit</button>
