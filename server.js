@@ -20,6 +20,7 @@ const OPTS = {
 // Get our API routes
 const fingerprint = require('./server/routes/fingerprint');
 const login = require('./server/routes/login')
+const curate = require('./server/routes/curate')
 const app = express();
 
 passport.use(new LdapStrategy(OPTS))
@@ -40,6 +41,7 @@ app.post('/login', passport.authenticate('ldapauth'), (req, res)=>{
 app.use(cors())
 // Set our api routes
 app.use('/fingerprint', fingerprint);
+app.use('/curate', curate)
 
 
 

@@ -143,7 +143,7 @@ router.post('/final', (req, res) => {
                 console.log(body)
                 console.log('type of response is : ')
                 console.log(typeof(body))
-                let jBody = 
+                
                 res.json(body)
             }
             if(error) {

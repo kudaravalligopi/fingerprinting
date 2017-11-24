@@ -32,5 +32,10 @@ export class CurateService {
     return this.api.selectTable(tableName, sourceName, zoneName)
   }
 
+  submitTagCorrections(params):Observable<string>{
+    return this.api.submitTagCorrections(params)
+
+  }
+
   
 }

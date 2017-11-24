@@ -9,9 +9,10 @@ import {KnowledgeGraphComponent} from './components/knowledge-graph/knowledge-gr
 import {ProfilingComponent} from './components/profiling/profiling.component'
 import {SourcesComponent} from './components/sources/sources.component'
 import {FingerprintOnDemandComponent} from './components/fingerprint-on-demand/fingerprint-on-demand.component'
+import {HomeComponent} from './components/home/home.component'
 
 const appRoutes: Routes = [
-    { path: '', component: FingerprintComponent },
+    { path: '', component: HomeComponent },
     { path: 'fingerprint', component: FingerprintComponent },
     { path: 'fingerprint-on-demand', component: FingerprintOnDemandComponent },
     { path: 'catalog', component: CatalogComponent },

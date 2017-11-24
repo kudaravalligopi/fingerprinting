@@ -136,6 +136,29 @@ export class ApiService {
 
   }
 
+
+  //curate
+
+  submitTagCorrections(params){
+    console.log('IN CURATE API FE');
+    console.log(params);
+    try{
+      return this.http
+      .post('http://10.224.69.47:3000/curate/final', params)
+      .map(data=>{
+        console.log(data)
+        return data.json()
+      })
+    } catch(err) {
+      console.log(err);
+      throw err
+      
+    }
+    
+    
+    
+  }
+
   //login stuff
   login(params){
     let loginCreds = Object.values(params)
