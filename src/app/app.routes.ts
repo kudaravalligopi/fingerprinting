@@ -22,7 +22,7 @@ const appRoutes: Routes = [
     { path: 'sources', component: SourcesComponent },
 
     // otherwise redirect to home
-    { path: '**', redirectTo: '' }
+    // { path: '**', redirectTo: '' }
 ];
 
 export const Routings = RouterModule.forRoot(appRoutes);

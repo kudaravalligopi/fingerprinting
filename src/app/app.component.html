@@ -1,6 +1,8 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <mat-toolbar color="primary" id="#navbar">
-    <span><mat-icon svgIcon="lmLogo" class="logo" [routerLink]="['']"></mat-icon></span>
+    <span>
+        <mat-icon svgIcon="lmLogo" class="logo" [routerLink]="['']"></mat-icon>
+    </span>
     <span class="logo-text" [routerLink]="['']">Liberty Mutual</span>
     <span class="spacer"></span>
     <span>
@@ -12,11 +14,26 @@
             <button mat-menu-item [routerLink]="['fingerprint-on-demand']" routerLinkActive="active-link">Fingerprint On Demand</button>
         </mat-menu>
         <button style="color:white" mat-button [routerLink]="['curate']" routerLinkActive="active-link">Curate</button>
-        <button style="color:white" mat-button [routerLink]="['catalog']" routerLinkActive="active-link">Catalog</button>
-        <button style="color:white" mat-button [routerLink]="['knowledge-graph']" routerLinkActive="active-link">Knowledge-Graph</button>
+        <button style="color:white" mat-button [routerLink]="['catalog']" routerLinkActive="active-link" disabled>Catalog</button>
+        <button style="color:white" mat-button [routerLink]="['knowledge-graph']" routerLinkActive="active-link" disabled>Knowledge-Graph</button>
         <button mat-raised-button color="primary" *ngIf="!this.globals.loggedIn" (click)="openLoginForm()">Login</button>
         <button mat-raised-button color="primary" *ngIf="this.globals.loggedIn">Log Out</button>
     </span>
 
 </mat-toolbar>
 <router-outlet></router-outlet>
+<div class="footer">
+    <div class="container">
+       <div class="row">
+           <div class="col-md-4"  style="text-align:center">
+               <h6>Copyright Liberty Mutual Insurance</h6>
+           </div>
+           <div class="col-md-4">
+                
+            </div>
+            <div class="col-md-4" style="text-align:center">
+                    <h6>Developed by Team Labrats 2017</h6>
+                </div>
+       </div>
+    </div>
+</div>

@@ -12,9 +12,11 @@
       <div class="row">
         <div class="col-md-3">
           <mat-form-field>
+            <span matTooltip="Select Zone Name" matTooltipPosition = "above">
             <mat-select placeholder="Select Data Zone" autofocus formControlName="zoneName">
               <mat-option *ngFor="let zone of zones" [value]="zone.id " (click)="selectZone(zone.name)">{{zone.name}}</mat-option>
             </mat-select>
+          </span>
           </mat-form-field>
         </div>
         <div class="col-md-3">
