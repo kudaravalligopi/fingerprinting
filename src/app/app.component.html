@@ -1,9 +1,10 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <mat-toolbar color="primary" id="#navbar">
-    <span>
-        <mat-icon svgIcon="lmLogo" class="logo" [routerLink]="['']"></mat-icon>
+    <span [routerLink]="['']" class="logo-wrapper">
+        <mat-icon svgIcon="lmLogo" class="logo"></mat-icon>
+
+        <span class="logo-text">Liberty Mutual</span>
     </span>
-    <span class="logo-text" [routerLink]="['']">Liberty Mutual</span>
     <span class="spacer"></span>
     <span>
         <button style="color:white" mat-button [routerLink]="['sources']" routerLinkActive="active-link">Sources</button>
@@ -24,16 +25,16 @@
 <router-outlet></router-outlet>
 <div class="footer">
     <div class="container">
-       <div class="row">
-           <div class="col-md-4"  style="text-align:center">
-               <h6>Copyright Liberty Mutual Insurance</h6>
-           </div>
-           <div class="col-md-4">
-                
+        <div class="row">
+            <div class="col-md-4" style="text-align:center">
+                <h6>Copyright Liberty Mutual Insurance</h6>
+            </div>
+            <div class="col-md-4">
+
             </div>
             <div class="col-md-4" style="text-align:center">
-                    <h6>Developed by Team Labrats 2017</h6>
-                </div>
-       </div>
+                <h6>Developed by Team Labrats 2017</h6>
+            </div>
+        </div>
     </div>
 </div>
