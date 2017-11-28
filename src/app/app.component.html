@@ -14,8 +14,8 @@
             <button mat-menu-item [routerLink]="['fingerprint-on-demand']" routerLinkActive="active-link">Fingerprint On Demand</button>
         </mat-menu>
         <button style="color:white" mat-button [routerLink]="['curate']" routerLinkActive="active-link">Curate</button>
-        <button style="color:white" mat-button [routerLink]="['catalog']" routerLinkActive="active-link" disabled>Catalog</button>
-        <button style="color:white" mat-button [routerLink]="['knowledge-graph']" routerLinkActive="active-link" disabled>Knowledge-Graph</button>
+        <button style="color:white" mat-button [routerLink]="['catalog']" routerLinkActive="active-link">Catalog</button>
+        <button style="color:white" mat-button [routerLink]="['knowledge-graph']" routerLinkActive="active-link">Knowledge-Graph</button>
         <button mat-raised-button color="primary" *ngIf="!this.globals.loggedIn" (click)="openLoginForm()">Login</button>
         <button mat-raised-button color="primary" *ngIf="this.globals.loggedIn">Log Out</button>
     </span>
