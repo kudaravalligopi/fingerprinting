@@ -12,9 +12,12 @@ const OPTS = {
     url:'ldap://ldapad.lmig.com:389',
     searchBase: 'dc=lm,dc=lmig,dc=com',
     searchFilter:'(UserPrincipalName={{username}}*)',
-    searchScope: 'ldap3.SUBT',
-    passwordField: '{{password}}'
-  }
+    searchScope: 'ldap3.SUBT'
+    
+  },
+  usernameField:'{{username}}',
+  passwordField: '{{password}}',
+
 }
 
 // Get our API routes
