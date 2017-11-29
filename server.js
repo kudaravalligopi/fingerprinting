@@ -33,7 +33,9 @@ app.use(passport.initialize())
 // Point static path to dist
 app.use(express.static(path.join(__dirname, 'dist')));
 
-app.post('/login', passport.authenticate('ldapauth'), (req, res)=>{
+app.post('/login', passport.authenticate('ldapauth'), { successRedirect: '/',
+                                   failureRedirect: '/login',
+                                   failureFlash: true },(req, res)=>{
   console.log(req.body)
   res.send({status:'ok'})
 })
