@@ -13,7 +13,7 @@ const OPTS = {
     searchBase: 'dc=lm,dc=lmig,dc=com',
     searchFilter:'(UserPrincipalName={{username}}*)',
     searchScope: 'ldap3.SUBT',
-    passwordField: "password"
+    passwordField: {{password}}
   }
 }
 
