@@ -13,7 +13,7 @@ const OPTS = {
     searchBase: 'dc=lm,dc=lmig,dc=com',
     searchFilter:'(UserPrincipalName={{username}}*)',
     searchScope: 'ldap3.SUBTREE',
-    searchAttributes: ['distinguishedName'],
+    searchAttributes: ['memberOf'],
     bindCredentials:'4Ap#lz4zFbWR6#'
   },
   usernameField:'{{username}}',
