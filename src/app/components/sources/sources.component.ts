@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/startWith';
-import 'rxjs/add/operator/map';
+import { FormGroup, FormControl, Validators, FormBuilder, FormArray } from '@angular/forms';
+
 
 //DialogBox
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
@@ -16,10 +14,7 @@ import { ConfigureSourceComponent } from '../configure-source/configure-source.c
 })
 export class SourcesComponent implements OnInit {
 
-	myControl: FormControl = new FormControl()
-	sourceName: string = ''
-	sourceType: string = ''
-	sourceAdded: boolean = false
+	sourcesForm: FormGroup
 
 
 
@@ -35,32 +30,67 @@ export class SourcesComponent implements OnInit {
 
 
 
-	constructor(public dialog: MatDialog) {
+	constructor(public dialog: MatDialog, public formBuilder: FormBuilder) {
 	}
 
-	public openDialog(): void {
+	ngOnInit() {
+
+		this.createForm()
+
+	}
+	createForm() {
+
+		this.sourcesForm = new FormGroup({
+			sourceWrapper: this.formBuilder.array([
+				this.initSource()
+			]),
+			
+		})
+		
+		
+
+	}
+
+
+	initSource() {
+		return this.formBuilder.group({
+			sourceName: ['', Validators.required],
+			sourceType: ['', Validators.required]
+		})
+	}
+
+	addSource() {
+
+		const source = <FormArray>this.sourcesForm.controls['sourceWrapper']
+		source.push(this.initSource())
+
+	}
+
+	removeSource(i) {
+		const source = <FormArray>this.sourcesForm.controls['sourceWrapper']
+		source.removeAt(i)
+	}
+
+
+	public openDialog(i): void {
+		let sendOP = this.sourcesForm.value
+
+		let tempSources = Object.values(sendOP.sourceWrapper)
+		console.log(tempSources);
+		let sourceNames = tempSources[i].sourceName
+		let sourceTypes = tempSources[i].sourceType
+
+		
+
 		let dialogRef = this.dialog.open(ConfigureSourceComponent, {
 			width: '400px',
-			data: { sourceName: this.sourceName, sourceType: this.sourceType }
+			data: { sourceName: sourceNames, sourceType: sourceTypes }
 		})
 
 		dialogRef.afterClosed().subscribe(result => {
 			console.log('The Configure Source Dialog was closed')
 		})
 	}
-
-
-	addSource() {
-		if (this.sourceName != '' && this.sourceType != '') {
-			this.sourceAdded = !this.sourceAdded
-		}
-
-
-	}
-	ngOnInit() {
-
-	}
-
 
 
 

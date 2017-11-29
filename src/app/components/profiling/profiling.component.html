@@ -16,8 +16,8 @@
 
         </div>
         <div class="col-md-4">
-          <mat-form-field>
-            <mat-select placeholder="Select Environment" autofocus formControlName="envName">
+          <mat-form-field class="block-margin">
+            <mat-select placeholder="Select Environment" autofocus formControlName="envName" >
               <mat-option value="prodstage">Prod Stage</mat-option>
               <mat-option value="prod">Prod</mat-option>
               <mat-option value="integration">NP Integration</mat-option>
@@ -30,23 +30,23 @@
       </div>
       <div class="row">
         <div class="col-md-4">
-          <mat-form-field>
-            <mat-select placeholder="Select Database" autofocus formControlName="dbName">
+          <mat-form-field class="block-margin">
+            <mat-select placeholder="Select Database" autofocus formControlName="dbName" >
               <mat-option *ngFor="let zone of zones" [value]="zone.id " (click)="selectZone(zone.name)">{{zone.name}}</mat-option>
             </mat-select>
           </mat-form-field>
         </div>
         <div class="col-md-4">
-          <mat-form-field>
-            <mat-select placeholder="Select Category" formControlName="categoryName">
+          <mat-form-field class="block-margin">
+            <mat-select placeholder="Select Category" formControlName="categoryName" >
               <mat-option value="tables">Tables</mat-option>
               <mat-option value="views">Views</mat-option>
             </mat-select>
           </mat-form-field>
         </div>
         <div class="col-md-4">
-          <mat-form-field>
-            <mat-select placeholder="Select Element" formControlName="elementName">
+          <mat-form-field class="block-margin">
+            <mat-select placeholder="Select Element" formControlName="elementName" >
               <mat-option *ngFor="let zone of zones" [value]="zone.id " (click)="selectZone(zone.name)">{{zone.name}}</mat-option>
             </mat-select>
           </mat-form-field>

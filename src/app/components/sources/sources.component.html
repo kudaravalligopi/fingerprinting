@@ -1,50 +1,56 @@
-<div id="wrapper-main">
-  <h3> Plug Supported <span style="color: green">Data Sources</span> or <span style="color:blue">BYOD</span> </h3>
-  <table>
-    <tr>
-      <td class="head">
-        <h4>Source Name</h4>
-      </td>
-      <td class="head">
-        <h4>Source Type</h4>
-      </td>
-      <td>
+<div class="flex-container">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2 class="title">Sources</h2>
+        <h5 class="subtitle">Bring Your Own Data (BYOD)
+        </h5>
+      </div>
+    </div>
 
-        <button mat-mini-fab color="accent" (click)="addSource()">
-              <div mdTooltip="Add Source" mdTooltipPosition="after">
-            <mat-icon class="mat-24">add</mat-icon>
+
+    <form [formGroup]="sourcesForm" novalidate>
+      <div formArrayName="sourceWrapper">
+        <div *ngFor="let source of sourcesForm.controls.sourceWrapper.controls; let i = index">
+          <div [formGroupName]="i">
+            <div class="row">
+              <div class="col-md-3">
+                <mat-form-field class="block-margin">
+                  <input matInput type="text" placeholder="Source Name" formControlName="sourceName" />
+                </mat-form-field>
+              </div>
+              <div class="col-md-3">
+                <mat-form-field class="block-margin">
+                  <mat-select placeholder="Select Source Type" formControlName="sourceType">
+                    <mat-option *ngFor="let option of options" [value]="option.value">{{option.viewValue}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col-md-2">
+                <button mat-mini-fab color="accent" (click)="addSource()" class="block-margin">
+                  <div matTooltip="Add Source" matTooltipPosition="after">
+                    <mat-icon>add</mat-icon>
+                  </div>
+                </button>
+              </div>
+              <div class="col-md-2">
+                <button mat-mini-fab color="accent" (click)="removeSource(i)" class="block-margin">
+                  <div matTooltip="Remove Source" matTooltipPosition="after">
+                    <mat-icon>remove</mat-icon>
+                  </div>
+                </button>
+              </div>
+              <div class="col-md-2">
+                <button mat-mini-fab color="accent" (click)="openDialog(i)" class="block-margin">
+                  <div matTooltip="Configure Source" matTooltipPosition="after">
+                    <mat-icon>edit</mat-icon>
+                  </div>
+                </button>
+              </div>
+            </div>
           </div>
-          </button>
-
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <mat-form-field>
-          <input type="text" matInput placeholder="Enter Name" [(ngModel)]="sourceName" />
-        </mat-form-field>
-      </td>
-      <td>
-        
-        <mat-select placeholder="Select Source" [(ngModel)]="sourceType">
-          <mat-option *ngFor="let option of options" [value]="option.value" >{{option.viewValue}}</mat-option>
-        </mat-select>
-        
-      
-
-      </td>
-      <td>
-        <button mat-raised-button color="accent" (click)="openDialog()">Configure</button>
-        &nbsp;
-        <button mat-raised-button color="accent">Drop</button>
-      </td>
-
-    </tr>
-  </table>
-  <div *ngIf="sourceAdded">
-    <h3 style="color: green;text-align: center">Success</h3>
-    <p>{{sourceName}} of {{sourceType}} has been added</p>
+        </div>
+      </div>
+    </form>
   </div>
-
-
 </div>

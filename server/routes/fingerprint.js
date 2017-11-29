@@ -154,7 +154,11 @@ router.post('/final', (req, res) => {
             }
         }
     
-        request(options, callback)
+        request(options).on('error', (err)=>{
+            console.log('an error has occured')
+            console.log(err)
+            res.json({"Error":err})
+        })
     
     
     } catch(err){
