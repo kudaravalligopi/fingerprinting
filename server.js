@@ -14,7 +14,7 @@ const OPTS = {
     searchFilter:'(UserPrincipalName={{username}}*)',
     searchScope: 'ldap3.SUBT',
     searchAttributes: ['distinguishedName'],
-    bindCredentials:''4Ap#lz4zFbWR6#'
+    bindCredentials:'4Ap#lz4zFbWR6#'
   },
   usernameField:'{{username}}',
   passwordField: '{{password}}',
