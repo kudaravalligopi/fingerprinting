@@ -15,9 +15,9 @@ const OPTS = {
     searchScope: 'ldap3.SUBTREE',
     searchAttributes: ['memberOf']
     //bindCredentials:'4Ap#lz4zFbWR6#'
-  }//,
-  //usernameField:'{{username}}',
-  //passwordField: '{{password}}'
+  },
+  usernameField:'n0304024',
+  passwordField: 'Ar$en@l4'
 
 }
 
