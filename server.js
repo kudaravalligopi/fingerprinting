@@ -12,7 +12,7 @@ const OPTS = {
     url:'ldap://ldapad.lmig.com:389',
     searchBase: 'dc=lm,dc=lmig,dc=com',
     searchFilter:'(UserPrincipalName={{username}}*)',
-    searchScope: 'ldap3.SUBT',
+    searchScope: 'ldap3.SUBTREE',
     searchAttributes: ['distinguishedName'],
     bindCredentials:'4Ap#lz4zFbWR6#'
   },
