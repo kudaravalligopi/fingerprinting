@@ -15,11 +15,12 @@ const OPTS = {
     searchScope: 'ldap3.SUBTREE',
     searchAttributes: ['memberOf']
     //bindCredentials:'4Ap#lz4zFbWR6#'
-  },
-  usernameField:'{{username}}',
-  passwordField: '{{password}}',
+  }//,
+  //usernameField:'{{username}}',
+  //passwordField: '{{password}}'
 
 }
+
 
 // Get our API routes
 const fingerprint = require('./server/routes/fingerprint');
