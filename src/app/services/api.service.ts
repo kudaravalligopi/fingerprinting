@@ -144,7 +144,7 @@ export class ApiService {
     console.log(params);
     
     try{
-      return this.http.post('http://10.224.69.47:3000/curate/tagcorrectionsubmit', params)
+      return this.http.post('http://10.224.69.47:9090/v1/autotagging/tagcorrectionsubmit', params)
       .map(data=>{
         console.log(data)
         return data.json()
