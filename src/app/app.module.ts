@@ -37,7 +37,9 @@ import { FingerprintOnDemandComponent } from './components/fingerprint-on-demand
 import { HomeComponent } from './components/home/home.component';
 import { FormLoginComponent } from './components/form-login/form-login.component';
 import {Globals} from './globals';
-import { OutputCurateComponent } from './components/output-curate/output-curate.component'
+import { OutputCurateComponent } from './components/output-curate/output-curate.component';
+import { HealthCheckProdComponent } from './components/health-check-prod/health-check-prod.component';
+import { HealthCheckNonProdComponent } from './components/health-check-non-prod/health-check-non-prod.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,7 +53,9 @@ import { OutputCurateComponent } from './components/output-curate/output-curate.
     FingerprintOnDemandComponent,
     HomeComponent,
     FormLoginComponent,
-    OutputCurateComponent
+    OutputCurateComponent,
+    HealthCheckProdComponent,
+    HealthCheckNonProdComponent
   ],
   entryComponents: [
     ConfigureSourceComponent,
