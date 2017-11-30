@@ -32,7 +32,7 @@ router.post('/tagcorrectionsubmit', function (req, res) {
             res.json(body)
         }
         else {
-            res.json(body)
+            res.json(error)
         }
     }
 
