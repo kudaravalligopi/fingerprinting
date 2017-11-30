@@ -19,9 +19,6 @@ var demoJSON = {
     ]
 }
 
-
-
-
 /* GET api listing. */
 router.get('/zones', (req, res) => {
     console.log(demoJSON.zones)// to print JSON on server console
@@ -56,7 +53,7 @@ router.post('/sources', (req, res) => {
 
 });
 
-router.post('/final', (req,res)=>{
+router.post('/tagcorrectionsubmit', (req,res)=>{
 
     console.log('IN CURATE ENDPOINT')
     console.log(req.body)
@@ -64,8 +61,6 @@ router.post('/final', (req,res)=>{
     var headers = {
         'Content-Type': 'application/json'
     };
-    
-
     
     var dataString = '{"zoneName": "lmb-datalake-hdp-store-raw-nonprod","sourceName": "avaya","tableName": "customer_log","columnName": "date_occurred_s","tagInfo": [{"tagType": "MIO","tagCategory": "MIO-PUBLIC"},{"tagType": "SEC","tagCategory": "SEC-SSN"},{"tagType": "DOM","tagCategory": "DOM-CUSTOMER"}]}';
     
@@ -90,10 +85,6 @@ router.post('/final', (req,res)=>{
         }
     }
     
-    
-    
-
 })
-
 
 module.exports = router;
