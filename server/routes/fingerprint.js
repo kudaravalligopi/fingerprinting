@@ -150,7 +150,7 @@ router.post('/final', (req, res) => {
                 console.log('An Error has occured')
                 console.log(error)
                 console.log('With Status Code')
-                console.log(response.statusCode)
+                
             }
 
 
