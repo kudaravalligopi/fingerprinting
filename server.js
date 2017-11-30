@@ -42,7 +42,7 @@ app.use(session({
   saveUninitialized: true,
   cookie : { httpOnly: true, maxAge: 2419200000 } /// maxAge in milliseconds
 }));
-console.log('OPTS',JSON.stringify(OPTS,3,null));
+//console.log('OPTS',JSON.stringify(OPTS,3,null));
 
 //passport.use(new LdapStrategy(OPTS));
 
