@@ -114,22 +114,11 @@ export class ApiService {
     Source Name : ${source}
     Zone Name : ${zone}
     `);
-    for(let i = 0; i < column.length;i++){
-      column[i] = `"${column[i]}"`
-    }
-    let dataString = {
-      "data": {
-        "table_name": `"${table}"`, 
-        "database_name": `"${source}"`, 
-        "bucket_name": `"${zone}"`, 
-        "type": "raw", 
-        "colums": `"[${column}]"`}
-      }
 
-      // {zoneName: zone, sourceName: source, tableName: table, columnName: column}
+
      try{
        return this.http
-       .post('http://10.224.69.47:9090/v1/autotagging/submit', dataString)
+       .post('http://10.224.69.47:3000/fingerprint/final', {zoneName: zone, sourceName: source, tableName: table, columnName: column})
        .map(data=>{
         console.log(data);
         return data.json()}
