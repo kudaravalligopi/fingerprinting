@@ -20,8 +20,8 @@ const OPTS = {
     //searchAttributes: ['memberOf']
     //bindCredentials:'4Ap#lz4zFbWR6#'
   },
-  passwordField:{{password}},
-  usernameField: {{usename}}
+  passwordField:'{{password}}',
+  usernameField: '{{usename}}'
 }
 
 
