@@ -48,7 +48,7 @@ console.log('OPTS',JSON.stringify(OPTS,3,null));
 
 passport.use(new LdapStrategy(getLDAPConfiguration,
   function(user, done) {
-  console.log('User',JSON.stringify(user,3,null)
+  console.log('User',JSON.stringify(user,3,null))
     return done(null, user);
   }
 ));
