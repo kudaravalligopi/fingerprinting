@@ -36,12 +36,12 @@
 								<div [formGroupName]="i">
 									<div class="row">
 										<div class="col-sm-1">
-											<button mat-mini-fab color="primary" (click)="addNewTag()" style="color: white" *ngIf="curateForm.controls.tagInfo.controls.length < 3">
+											<button mat-mini-fab color="accent" (click)="addNewTag()" style="color: white" *ngIf="curateForm.controls.tagInfo.controls.length < 3">
 												<mat-icon>add</mat-icon>
 											</button>
 										</div>
 										<div class="col-sm-1">
-											<button mat-mini-fab color="primary" (click)="removeTag(i)" *ngIf="curateForm.controls.tagInfo.controls.length > 1" style="color: white">
+											<button mat-mini-fab color="accent" (click)="removeTag(i)" *ngIf="curateForm.controls.tagInfo.controls.length > 1" style="color: white">
 												<mat-icon>remove</mat-icon>
 											</button>
 										</div>
@@ -93,8 +93,8 @@
 		<div class="row">
 			<section id="outputs" class="col-mat-12">
 				<div id="buttonsOP">
-					<button mat-raised-button color="primary" (click)="submitTag()">Submit Tag Corrections</button>
-					<button mat-raised-button color="primary" disabled>Tag in Atlas</button>
+					<button mat-raised-button color="accent" (click)="submitTag()">Submit Tag Corrections</button>
+					<button mat-raised-button color="accent" disabled>Tag in Atlas</button>
 				</div>
 			</section>
 		</div>
