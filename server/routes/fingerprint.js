@@ -152,6 +152,9 @@ router.post('/final', (req, res) => {
                 console.log('With Status Code')
                 console.log(response.statusCode)
             }
+
+
+            request(options, callback)
         }    
     } catch(err){
         console.log('an error has occured')
