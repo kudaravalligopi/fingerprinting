@@ -19,40 +19,6 @@ var demoJSON = {
     ]
 }
 
-/* GET api listing. */
-router.get('/zones', (req, res) => {
-    console.log(demoJSON.zones)// to print JSON on server console
-    res.json(demoJSON.zones)//To send JSON Back
-});
-
-
-
-router.post('/sources', (req, res) => {
-    try{
-        var op;
-        console.log(req.body.zoneName)
-        let getSourcesCommand = `http://10.224.69.47:8080/v1/s3/listdatabase?bucket_name=${req.body.zoneName}`
-        exec('curl '+getSourcesCommand, (error, stdout, stderr)=>{
-            op = JSON.parse(stdout)
-            console.log(typeof(op))
-            console.log(op)
-            res.json(op)//To send JSON Back
-            console.log('stderr: '+stderr)
-            if(error){
-                console.log(error)
-            }
-    
-        })
-    }catch(err){
-        console.log('an error has occured')
-        console.log(err)
-        res.json({"Error":err})
-    }
-    
-    
-
-});
-
 router.post('/tagcorrectionsubmit', (req,res)=>{
 
     console.log('IN CURATE ENDPOINT')

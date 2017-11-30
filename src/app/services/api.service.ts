@@ -144,8 +144,7 @@ export class ApiService {
     console.log(params);
     
     try{
-      return this.http
-      .post('http://10.224.69.47:3000/curate/tagcorrectionsubmit', params)
+      return this.http.post('http://10.224.69.47:3000/curate/tagcorrectionsubmit', params)
       .map(data=>{
         console.log(data)
         return data.json()
@@ -155,8 +154,6 @@ export class ApiService {
       throw err
       
     }
-    
-    
     
   }
 
