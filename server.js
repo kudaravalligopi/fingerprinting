@@ -21,7 +21,7 @@ const OPTS = {
     //bindCredentials:'4Ap#lz4zFbWR6#'
   },
   passwordField:'{{password}}',
-  usernameField: '{{usename}}'
+  usernameField: '{{username}}'
 }
 
 
