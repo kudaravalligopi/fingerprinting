@@ -8,21 +8,27 @@ const passport = require('passport')
 const LdapStrategy = require('passport-ldapauth')
 const session = require('express-session');
 
-
-const OPTS = {
+var getLDAPConfiguration = function(req, callback) {
+  // Fetching things from database or whatever
+  process.nextTick(function() {
+    var opts= {
   server : {
     url:'ldap://ldapad.lmig.com:389',
     bindDn: 'sacip_lmb_hdp_np_adm@lm.lmig.com',
     bindCredentials: '4Ap#lz4zFbWR6#',
     searchBase: 'dc=lm,dc=lmig,dc=com',
-    searchFilter:'(UserPrincipalName={{username}}*)',
+    searchFilter:'(UserPrincipalName={{req.body.username}}*)',
     searchScope: 'ldap3.SUBTREE'
     //searchAttributes: ['memberOf']
     //bindCredentials:'4Ap#lz4zFbWR6#'
   },
-  passwordField:'{{password}}',
-  usernameField: '{{username}}'
+  passwordField:'{{req.body.password}}',
+  usernameField: '{{req.body.username}}'
 }
+
+    callback(null, opts);
+  });
+};
 
 
 // Get our API routes
@@ -38,7 +44,14 @@ app.use(session({
 }));
 console.log('OPTS',JSON.stringify(OPTS,3,null));
 
-passport.use(new LdapStrategy(OPTS));
+//passport.use(new LdapStrategy(OPTS));
+
+passport.use(new LdapStrategy(getLDAPConfiguration,
+  function(user, done) {
+  console.log('User',JSON.stringify(user,3,null)
+    return done(null, user);
+  }
+));
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -46,7 +59,7 @@ app.use(passport.session());
 // Parsers for POST data
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(passport.initialize())
+//app.use(passport.initialize())
 // Point static path to dist
 app.use(express.static(path.join(__dirname, 'dist')));
 
