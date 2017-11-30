@@ -75,8 +75,12 @@ router.post('/final', (req,res)=>{
         headers: headers,
         body: dataString
     };
-    
+    console.log(dataString)
+
+    request(options, callback)
+
     function callback(error, response, body) {
+        console.log('in callback')
         if (!error) {
             console.log(body);
             res.json(body)
@@ -86,7 +90,7 @@ router.post('/final', (req,res)=>{
         }
     }
     
-    request(options, callback);
+    
     
 
 })
