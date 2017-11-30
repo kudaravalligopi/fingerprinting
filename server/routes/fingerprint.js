@@ -6,7 +6,7 @@ const request = require('request')
 
 
 
-var ip = `http://10.224.69.47:8080/v1/s3/`
+var ip = `http://10.224.69.47:9090/v1/s3/`
 
 var demoJSON = {
     "zones": [
@@ -38,7 +38,7 @@ router.post('/sources', (req, res) => {
     try{
         var op;
         console.log(req.body.zoneName)
-        let getSourcesCommand = `http://10.224.69.47:8080/v1/s3/listdatabase?bucket_name=${req.body.zoneName}`
+        let getSourcesCommand = `http://10.224.69.47:9090/v1/s3/listdatabase?bucket_name=${req.body.zoneName}`
         exec('curl '+getSourcesCommand, (error, stdout, stderr)=>{
             op = JSON.parse(stdout)
             console.log(typeof(op))
@@ -64,7 +64,7 @@ router.post('/tables', (req, res) => {
         
     try{
         //to get tables based on source selected
-    let getTablesCommand = `http://10.224.69.47:8080/v1/s3/listtables?bucket_name=${req.body.zoneName}&database_name=${req.body.sourceName}`
+    let getTablesCommand = `http://10.224.69.47:9090/v1/s3/listtables?bucket_name=${req.body.zoneName}&database_name=${req.body.sourceName}`
     console.log(getTablesCommand)
         exec('curl "' + getTablesCommand+'"',{maxBuffer:1024*1024}, (error, stdout, stderr)=>{
             op = JSON.parse(stdout)
@@ -90,7 +90,7 @@ router.post('/columns', (req, res) => {
     
     try {
         //     //to get columns based on table selected
-    let getColumnsCommand = `curl "http://10.224.69.47:8080/v1/s3/rawzone/listcolumns?bucket_name=${req.body.zoneName}&database_name=${req.body.sourceName}&table_name=${req.body.tableName}"`
+    let getColumnsCommand = `curl "http://10.224.69.47:9090/v1/s3/rawzone/listcolumns?bucket_name=${req.body.zoneName}&database_name=${req.body.sourceName}&table_name=${req.body.tableName}"`
     console.log(getColumnsCommand)
     
         exec(getColumnsCommand,{maxBuffer:1024*1024}, (error, stdout, stderr)=>{
@@ -132,7 +132,7 @@ router.post('/final', (req, res) => {
         console.log(dataString)    
     
         const options = {
-            url: 'http://10.224.69.47:8080/v1/autotagging/submit',
+            url: 'http://10.224.69.47:9090/v1/autotagging/submit',
             method: 'POST',
             headers: headers,
             body: dataString
