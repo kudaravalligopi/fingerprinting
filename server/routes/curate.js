@@ -60,16 +60,12 @@ router.post('/final', (req,res)=>{
 
     console.log('IN CURATE ENDPOINT')
     console.log(req.body)
-    let ip ='http://10.224.69.47:8080/v1/autotagging/tagcorrectionsubmit'
-    res.send(req.body)
-
-
-
-    
     
     var headers = {
         'Content-Type': 'application/json'
     };
+    
+
     
     var dataString = '{"zoneName": "lmb-datalake-hdp-store-raw-nonprod","sourceName": "avaya","tableName": "customer_log","columnName": "date_occurred_s","tagInfo": [{"tagType": "MIO","tagCategory": "MIO-PUBLIC"},{"tagType": "SEC","tagCategory": "SEC-SSN"},{"tagType": "DOM","tagCategory": "DOM-CUSTOMER"}]}';
     

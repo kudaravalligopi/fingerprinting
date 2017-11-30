@@ -152,10 +152,11 @@ router.post('/final', (req, res) => {
             console.log('With Status Code')
 
         }
-
-
-        request(options, callback)
     }
+
+
+    request(options, callback)
+
 
 
 })
