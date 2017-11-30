@@ -139,11 +139,11 @@ router.post('/final', (req, res) => {
         };
     
         function callback(error, response, body) {
-            if(!error && response.statusCode == 200){
+            if(!error){
                 console.log(body)
                 console.log('type of response is : ')
                 console.log(typeof(body))
-                
+       
                 res.json(body)
             }
             if(error) {
@@ -152,15 +152,7 @@ router.post('/final', (req, res) => {
                 console.log('With Status Code')
                 console.log(response.statusCode)
             }
-        }
-    
-        request(options).on('error', (err)=>{
-            console.log('an error has occured')
-            console.log(err)
-            res.json({"Error":err})
-        })
-    
-    
+        }    
     } catch(err){
         console.log('an error has occured')
         console.log(err)
