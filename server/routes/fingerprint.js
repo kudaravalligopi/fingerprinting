@@ -139,11 +139,11 @@ router.post('/final', (req, res) => {
         };
     
         function callback(error, response, body) {
+            console.log('in callback')
             if(!error){
                 console.log(body)
                 console.log('type of response is : ')
-                console.log(typeof(body))
-       
+                console.log(typeof(body))  
                 res.json(body)
             }
             if(error) {
