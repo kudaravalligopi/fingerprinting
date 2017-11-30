@@ -8,28 +8,28 @@ const passport = require('passport')
 const LdapStrategy = require('passport-ldapauth')
 const session = require('express-session');
 
-var getLDAPConfiguration = function(req, callback) {
-  // Fetching things from database or whatever
-  process.nextTick(function() {
-    var opts= {
-  server : {
-    url:'ldap://ldapad.lmig.com:389',
-    bindDn: 'sacip_lmb_hdp_np_adm@lm.lmig.com',
-    bindCredentials: '4Ap#lz4zFbWR6#',
-    searchBase: 'dc=lm,dc=lmig,dc=com',
-    searchFilter:'(UserPrincipalName={{req.body.username}}*)',
-    searchScope: 'ldap3.SUBTREE'
-    //searchAttributes: ['memberOf']
-    //bindCredentials:'4Ap#lz4zFbWR6#'
-  },
-  passwordField:'{{req.body.password}}',
-  usernameField: '{{req.body.username}}'
-}
-  console.log('opts',JSON.stringify(opts,3,null))
+// var getLDAPConfiguration = function(req, callback) {
+//   // Fetching things from database or whatever
+//   process.nextTick(function() {
+//     var opts= {
+//   server : {
+//     url:'ldap://ldapad.lmig.com:389',
+//     bindDn: 'sacip_lmb_hdp_np_adm@lm.lmig.com',
+//     bindCredentials: '4Ap#lz4zFbWR6#',
+//     searchBase: 'dc=lm,dc=lmig,dc=com',
+//     searchFilter:'(UserPrincipalName={{req.body.username}}*)',
+//     searchScope: 'ldap3.SUBTREE'
+//     //searchAttributes: ['memberOf']
+//     //bindCredentials:'4Ap#lz4zFbWR6#'
+//   },
+//   passwordField:'{{req.body.password}}',
+//   usernameField: '{{req.body.username}}'
+// }
+//   console.log('opts',JSON.stringify(opts,3,null))
 
-    callback(null, opts);
-  });
-};
+//     callback(null, opts);
+//   });
+// };
 
 
 // Get our API routes
@@ -37,50 +37,50 @@ const fingerprint = require('./server/routes/fingerprint');
 const login = require('./server/routes/login')
 const curate = require('./server/routes/curate')
 const app = express();
-app.use(session({
-  secret: 'ldap secret',
-  resave: false,
-  saveUninitialized: true,
-  cookie : { httpOnly: true, maxAge: 2419200000 } /// maxAge in milliseconds
-}));
-console.log('OPTS',JSON.stringify(OPTS,3,null));
+// app.use(session({
+//   secret: 'ldap secret',
+//   resave: false,
+//   saveUninitialized: true,
+//   cookie : { httpOnly: true, maxAge: 2419200000 } /// maxAge in milliseconds
+// }));
+// console.log('OPTS',JSON.stringify(OPTS,3,null));
 
-passport.use(new LdapStrategy(OPTS));
+// passport.use(new LdapStrategy(OPTS));
 
-passport.use(new LdapStrategy(getLDAPConfiguration,
-  function(user, done) {
-  console.log('User',JSON.stringify(user,3,null))
-    return done(null, user);
-  }
-));
+// passport.use(new LdapStrategy(getLDAPConfiguration,
+//   function(user, done) {
+//   console.log('User',JSON.stringify(user,3,null))
+//     return done(null, user);
+//   }
+// ));
 
-app.use(passport.initialize());
-app.use(passport.session());
+// app.use(passport.initialize());
+// app.use(passport.session());
 
 // Parsers for POST data
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(passport.initialize())
+// app.use(passport.initialize())
 // Point static path to dist
 app.use(express.static(path.join(__dirname, 'dist')));
 
 
-app.post('/login', passport.authenticate('ldapauth'),(req, res)=>{
-  console.log(req.body)
-  res.send({status:'ok'})
-})
+// app.post('/login', passport.authenticate('ldapauth'),(req, res)=>{
+//   console.log(req.body)
+//   res.send({status:'ok'})
+// })
 
-passport.serializeUser(function(user, done) {
-  done(null, user);
-});
+// passport.serializeUser(function(user, done) {
+//   done(null, user);
+// });
 
-passport.deserializeUser(function(user, done) {
-  done(null, user);
-});
+// passport.deserializeUser(function(user, done) {
+//   done(null, user);
+// });
 
-app.post('/login', passport.authenticate('ldapauth', {
-  successRedirect: '/', failureRedirect: '/login'
-})); 
+// app.post('/login', passport.authenticate('ldapauth', {
+//   successRedirect: '/', failureRedirect: '/login'
+// })); 
 
 app.use(cors())
 // Set our api routes

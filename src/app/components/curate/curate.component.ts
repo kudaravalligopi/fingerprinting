@@ -273,7 +273,6 @@ export class CurateComponent implements OnInit {
     
   }
   selectTagCategory(tagCategory) {
-
     console.log(`TAG CATEGORY IS ${tagCategory}`);
   }
 
@@ -281,11 +280,7 @@ export class CurateComponent implements OnInit {
   submitTag() {
     let sendOP = this.curateForm.value
     this.curateService.submitTagCorrections(sendOP)
-
-    console.log(sendOP);
-
-
-
+    
   }
   reset() {
 
