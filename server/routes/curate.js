@@ -4,32 +4,17 @@ const util = require('util')
 const exec = require('child_process').exec
 const request = require('request')
 
-var demoJSON = {
-    "zones": [
-        {
-            "id": 1,
-            "name": "lmb-datalake-hdp-store-raw-nonprod"
-
-        },
-        {
-            "id": 2,
-            "name": "lmb-datalake-hdp-store-raw-prod"
-
-        }
-    ]
-}
-
-router.post('/tagcorrectionsubmit', (req,res)=>{
+router.post('/tagcorrectionsubmit', function (req, res) {
 
     console.log('IN CURATE ENDPOINT')
-    console.log(req.body)
-    
+
+
     var headers = {
         'Content-Type': 'application/json'
     };
-    
+
     var dataString = '{"zoneName": "lmb-datalake-hdp-store-raw-nonprod","sourceName": "avaya","tableName": "customer_log","columnName": "date_occurred_s","tagInfo": [{"tagType": "MIO","tagCategory": "MIO-PUBLIC"},{"tagType": "SEC","tagCategory": "SEC-SSN"},{"tagType": "DOM","tagCategory": "DOM-CUSTOMER"}]}';
-    
+
     var options = {
         url: 'http://10.224.69.47:9090/v1/autotagging/tagcorrectionsubmit',
         method: 'POST',
@@ -50,7 +35,7 @@ router.post('/tagcorrectionsubmit', (req,res)=>{
             res.json(body)
         }
     }
-    
+
 })
 
 module.exports = router;
