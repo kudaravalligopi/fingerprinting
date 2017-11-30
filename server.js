@@ -25,6 +25,7 @@ var getLDAPConfiguration = function(req, callback) {
   passwordField:'{{req.body.password}}',
   usernameField: '{{req.body.username}}'
 }
+  console.log('opts',JSON.stringify(opts,3,null))
 
     callback(null, opts);
   });
