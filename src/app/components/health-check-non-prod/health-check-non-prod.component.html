@@ -13,20 +13,23 @@
 <div class="container">
     <div class="row">
         <div class="col-md-4">
-
         </div>
         <div class="col-md-4">
             <div class="center-align">
                 <span class="offline">HDF</span>&nbsp;
-                <button class="health-check">Health Check</button>&nbsp;
+                <button class="health-check" (click)="getTimeStamp()">Health Check</button>&nbsp;
                 <span class="online">HDP</span>
             </div>
         </div>
         <div class="col-md-4">
-
         </div>
-
-
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12" style="text-align: center; font-size: 0.7em">
+            {{timeStamp}}
+        </div>
     </div>
 </div>
 

@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HealthCheckNonProdComponent implements OnInit {
 
+  timeStamp
   constructor() { }
 
   ngOnInit() {
+    this.getTimeStamp()
   }
 
+  getTimeStamp(){
+    // Date HH MM SS
+    let now = new Date()
+    this.timeStamp = now.toUTCString()
+  }
 }
