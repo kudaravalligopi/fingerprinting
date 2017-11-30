@@ -34,7 +34,7 @@
                 </button>
               </div>
               <div class="col-md-2">
-                <button mat-mini-fab color="accent" (click)="removeSource(i)" class="block-margin">
+                <button mat-mini-fab color="accent" (click)="removeSource(i)" class="block-margin" *ngIf="sourcesForm.controls.sourceWrapper.controls.length > 1">
                   <div matTooltip="Remove Source" matTooltipPosition="after">
                     <mat-icon>remove</mat-icon>
                   </div>
