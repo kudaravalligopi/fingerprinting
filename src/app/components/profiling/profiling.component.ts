@@ -15,6 +15,8 @@ export class ProfilingComponent implements OnInit {
   elementName: FormControl
   envName: FormControl
   link = "https://drive.google.com/a/quantiphi.com/file/d/11RmdbFcwXNR40Ny4wK8O6HikaYEpGP7g/view?usp=sharing"
+
+  showProfile: boolean = false
   newLink
   constructor(public sanitizer: DomSanitizer) {
     this.newLink = this.sanitizer.bypassSecurityTrustResourceUrl(this.link)
@@ -39,6 +41,10 @@ export class ProfilingComponent implements OnInit {
       elementName: this.elementName,
       envName: this.envName
     })
+  }
+
+  showProfileToggle(e){
+    this.showProfile = true
   }
 
 }
