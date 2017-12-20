@@ -14,7 +14,7 @@ export class AppComponent {
   title = 'app';
 
 
-  constructor(public apiCall: ApiService, private globals: Globals, public dialog: MatDialog, matIconRegistry: MatIconRegistry, sanitizer: DomSanitizer){
+  constructor(public apiCall: ApiService, public globals: Globals, public dialog: MatDialog, matIconRegistry: MatIconRegistry, sanitizer: DomSanitizer){
     matIconRegistry.addSvgIcon('lmLogo', sanitizer.bypassSecurityTrustResourceUrl('assets/lmTool.svg'))
     // this.apiCall.loginCheck().subscribe(data=>{
 
