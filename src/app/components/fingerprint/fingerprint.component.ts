@@ -22,13 +22,13 @@ import { FormGroup, FormControl, Validators, FormBuilder, FormArray } from '@ang
 })
 export class FingerprintComponent implements OnInit {
   title = `FingerPrint`
-  fingerprintDataAcquired:boolean = false
+  fingerprintDataAcquired: boolean = false
   showProgressSpinner: boolean = false
-  zones: Zones[] = []
+  zones: any[] = []
 
-  sources: Sources
-  tables: Tables
-  columns: Columns
+  sources: any
+  tables: any
+  columns: any
 
   sourceNames: string[] = []
   tableNames: string[] = []
@@ -48,10 +48,10 @@ export class FingerprintComponent implements OnInit {
   //Reactive Form
   fingerprintForm: FormGroup
 
-  zoneName : FormControl
-  sourceName : FormControl
-  tableName : FormControl
-  columnName : FormControl
+  zoneName: FormControl
+  sourceName: FormControl
+  tableName: FormControl
+  columnName: FormControl
 
 
 
@@ -60,25 +60,20 @@ export class FingerprintComponent implements OnInit {
   }
 
   public ngOnInit() {
-    
+
     this.getZones()
     this.createFormControls()
     this.createForm()
-    
+
   }
 
   //to get all zones on initialize of component
   getZones() {
-    this.fingerprintService
-    .getAllZones()
-    .subscribe(
-    (zones) => {
-      this.zones = zones
-    }
-    )
+    this.zones = this.fingerprintService.getAllZones()
+
   }
 
-  createFormControls(){
+  createFormControls() {
     this.zoneName = new FormControl('', [Validators.required])
     this.sourceName = new FormControl('', [Validators.required])
     this.tableName = new FormControl('', [Validators.required])
@@ -164,23 +159,23 @@ export class FingerprintComponent implements OnInit {
     this.showProgressSpinner = true
     this.fingerprintData = {}
     this.fingerprintDataAcquired = false
-    
+
     let sendOP = this.fingerprintForm.value
     let zName = sendOP.zoneName
     let sName = sendOP.sourceName
     let tName = sendOP.tableName
     let cName = sendOP.columnName
     try {
-      this.fingerprintService.fingerprint(cName, tName, sName, zName).subscribe(data=>{
+      this.fingerprintService.fingerprint(cName, tName, sName, zName).subscribe(data => {
         this.fingerprintData = JSON.parse(data)
         this.showProgressSpinner = false
         this.fingerprintDataAcquired = true
       })
-    } catch(err) {
+    } catch (err) {
       console.log(`Error in Fingerprint Call ${err}`);
-      
+
     }
-    
+
 
   }
 

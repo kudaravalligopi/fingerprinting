@@ -16,19 +16,19 @@ export class FingerprintService {
     private api: ApiService
   ) { }
 
-  getAllZones():Observable<Zones[]>{
+  getAllZones(){
     return this.api.getZones()
   }
 
-  selectZone(zoneName: string):Observable<Sources>{
+  selectZone(zoneName: string):Observable<Object>{
     return this.api.selectZone(zoneName)
   }
 
-  selectSource(sourceName: string, zoneName: string):Observable<Tables>{
+  selectSource(sourceName: string, zoneName: string):Observable<Object>{
     return this.api.selectSource(sourceName, zoneName)
   }
 
-  selectTable(tableName: string, sourceName: string, zoneName: string):Observable<Columns>{
+  selectTable(tableName: string, sourceName: string, zoneName: string):Observable<Object>{
     return this.api.selectTable(tableName, sourceName, zoneName)
   }
   fingerprint(columnName:string[] ,tableName: string, sourceName: string, zoneName: string):Observable<string> {
