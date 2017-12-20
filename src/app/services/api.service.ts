@@ -38,7 +38,7 @@ export class ApiService {
     //method which selects particular zone
     //Select the zone and populate the source drop down
 
-    let params: HttpParams = new HttpParams().set('zone', zone)
+    let params: HttpParams = new HttpParams().set('bucket_name', zone)
     return this.httpC.get('http://10.224.69.47:8080/v1/s3/listdatabase', { params: params })
 
 
@@ -51,19 +51,11 @@ export class ApiService {
       sourceName: source,
       zoneName: zone
     }
-
-    return this.http
-      .post('http://10.224.69.47:3000/fingerprint/tables', sourceObj)
-      .map(response => {
-        const tables = response.json()
-        console.log('tables from API ');
-        console.log(tables);
-
-
-        console.log(tables.tables);
-
-        return tables.tables
-      })
+    let params: HttpParams = new HttpParams()
+    params = params.append('bucket_name', zone)
+    params = params.append('database_name', source)
+    return this.httpC.get('http://10.224.69.47:3000/fingerprint/tables', {params:params})
+     
 
   }
 
@@ -75,20 +67,12 @@ export class ApiService {
       sourceName: source,
       zoneName: zone
     }
-
-    return this.http
-      .post('http://10.224.69.47:3000/fingerprint/columns', tableObj)
-      .map(response => {
-        const columns = response.json()
-        console.log('columns from API ');
-        console.log(columns);
-
-
-        console.log(columns.columns);
-
-        return columns.columns
-      })
-
+    let params: HttpParams = new HttpParams()
+    params = params.append('bucket_name', zone)
+    params = params.append('database_name', source)
+    params = params.append('table_name', table)
+    return this.httpC.get('http://10.224.69.47:3000/fingerprint/columns', {params:params})
+      
   }
 
   public selectColumn(column: string) {
