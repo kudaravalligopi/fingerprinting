@@ -31,7 +31,7 @@ export class FingerprintService {
   selectTable(tableName: string, sourceName: string, zoneName: string):Observable<Object>{
     return this.api.selectTable(tableName, sourceName, zoneName)
   }
-  fingerprint(columnName:string[] ,tableName: string, sourceName: string, zoneName: string):Observable<string> {
+  fingerprint(columnName:string[] ,tableName: string, sourceName: string, zoneName: string):Observable<Object> {
     return this.api.fingerprint(columnName,tableName,sourceName,zoneName)
   }
 }

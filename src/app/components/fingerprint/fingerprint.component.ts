@@ -40,7 +40,7 @@ export class FingerprintComponent implements OnInit {
   selectedTable: string
   selectedColumns: string
   selectedMultipleColumns: string[] = []
-  fingerprintData: any
+  fingerprintData: Object
 
 
 
@@ -167,7 +167,7 @@ export class FingerprintComponent implements OnInit {
     let cName = sendOP.columnName
     try {
       this.fingerprintService.fingerprint(cName, tName, sName, zName).subscribe(data => {
-        this.fingerprintData = JSON.parse(data)
+        this.fingerprintData = data
         this.showProgressSpinner = false
         this.fingerprintDataAcquired = true
       })
