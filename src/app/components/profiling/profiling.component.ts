@@ -68,12 +68,22 @@ export class ProfilingComponent implements OnInit {
 
     this.api.getElements(op).subscribe((data)=>{
       console.log(data);
-      
+      if(op.categoryName == 'views') {
+        this.elements = data["data"]["views"]
+      } else {
+        this.elements = data["data"]["tables"]
+      }
       
     })
+  }
 
+  profileData() {
+    let op = this.profilingForm.value
 
-
+    this.api.profileData(op).subscribe((data)=>{
+      console.log(data);
+      
+    })
   }
   
 }

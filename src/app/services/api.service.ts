@@ -126,6 +126,29 @@ export class ApiService {
     
   }
 
+  profileData(params) {
+    console.log(params)
+
+    let nParams = {
+      "data":{
+        "source_type": "hive",
+
+        "environment": `${params.envName}`,
+    
+        "database_name": `${params.dbName}`,
+    
+        "category_type": `${params.categoryName}`,
+    
+        "category_element": `${params.elementName}`,
+    
+        "profile_type":"profile"
+      }
+    }
+
+    return this.httpC.post('/api/v1/profiledata', nParams)
+    
+  }
+
   //login stuff
   login(params) {
     let loginCreds = Object.values(params)
