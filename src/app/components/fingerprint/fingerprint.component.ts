@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { Http, Response } from '@angular/http' //For HTTP Requests
 import 'rxjs/add/operator/map' //Handling Received Data
-import { FingerprintService } from '../../services/fingerprint.service'
 //Models
 import { Zones } from '../../models/zones'
 import { Sources } from '../../models/sources'
@@ -18,7 +17,7 @@ import { FormGroup, FormControl, Validators, FormBuilder, FormArray } from '@ang
   selector: 'app-fingerprint',
   templateUrl: './fingerprint.component.html',
   styleUrls: ['./fingerprint.component.sass'],
-  providers: [ApiService, FingerprintService]
+  providers: [ApiService]
 })
 export class FingerprintComponent implements OnInit {
   title = `FingerPrint`
@@ -55,7 +54,7 @@ export class FingerprintComponent implements OnInit {
 
 
 
-  constructor(private fingerprintService: FingerprintService, private api: ApiService) {
+  constructor(private api: ApiService) {
 
   }
 
@@ -98,12 +97,11 @@ export class FingerprintComponent implements OnInit {
       (sources) => {
         this.sources = sources
         console.log(sources)
-        console.log(typeof (sources))
-        let x: string[] = Object.values(sources)
-        console.log(x)
-        for (let i = 0; i < x.length; i++) {
-          this.sourceNames[i] = x[i]
-        }
+        
+        this.sourceNames = sources["databases"]
+        console.log(this.sourceNames);
+        
+        
       }
       )
   }
@@ -119,12 +117,10 @@ export class FingerprintComponent implements OnInit {
       (tables) => {
         this.tables = tables
         console.log(tables)
-        console.log(typeof (tables))
-        let x: string[] = Object.values(tables)
-        console.log(x)
-        for (let i = 0; i < x.length; i++) {
-          this.tableNames[i] = x[i]
-        }
+        
+        this.tableNames = tables["tables"]
+        console.log(this.tableNames);
+        
         this.tableNames.sort()
       }
       )
@@ -141,12 +137,11 @@ export class FingerprintComponent implements OnInit {
       (columns) => {
         this.columns = columns
         console.log(columns)
-        console.log(typeof (columns))
-        let x: string[] = Object.values(columns)
-        console.log(x)
-        for (let i = 0; i < x.length; i++) {
-          this.columnNames[i] = x[i]
-        }
+        
+        this.columnNames = columns["columns"]
+        
+        console.log(this.columnNames);
+        
         this.columnNames.sort()
       }
       )

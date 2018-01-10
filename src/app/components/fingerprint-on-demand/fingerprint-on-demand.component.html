@@ -14,7 +14,7 @@
           <mat-form-field>
             <span matTooltip="Select Zone Name" matTooltipPosition = "above">
             <mat-select placeholder="Select Data Zone" autofocus formControlName="zoneName">
-              <mat-option *ngFor="let zone of zones" [value]="zone.id " (click)="selectZone(zone.name)">{{zone.name}}</mat-option>
+              <mat-option *ngFor="let zone of zones" [value]="zone" (click)="selectZone(zone)">{{zone}}</mat-option>
             </mat-select>
           </span>
           </mat-form-field>

@@ -2,7 +2,7 @@
 import { Component, OnInit } from '@angular/core'
 import { Http, Response } from '@angular/http' //For HTTP Requests
 import 'rxjs/add/operator/map' //Handling Received Data
-import { FingerprintService } from '../../services/fingerprint.service'
+
 
 
 import { ApiService } from '../../services/api.service'
@@ -19,7 +19,7 @@ import { FormGroup, FormControl, Validators, FormBuilder, FormArray } from '@ang
 export class FingerprintOnDemandComponent implements OnInit {
 
   title = `FingerPrint`
-  fingerprintDataAcquired:boolean = false
+  fingerprintDataAcquired: boolean = false
   showProgressSpinner: boolean = false
   zones: string[] = []
 
@@ -46,24 +46,24 @@ export class FingerprintOnDemandComponent implements OnInit {
   //Reactive Form
   fingerprintOnDemandForm: FormGroup
 
-  zoneName : FormControl
-  sourceName : FormControl
-  tableName : FormControl
-  columnName : FormControl
+  zoneName: FormControl
+  sourceName: FormControl
+  tableName: FormControl
+  columnName: FormControl
   fingerprintType: FormControl
 
 
 
-  constructor(private fingerprintService: FingerprintService, private api: ApiService) {
+  constructor(private api: ApiService) {
 
   }
 
   public ngOnInit() {
-    
+
     this.getZones()
     this.createFormControls()
     this.createForm()
-    
+
   }
   //Populate Selects
 
@@ -83,34 +83,27 @@ export class FingerprintOnDemandComponent implements OnInit {
         this.sources = sources
         console.log(sources)
         console.log(typeof (sources))
-        let x: string[] = Object.values(sources)
-        console.log(x)
-        for (let i = 0; i < x.length; i++) {
-          this.sourceNames[i] = x[i]
-        }
+        this.sourceNames = sources["databases"]
+        console.log(this.sourceNames)
+
       }
       )
   }
-
-
 
   public selectSource(sourceName: string) {
     console.log('Select Source clicked with source name as ' + sourceName)
     this.tableNames = []
     this.selectedSource = sourceName
 
-    this.fingerprintService
+    this.api
       .selectSource(this.selectedSource, this.selectedZone)
       .subscribe(
       (tables) => {
         this.tables = tables
         console.log(tables)
         console.log(typeof (tables))
-        let x: string[] = Object.values(tables)
-        console.log(x)
-        for (let i = 0; i < x.length; i++) {
-          this.tableNames[i] = x[i]
-        }
+        this.tableNames = tables["tables"]
+        console.log(this.tableNames)
         this.tableNames.sort()
       }
       )
@@ -118,7 +111,7 @@ export class FingerprintOnDemandComponent implements OnInit {
 
 
   //Form Controls
-  createFormControls(){
+  createFormControls() {
     this.zoneName = new FormControl('', [Validators.required])
     this.sourceName = new FormControl('', [Validators.required])
     this.tableName = new FormControl('', [Validators.required])
@@ -136,13 +129,7 @@ export class FingerprintOnDemandComponent implements OnInit {
     })
   }
 
-  slideToggle(e){
+  slideToggle(e) {
     this.fingerprintFlowStatus = !this.fingerprintFlowStatus
   }
- 
-
-
-
-
-
 }

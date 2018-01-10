@@ -34,7 +34,7 @@ export class ApiService {
     //Select the zone and populate the source drop down
     console.log(zone);
     
-    return this.httpC.get(`/v1/s3/listdatabase`)
+    return this.httpC.get(`/v1/s3/listdatabase?bucket_name=${zone}`)
 
 
   }
@@ -42,7 +42,7 @@ export class ApiService {
   public selectSource(source: string, zone: string) {
     //method which selects particular source
     
-    return this.httpC.get('/v1/s3/listtables?bucket_name=${zone}&database_name=${source}')
+    return this.httpC.get(`/v1/s3/listtables?bucket_name=${zone}&database_name=${source}`)
   }
 
   public selectTable(table: string, source: string, zone: string) {
@@ -51,7 +51,7 @@ export class ApiService {
     
     
 
-    return this.httpC.get('/v1/s3/rawzone/listcolumns')
+    return this.httpC.get(`/v1/s3/rawzone/listcolumns?bucket_name=${zone}&database_name=${source}&table_name=${table}`)
   }
 
 
@@ -65,11 +65,17 @@ export class ApiService {
 
     let columns = []
     for (let i = 0; i < column.length; i++) {
-        column[i] = `"${column[i]}"`
+        columns[i] = `${column[i]}`
     }
 
+    console.log(`Column names in API END POINT Front End`)
+  
+    console.log(columns);
+    
+    
+
     try {
-      return this.httpC.post('/v1/autotagging/submit', { "data": { "table_name": table, "database_name": source, "bucket_name": zone, "type": "raw", "colums": [columns]}})
+      return this.httpC.post('/v1/autotagging/submit', { "data": { "table_name": table, "database_name": source, "bucket_name": zone, "type": "raw", "colums": columns}})
     } catch (err) {
       console.log(err);
       throw err

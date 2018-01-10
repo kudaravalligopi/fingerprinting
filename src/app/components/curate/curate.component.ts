@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { Http, Response } from '@angular/http' //For HTTP Requests
 import 'rxjs/add/operator/map' //Handling Received Data
-import { CurateService } from '../../services/curate.service'
 
 import { ApiService } from '../../services/api.service'
 
@@ -11,7 +10,7 @@ import { FormGroup, FormControl, Validators, FormBuilder, FormArray } from '@ang
   selector: 'app-curate',
   templateUrl: './curate.component.html',
   styleUrls: ['./curate.component.sass'],
-  providers: [ApiService, CurateService]
+  providers: [ApiService]
 })
 export class CurateComponent implements OnInit {
   title = `Curate`
@@ -55,7 +54,7 @@ export class CurateComponent implements OnInit {
 
 
 
-  constructor(private curateService: CurateService, private api: ApiService, public formBuilder: FormBuilder) {
+  constructor(private api: ApiService, public formBuilder: FormBuilder) {
 
   }
 
@@ -172,12 +171,8 @@ export class CurateComponent implements OnInit {
       (sources) => {
         this.sources = sources
         console.log(sources)
-        console.log(typeof (sources))
-        let x: string[] = Object.values(sources)
-        console.log(x)
-        for (let i = 0; i < x.length; i++) {
-          this.sourceNames[i] = x[i]
-        }
+        this.sourceNames = sources["databases"]
+        console.log(this.sourceNames)
       }
       )
   }
@@ -187,18 +182,16 @@ export class CurateComponent implements OnInit {
     this.tableNames = []
     this.selectedSource = sourceName
 
-    this.curateService
+    this.api
       .selectSource(this.selectedSource, this.selectedZone)
       .subscribe(
       (tables) => {
         this.tables = tables
         console.log(tables)
         console.log(typeof (tables))
-        let x: string[] = Object.values(tables)
-        console.log(x)
-        for (let i = 0; i < x.length; i++) {
-          this.tableNames[i] = x[i]
-        }
+        this.tableNames = tables["tables"]
+        console.log(this.tableNames)
+        this.tableNames.sort()
       }
       )
   }
@@ -208,18 +201,16 @@ export class CurateComponent implements OnInit {
     this.columnNames = []
     this.selectedTable = tableName
 
-    this.curateService
+    this.api
       .selectTable(this.selectedTable, this.selectedSource, this.selectedZone)
       .subscribe(
       (columns) => {
         this.columns = columns
         console.log(columns)
         console.log(typeof (columns))
-        let x: string[] = Object.values(columns)
-        console.log(x)
-        for (let i = 0; i < x.length; i++) {
-          this.columnNames[i] = x[i]
-        }
+        this.columnNames = columns["columns"]
+        console.log(this.columnNames)
+        
         this.columnNames.sort()
       }
       )
@@ -269,11 +260,11 @@ export class CurateComponent implements OnInit {
 
   submitTag() {
     let sendOP = this.curateForm.value
-    this.curateService.submitTagCorrections(sendOP)
-    
+    this.api.submitTagCorrections(sendOP)
   }
-  reset() {
 
+
+  reset() {
     this.fingerprintDataAcquired = false
   }
 

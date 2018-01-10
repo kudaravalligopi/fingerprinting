@@ -26,8 +26,7 @@ import {HttpClientModule} from '@angular/common/http'
 
 //Services
 import { ApiService } from './services/api.service'
-import { FingerprintService } from './services/fingerprint.service'
-import {CurateService} from './services/curate.service'
+
 
 //Angular Material
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
@@ -77,7 +76,7 @@ import { HealthCheckNonProdComponent } from './components/health-check-non-prod/
     //Routings
     Routings
   ],
-  providers: [FingerprintComponent, ApiService, FingerprintService, CurateService, Globals],
+  providers: [FingerprintComponent, ApiService,Globals],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
