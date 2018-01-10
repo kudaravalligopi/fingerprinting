@@ -264,6 +264,10 @@ export class CurateComponent implements OnInit {
     
     this.api.submitTagCorrections(sendOP).subscribe((data)=>{
       console.log(data);
+      console.log(data["Status_Message"]);
+
+      window.alert(data["Status_Message"])
+      
       
     })
   }

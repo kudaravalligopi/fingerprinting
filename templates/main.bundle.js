@@ -1736,7 +1736,7 @@ var ApiService = (function () {
         console.log('IN CURATE API FE');
         console.log(params);
         // {"zoneName": "lmb-datalake-hdp-store-raw-nonprod","sourceName": "avaya","tableName": "customer_log","columnName": "date_occurred_s","tagInfo": [{"tagType": "MIO","tagCategory": "MIO-PUBLIC"},{"tagType": "SEC","tagCategory": "SEC-SSN"},{"tagType": "DOM","tagCategory": "DOM-CUSTOMER"}]}
-        return this.httpC.post('http://10.224.69.47:9090/v1/autotagging/tagcorrectionsubmit', params);
+        return this.httpC.post('/v1/autotagging/tagcorrectionsubmit', params);
     };
     //login stuff
     ApiService.prototype.login = function (params) {
