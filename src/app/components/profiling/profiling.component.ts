@@ -54,7 +54,7 @@ export class ProfilingComponent implements OnInit {
     console.log(env);
     
     this.api.getDatabaseProfile(env).subscribe((data)=>{
-      console.log(data);
+      console.log(data["data"]["databases"]);
       
     })
   }

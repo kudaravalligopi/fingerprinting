@@ -1438,7 +1438,7 @@ var ProfilingComponent = (function () {
     ProfilingComponent.prototype.showProfileToggle = function (e) {
         this.showProfile = true;
     };
-    ProfilingComponent.prototype.getDatabases = function (env) {
+    ProfilingComponent.prototype.getDatabase = function (env) {
         console.log(env);
         this.api.getDatabaseProfile(env).subscribe(function (data) {
             console.log(data);
