@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core'
 import { environment } from '../../environments/environment'
 import { Http, Response } from '@angular/http'
-import { HttpClient, HttpParams } from '@angular/common/http'
+import { HttpClient } from '@angular/common/http'
 
 import { Observable } from 'rxjs/Observable'
 
@@ -32,27 +32,26 @@ export class ApiService {
   public selectZone(zone: string) {
     //method which selects particular zone
     //Select the zone and populate the source drop down
-    let params = new HttpParams().set('bucket_name', zone)
-    return this.http.get('http://10.224.69.47:9090/v1/s3/listdatabase', { params: params })
+    console.log(zone);
+    
+    return this.httpC.get(`/v1/s3/listdatabase`)
 
 
   }
 
   public selectSource(source: string, zone: string) {
     //method which selects particular source
-    let params = new HttpParams().set('bucket_name', zone)
-    params.append('database_name', source)
-    return this.httpC.get('http://10.224.69.47:9090/v1/s3/listtables', { params: params })
+    
+    return this.httpC.get('/v1/s3/listtables?bucket_name=${zone}&database_name=${source}')
   }
 
   public selectTable(table: string, source: string, zone: string) {
     //method which selects particular table
     //Select the table and populate the columns drop down
-    let params = new HttpParams().set('bucket_name', zone)
-    params.append('database_name', source)
-    params.append('table_name', table)
+    
+    
 
-    return this.httpC.get('"http://10.224.69.47:9090/v1/s3/rawzone/listcolumns', { params: params })
+    return this.httpC.get('/v1/s3/rawzone/listcolumns')
   }
 
 
@@ -70,7 +69,7 @@ export class ApiService {
     }
 
     try {
-      return this.httpC.post('http://10.224.69.47:9090/v1/autotagging/submit', { "data": { "table_name": table, "database_name": source, "bucket_name": zone, "type": "raw", "colums": [columns]}})
+      return this.httpC.post('/v1/autotagging/submit', { "data": { "table_name": table, "database_name": source, "bucket_name": zone, "type": "raw", "colums": [columns]}})
     } catch (err) {
       console.log(err);
       throw err
