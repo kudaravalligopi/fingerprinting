@@ -89,6 +89,13 @@ export class ApiService {
 
   }
 
+  getDatabaseProfile(env){
+    console.log('Getting tables for profile');
+    
+    console.log(env);
+    
+    return this.httpC.get(`http://10.224.69.47:9090/api/v1/listdatabase?source_type=hive&environment=${env}`)
+  }
 
   //curate
 

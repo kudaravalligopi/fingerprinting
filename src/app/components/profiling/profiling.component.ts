@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder, FormArray } from '@angular/forms';
 import {DomSanitizer} from '@angular/platform-browser';
 
+import {ApiService} from '../../services/api.service'
+
 @Component({
   selector: 'app-profiling',
   templateUrl: './profiling.component.html',
@@ -14,11 +16,12 @@ export class ProfilingComponent implements OnInit {
   categoryName: FormControl
   elementName: FormControl
   envName: FormControl
+  databases: any
   link = "https://drive.google.com/a/quantiphi.com/file/d/11RmdbFcwXNR40Ny4wK8O6HikaYEpGP7g/view?usp=sharing"
 
   showProfile: boolean = false
   newLink
-  constructor(public sanitizer: DomSanitizer) {
+  constructor(public sanitizer: DomSanitizer, public api: ApiService) {
     this.newLink = this.sanitizer.bypassSecurityTrustResourceUrl(this.link)
    }
 
@@ -47,4 +50,13 @@ export class ProfilingComponent implements OnInit {
     this.showProfile = true
   }
 
+  getDatabases(env){
+    console.log(env);
+    
+    this.api.getDatabaseProfile(env).subscribe((data)=>{
+      console.log(data);
+      
+    })
+  }
+  
 }

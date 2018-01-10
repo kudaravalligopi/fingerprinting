@@ -15,16 +15,16 @@
           <div class="col-md-3">
               <mat-form-field class="block-margin">
                 <mat-select placeholder="Select Environment" autofocus formControlName="envName" >
-                  <mat-option value="prodstage">Prod Stage</mat-option>
-                  <mat-option value="prod">Prod</mat-option>
-                  <mat-option value="integration">NP Integration</mat-option>
+                  <mat-option value="prodstage" (click)="getDatabase('prodstage')">Prod Stage</mat-option>
+                  <mat-option value="prod" (click)="getDatabase('prod')">Prod</mat-option>
+                  <mat-option value="nonprod" (click)="getDatabase('nonprod')">NP Integration</mat-option>
                 </mat-select>
               </mat-form-field>
             </div>
         <div class="col-md-3">
           <mat-form-field class="block-margin">
             <mat-select placeholder="Select Database" autofocus formControlName="dbName" >
-              <!-- <mat-option *ngFor="let zone of zones" [value]="zone.id " (click)="selectZone(zone.name)">{{zone.name}}</mat-option> -->
+              <!-- <mat-option *ngFor="let db of databases" [value]="db" (click)="selectZone(db)">{{db}}</mat-option> -->
               <mat-option value="otis">otis</mat-option>
             </mat-select>
           </mat-form-field>
