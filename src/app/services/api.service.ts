@@ -94,7 +94,7 @@ export class ApiService {
     
     console.log(env);
     
-    return this.httpC.get(`http://10.224.69.47:9090/api/v1/listdatabase?source_type=hive&environment=${env}`)
+    return this.httpC.get(`/api/v1/listdatabase?source_type=hive&environment=${env}`)
   }
 
   //curate
