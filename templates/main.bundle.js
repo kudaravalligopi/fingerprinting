@@ -1365,7 +1365,7 @@ OutputCurateComponent = __decorate([
 /***/ "../../../../../src/app/components/profiling/profiling.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"flex-container\">\n  <div class=\"container\">\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <h2 class=\"title\">Data Profiling</h2>\n        <h5 class=\"subtitle\">Take advantage of on-demand profiling of any Datalake table or view for smart exploratory data analysis\n        </h5>\n        <health-check-non-prod></health-check-non-prod>\n      </div>\n    </div>\n\n\n    <form [formGroup]=\"profilingForm\" novalidate>\n      <div class=\"row\">\n          <div class=\"col-md-3\">\n              <mat-form-field class=\"block-margin\">\n                <mat-select placeholder=\"Select Environment\" autofocus formControlName=\"envName\" >\n                  <mat-option value=\"prodstage\" (click)=\"getDatabase('prodstage')\">Prod Stage</mat-option>\n                  <mat-option value=\"prod\" (click)=\"getDatabase('prod')\">Prod</mat-option>\n                  <mat-option value=\"nonprod\" (click)=\"getDatabase('nonprod')\">NP Integration</mat-option>\n                </mat-select>\n              </mat-form-field>\n            </div>\n        <div class=\"col-md-3\">\n          <mat-form-field class=\"block-margin\">\n            <mat-select placeholder=\"Select Database\" autofocus formControlName=\"dbName\" >\n              <!-- <mat-option *ngFor=\"let db of databases\" [value]=\"db\" (click)=\"selectZone(db)\">{{db}}</mat-option> -->\n              <mat-option value=\"otis\">otis</mat-option>\n            </mat-select>\n          </mat-form-field>\n        </div>\n        <div class=\"col-md-3\">\n          <mat-form-field class=\"block-margin\">\n            <mat-select placeholder=\"Select Category\" formControlName=\"categoryName\" >\n              <mat-option value=\"tables\">Tables</mat-option>\n              <mat-option value=\"views\">Views</mat-option>\n            </mat-select>\n          </mat-form-field>\n        </div>\n        <div class=\"col-md-3\">\n          <mat-form-field class=\"block-margin\">\n            <mat-select placeholder=\"Select Element\" formControlName=\"elementName\" >\n              <mat-option value=\"custinfo_cd_chgreas_t\">custinfo_cd_chgreas_t</mat-option>\n              <!-- <mat-option *ngFor=\"let zone of zones\" [value]=\"zone.id \" (click)=\"selectZone(zone.name)\">{{zone.name}}</mat-option> -->\n            </mat-select>\n          </mat-form-field>\n        </div>\n      </div>\n\n      <!-- Button Row 1 -->\n      <div class=\"row\">\n        <div class=\"col-md-2\">\n\n        </div>\n        <div class=\"col-md-4\">\n          <button mat-raised-button color=\"accent\" style=\"float:right\" (click)=\"showProfileToggle($event)\">Profile Data</button>\n        </div>\n        <div class=\"col-md-4\">\n          <button mat-raised-button color=\"accent\"  style=\"float:left\" disabled>Re-profile Data</button>\n        </div>\n        <div class=\"col-md-2\">\n\n        </div>\n      </div>\n      <div class=\"row\" *ngIf=\"showProfile\">\n        <div class=\"col-md-12\">\n            <iframe src = \"https://s3.amazonaws.com/lm-labrats/profile_custinfo_cd_chgreas_t.html\" class=\"iframe-class\"></iframe>\n        </div>\n      </div>\n\n      \n\n    </form>\n  </div>\n</div>"
+module.exports = "<div class=\"flex-container\">\n  <div class=\"container\">\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <h2 class=\"title\">Data Profiling</h2>\n        <h5 class=\"subtitle\">Take advantage of on-demand profiling of any Datalake table or view for smart exploratory data analysis\n        </h5>\n        <health-check-non-prod></health-check-non-prod>\n      </div>\n    </div>\n\n\n    <form [formGroup]=\"profilingForm\" novalidate>\n      <div class=\"row\">\n          <div class=\"col-md-3\">\n              <mat-form-field class=\"block-margin\">\n                <mat-select placeholder=\"Select Environment\" autofocus formControlName=\"envName\" >\n                  <mat-option value=\"prodstage\" (click)=\"getDatabase('prodstage')\">Prod Stage</mat-option>\n                  <mat-option value=\"prod\" (click)=\"getDatabase('prod')\">Prod</mat-option>\n                  <mat-option value=\"nonprod\" (click)=\"getDatabase('nonprod')\">NP Integration</mat-option>\n                </mat-select>\n              </mat-form-field>\n            </div>\n        <div class=\"col-md-3\">\n          <mat-form-field class=\"block-margin\">\n            <mat-select placeholder=\"Select Database\" autofocus formControlName=\"dbName\" >\n              <mat-option *ngFor=\"let db of databases\" [value]=\"db\">{{db}}</mat-option>\n              <!-- <mat-option value=\"otis\">otis</mat-option> -->\n            </mat-select>\n          </mat-form-field>\n        </div>\n        <div class=\"col-md-3\">\n          <mat-form-field class=\"block-margin\">\n            <mat-select placeholder=\"Select Category\" formControlName=\"categoryName\" >\n              <mat-option value=\"tables\" (click)=\"getElements()\">Tables</mat-option>\n              <mat-option value=\"views\" (click)=\"getElements()\">Views</mat-option>\n            </mat-select>\n          </mat-form-field>\n        </div>\n        <div class=\"col-md-3\">\n          <mat-form-field class=\"block-margin\">\n            <mat-select placeholder=\"Select Element\" formControlName=\"elementName\" >\n              <mat-option value=\"custinfo_cd_chgreas_t\">custinfo_cd_chgreas_t</mat-option>\n              <!-- <mat-option *ngFor=\"let zone of zones\" [value]=\"zone.id \" (click)=\"selectZone(zone.name)\">{{zone.name}}</mat-option> -->\n            </mat-select>\n          </mat-form-field>\n        </div>\n      </div>\n\n      <!-- Button Row 1 -->\n      <div class=\"row\">\n        <div class=\"col-md-2\">\n\n        </div>\n        <div class=\"col-md-4\">\n          <button mat-raised-button color=\"accent\" style=\"float:right\" (click)=\"showProfileToggle($event)\">Profile Data</button>\n        </div>\n        <div class=\"col-md-4\">\n          <button mat-raised-button color=\"accent\"  style=\"float:left\" disabled>Re-profile Data</button>\n        </div>\n        <div class=\"col-md-2\">\n\n        </div>\n      </div>\n      <div class=\"row\" *ngIf=\"showProfile\">\n        <div class=\"col-md-12\">\n            <iframe src = \"https://s3.amazonaws.com/lm-labrats/profile_custinfo_cd_chgreas_t.html\" class=\"iframe-class\"></iframe>\n        </div>\n      </div>\n\n      \n\n    </form>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -1439,9 +1439,18 @@ var ProfilingComponent = (function () {
         this.showProfile = true;
     };
     ProfilingComponent.prototype.getDatabase = function (env) {
+        var _this = this;
         console.log(env);
         this.api.getDatabaseProfile(env).subscribe(function (data) {
             console.log(data["data"]["databases"]);
+            _this.databases = data["data"]["databases"];
+        });
+    };
+    ProfilingComponent.prototype.getElements = function () {
+        var op = this.profilingForm.value;
+        console.log(op);
+        this.api.getElements(op).subscribe(function (data) {
+            console.log(data);
         });
     };
     return ProfilingComponent;
@@ -1753,6 +1762,17 @@ var ApiService = (function () {
         console.log(params);
         // {"zoneName": "lmb-datalake-hdp-store-raw-nonprod","sourceName": "avaya","tableName": "customer_log","columnName": "date_occurred_s","tagInfo": [{"tagType": "MIO","tagCategory": "MIO-PUBLIC"},{"tagType": "SEC","tagCategory": "SEC-SSN"},{"tagType": "DOM","tagCategory": "DOM-CUSTOMER"}]}
         return this.httpC.post('/v1/autotagging/tagcorrectionsubmit', params);
+    };
+    ApiService.prototype.getElements = function (params) {
+        console.log(params);
+        var link = '';
+        if (params.categoryName == 'tables') {
+            link = '/api/v1/listtables?source_type=hive&environment=${params.envName}&database_name=${dbName}&category_type=tables';
+        }
+        else {
+            link = '/api/v1/listviews?source_type=hive&environment=${params.envName}&database_name=${dbName}&category_type=views';
+        }
+        return this.httpC.get(link);
     };
     //login stuff
     ApiService.prototype.login = function (params) {

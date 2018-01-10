@@ -118,9 +118,9 @@ export class ApiService {
     console.log(params);
     let link = ''
     if(params.categoryName == 'tables') {
-      link = '/api/v1/listtables?source_type=hive&environment=${params.envName}&database_name=${dbName}&category_type=tables'
+      link = `/api/v1/listtables?source_type=hive&environment=${params.envName}&database_name=${params.dbName}&category_type=tables`
     } else {
-      link = '/api/v1/listviews?source_type=hive&environment=${params.envName}&database_name=${dbName}&category_type=views'
+      link = `/api/v1/listviews?source_type=hive&environment=${params.envName}&database_name=${params.dbName}&category_type=views`
     }
     return this.httpC.get(link)
     
