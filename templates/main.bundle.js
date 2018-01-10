@@ -609,7 +609,9 @@ var CurateComponent = (function () {
     CurateComponent.prototype.submitTag = function () {
         var sendOP = this.curateForm.value;
         console.log(sendOP);
-        this.api.submitTagCorrections(sendOP);
+        this.api.submitTagCorrections(sendOP).subscribe(function (data) {
+            console.log(data);
+        });
     };
     CurateComponent.prototype.reset = function () {
         this.fingerprintDataAcquired = false;
