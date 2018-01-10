@@ -24,11 +24,11 @@ export class FingerprintComponent implements OnInit {
   title = `FingerPrint`
   fingerprintDataAcquired:boolean = false
   showProgressSpinner: boolean = false
-  zones: Zones[] = []
+  zones: string[] = []
 
-  sources: Sources
-  tables: Tables
-  columns: Columns
+  sources
+  tables
+  columns
 
   sourceNames: string[] = []
   tableNames: string[] = []
@@ -69,13 +69,7 @@ export class FingerprintComponent implements OnInit {
 
   //to get all zones on initialize of component
   getZones() {
-    this.fingerprintService
-    .getAllZones()
-    .subscribe(
-    (zones) => {
-      this.zones = zones
-    }
-    )
+    this.zones = this.api.getZones()
   }
 
   createFormControls(){
@@ -99,8 +93,7 @@ export class FingerprintComponent implements OnInit {
     this.sourceNames = []
     this.selectedZone = zoneName
 
-    this.fingerprintService
-      .selectZone(this.selectedZone)
+    this.api.selectZone(this.selectedZone)
       .subscribe(
       (sources) => {
         this.sources = sources

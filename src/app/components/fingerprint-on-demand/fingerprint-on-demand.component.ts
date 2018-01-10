@@ -3,11 +3,7 @@ import { Component, OnInit } from '@angular/core'
 import { Http, Response } from '@angular/http' //For HTTP Requests
 import 'rxjs/add/operator/map' //Handling Received Data
 import { FingerprintService } from '../../services/fingerprint.service'
-//Models
-import { Zones } from '../../models/zones'
-import { Sources } from '../../models/sources'
-import { Tables } from '../../models/tables'
-import { Columns } from '../../models/columns'
+
 
 import { ApiService } from '../../services/api.service'
 
@@ -25,11 +21,11 @@ export class FingerprintOnDemandComponent implements OnInit {
   title = `FingerPrint`
   fingerprintDataAcquired:boolean = false
   showProgressSpinner: boolean = false
-  zones: Zones[] = []
+  zones: string[] = []
 
-  sources: Sources
-  tables: Tables
-  columns: Columns
+  sources: any
+  tables: any
+  columns: any
 
   sourceNames: string[] = []
   tableNames: string[] = []
@@ -73,20 +69,14 @@ export class FingerprintOnDemandComponent implements OnInit {
 
   //to get all zones on initialize of component
   getZones() {
-    this.fingerprintService
-    .getAllZones()
-    .subscribe(
-    (zones) => {
-      this.zones = zones
-    }
-    )
+    this.zones = this.api.getZones()
   }
 
   public selectZone(zoneName: string) {
     this.sourceNames = []
     this.selectedZone = zoneName
 
-    this.fingerprintService
+    this.api
       .selectZone(this.selectedZone)
       .subscribe(
       (sources) => {

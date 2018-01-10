@@ -12,7 +12,7 @@
 				<form [formGroup]="curateForm" novalidate>
 					<mat-form-field>
 						<mat-select placeholder="Select Data Zone" class="fingerprint-select" autofocus formControlName="zoneName">
-							<mat-option *ngFor="let zone of zones" [value]="zone.name " (click)="selectZone(zone.name)">{{zone.name}}</mat-option>
+							<mat-option *ngFor="let zone of zones" [value]="zone " (click)="selectZone(zone)">{{zone}}</mat-option>
 						</mat-select>
 					</mat-form-field>
 					<mat-form-field>

@@ -5,11 +5,6 @@ import  {HttpClient} from '@angular/common/http'
 
 import { Observable } from 'rxjs/Observable'
 
-import { Zones } from '../models/zones'
-import { Sources } from '../models/sources'
-import { Tables } from '../models/tables'
-import { Columns } from '../models/columns'
-import { FingerprintJSON } from '../models/fingerprintJSON'
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
@@ -21,37 +16,24 @@ const API_URL = '/'
 export class ApiService {
 
   constructor(
-    private http: Http
+    public http: Http,
+    public httpC: HttpClient
   ) { }
 
   public getZones() {
     //method to get all zones
-    return this.http
-      .get('http://10.224.69.47:3000/fingerprint/zones')
-      .map(response => {
-        const zones = response.json()
-        return zones.map((zones) => new Zones(zones))
-      })
-      .catch(this.handleError)
+    // return this.httpC.get('http://10.224.69.47:3000/fingerprint/zones')
+    //   .catch(this.handleError)
+    let prod = ["lmb-datalake-hdp-store-raw-nonprod","lmb-datalake-hdp-store-raw-prod","lmb-datalake-hdp-store-raw-prod-stage"]
+    return prod
 
   }
 
   public selectZone(zone: string) {
     //method which selects particular zone
     //Select the zone and populate the source drop down
-    var zoneObj = {
-      zoneName: zone
-    }
-    return this.http
-      .post('http://10.224.69.47:3000/fingerprint/sources', zoneObj)
-      .map(response => {
-        const sources = response.json()
-        console.log('sources from API');
-        console.log(sources);
-        console.log(sources.databases);
-        
-        return sources.databases
-      })
+    
+    return this.http.post('http://10.224.69.47:8080/v1/s3/listdatabase', {bucket_name:zone})
 
 
   }

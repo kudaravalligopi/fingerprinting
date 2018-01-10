@@ -2,11 +2,6 @@ import { Component, OnInit } from '@angular/core'
 import { Http, Response } from '@angular/http' //For HTTP Requests
 import 'rxjs/add/operator/map' //Handling Received Data
 import { CurateService } from '../../services/curate.service'
-//Models
-import { Zones } from '../../models/zones'
-import { Sources } from '../../models/sources'
-import { Tables } from '../../models/tables'
-import { Columns } from '../../models/columns'
 
 import { ApiService } from '../../services/api.service'
 
@@ -22,11 +17,11 @@ export class CurateComponent implements OnInit {
   title = `Curate`
   fingerprintDataAcquired: boolean = false
   showProgressSpinner: boolean = false
-  zones: Zones[] = []
+  zones: string[] = []
 
-  sources: Sources
-  tables: Tables
-  columns: Columns
+  sources: any
+  tables: any
+  columns: any
 
   sourceNames: string[] = []
   tableNames: string[] = []
@@ -123,13 +118,8 @@ export class CurateComponent implements OnInit {
 
   //to get all zones on initialize of component
   getZones() {
-    this.curateService
-      .getAllZones()
-      .subscribe(
-      (zones) => {
-        this.zones = zones
-      }
-      )
+    this.zones = this.api.getZones()
+      
   }
 
   createForm() {
@@ -176,7 +166,7 @@ export class CurateComponent implements OnInit {
     this.sourceNames = []
     this.selectedZone = zoneName
 
-    this.curateService
+    this.api
       .selectZone(this.selectedZone)
       .subscribe(
       (sources) => {
