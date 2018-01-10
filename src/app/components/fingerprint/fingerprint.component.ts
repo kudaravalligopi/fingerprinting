@@ -113,7 +113,7 @@ export class FingerprintComponent implements OnInit {
     this.tableNames = []
     this.selectedSource = sourceName
 
-    this.fingerprintService
+    this.api
       .selectSource(this.selectedSource, this.selectedZone)
       .subscribe(
       (tables) => {
@@ -135,7 +135,7 @@ export class FingerprintComponent implements OnInit {
     this.columnNames = []
     this.selectedTable = tableName
 
-    this.fingerprintService
+    this.api
       .selectTable(this.selectedTable, this.selectedSource, this.selectedZone)
       .subscribe(
       (columns) => {
@@ -164,8 +164,9 @@ export class FingerprintComponent implements OnInit {
     let tName = sendOP.tableName
     let cName = sendOP.columnName
     try {
-      this.fingerprintService.fingerprint(cName, tName, sName, zName).subscribe(data=>{
-        this.fingerprintData = JSON.parse(data)
+      this.api.fingerprint(cName, tName, sName, zName).subscribe(data=>{
+        console.log(data)
+        this.fingerprintData = data
         this.showProgressSpinner = false
         this.fingerprintDataAcquired = true
       })
