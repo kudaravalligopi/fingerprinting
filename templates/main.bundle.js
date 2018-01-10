@@ -608,6 +608,7 @@ var CurateComponent = (function () {
     };
     CurateComponent.prototype.submitTag = function () {
         var sendOP = this.curateForm.value;
+        console.log(sendOP);
         this.api.submitTagCorrections(sendOP);
     };
     CurateComponent.prototype.reset = function () {
@@ -1733,11 +1734,7 @@ var ApiService = (function () {
         console.log('IN CURATE API FE');
         console.log(params);
         try {
-            return this.http.post('http://10.224.69.47:9090/v1/autotagging/tagcorrectionsubmit', params)
-                .map(function (data) {
-                console.log(data);
-                return data.json();
-            });
+            return this.httpC.post('http://10.224.69.47:9090/v1/autotagging/tagcorrectionsubmit', params);
         }
         catch (err) {
             console.log(err);

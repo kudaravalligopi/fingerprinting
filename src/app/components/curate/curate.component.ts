@@ -260,6 +260,8 @@ export class CurateComponent implements OnInit {
 
   submitTag() {
     let sendOP = this.curateForm.value
+    console.log(sendOP);
+    
     this.api.submitTagCorrections(sendOP)
   }
 
