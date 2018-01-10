@@ -17,6 +17,7 @@ export class ProfilingComponent implements OnInit {
   elementName: FormControl
   envName: FormControl
   databases: any
+  elements: any
   link = "https://drive.google.com/a/quantiphi.com/file/d/11RmdbFcwXNR40Ny4wK8O6HikaYEpGP7g/view?usp=sharing"
 
   showProfile: boolean = false
@@ -55,8 +56,24 @@ export class ProfilingComponent implements OnInit {
     
     this.api.getDatabaseProfile(env).subscribe((data)=>{
       console.log(data["data"]["databases"]);
+      this.databases = data["data"]["databases"]
       
     })
+  }
+
+  getElements(){
+    let op = this.profilingForm.value
+    console.log(op);
+    
+
+    this.api.getElements(op).subscribe((data)=>{
+      console.log(data);
+      
+      
+    })
+
+
+
   }
   
 }

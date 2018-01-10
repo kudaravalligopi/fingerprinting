@@ -24,16 +24,16 @@
         <div class="col-md-3">
           <mat-form-field class="block-margin">
             <mat-select placeholder="Select Database" autofocus formControlName="dbName" >
-              <!-- <mat-option *ngFor="let db of databases" [value]="db" (click)="selectZone(db)">{{db}}</mat-option> -->
-              <mat-option value="otis">otis</mat-option>
+              <mat-option *ngFor="let db of databases" [value]="db">{{db}}</mat-option>
+              <!-- <mat-option value="otis">otis</mat-option> -->
             </mat-select>
           </mat-form-field>
         </div>
         <div class="col-md-3">
           <mat-form-field class="block-margin">
             <mat-select placeholder="Select Category" formControlName="categoryName" >
-              <mat-option value="tables">Tables</mat-option>
-              <mat-option value="views">Views</mat-option>
+              <mat-option value="tables" (click)="getElements()">Tables</mat-option>
+              <mat-option value="views" (click)="getElements()">Views</mat-option>
             </mat-select>
           </mat-form-field>
         </div>

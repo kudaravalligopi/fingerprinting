@@ -1441,7 +1441,7 @@ var ProfilingComponent = (function () {
     ProfilingComponent.prototype.getDatabase = function (env) {
         console.log(env);
         this.api.getDatabaseProfile(env).subscribe(function (data) {
-            console.log(data);
+            console.log(data["data"]["databases"]);
         });
     };
     return ProfilingComponent;
