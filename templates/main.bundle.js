@@ -407,7 +407,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, "#buttonsOP {\n  width: 50vh;\n  margin: 0 auto; }\n", ""]);
 
 // exports
 

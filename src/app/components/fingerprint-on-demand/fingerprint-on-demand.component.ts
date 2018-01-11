@@ -52,7 +52,7 @@ export class FingerprintOnDemandComponent implements OnInit {
   columnName: FormControl
   fingerprintType: FormControl
 
-
+  fingerprintFlowOn: boolean = false
 
   constructor(private api: ApiService) {
 
@@ -131,5 +131,18 @@ export class FingerprintOnDemandComponent implements OnInit {
 
   slideToggle(e) {
     this.fingerprintFlowStatus = !this.fingerprintFlowStatus
+  }
+
+  fingerprintFlow(status){
+    let op = this.fingerprintOnDemandForm.value
+    console.log(op);
+
+    this.fingerprintFlowOn = !this.fingerprintFlowOn
+
+    this.api.fingerprintFlow(op,status).subscribe((data)=>{
+      console.log(data);
+      
+    })
+    
   }
 }
