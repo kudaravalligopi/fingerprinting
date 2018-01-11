@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-md-12">
         <h2 class="title">Curate: Corpus Correction</h2>
-        <h5 class="subtitle">Make curated tag entries into the ops_table and subsequently re-tag in Atlas.</h5>
+        <h5 class="subtitle">Make changes to the existing auto-tagging corpus.</h5>
         <health-check-non-prod></health-check-non-prod>
       </div>
     </div>
@@ -14,8 +14,10 @@
             <div class="col-md-3">
               <mat-form-field>
                 <mat-select placeholder="Select Corpus Type" class="fingerprint-select" autofocus formControlName="corpusType">
-                  <mat-option value="distinct">Distinct</mat-option>
-                  <mat-option value="fuzzy">Fuzzy</mat-option>
+                  <mat-option value="distinct-fuzzy">Distinct Fuzzy</mat-option>
+                  <mat-option value="notes">Notes</mat-option>
+                  <mat-option value="developer-notes">Developer Notes</mat-option>
+                  <mat-option value="address">Address</mat-option>
                 </mat-select>
               </mat-form-field>
             </div>
@@ -48,7 +50,7 @@
           <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-8">
-              <textarea formControlName="corpusCorrection" placeholder="Enter Corpus Corrections">
+              <textarea formControlName="corpusCorrection" placeholder="Enter Corpus Corrections" class="full-width-textarea">
 
               </textarea>
             </div>

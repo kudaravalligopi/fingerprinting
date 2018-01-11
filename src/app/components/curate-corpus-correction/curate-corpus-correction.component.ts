@@ -38,4 +38,9 @@ export class CurateCorpusCorrectionComponent implements OnInit {
     })
   }
 
+
+  submitTag(){
+    console.log(this.curateCorpusForm.value)
+  }
+
 }
