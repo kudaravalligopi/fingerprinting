@@ -23,6 +23,7 @@ const appRoutes: Routes = [
     { path: 'knowledge-graph', component: KnowledgeGraphComponent },
     { path: 'profiling', component: ProfilingComponent },
     { path: 'sources', component: SourcesComponent },
+    { path: 'logout', redirectTo:'/logout'}
 
     // otherwise redirect to home
     // { path: '**', redirectTo: '' }
