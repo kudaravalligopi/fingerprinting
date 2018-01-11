@@ -169,7 +169,7 @@ export class ApiService {
 
   fingerprintFlow(params,status) {
     let x = { "data": {"processor_group_id": "bb75b7fb-347a-3f59-b4a2-ca412e7829be", "processor_state" :`${status}`,  "nifi_user": "sacid_lmb_hdp_mdmsvc", "nifi_url": "https://ip-10-224-71-221.aws.lmig.com:9093", "aws_env": "nonprod",    "app_env": "integration","start_processor_group_name" :["AtlasBatchProcessing"]}}
-    return this.httpC.post('http://10.224.69.47:8081/api/v1/nifi/update_processor_state', x)
+    return this.httpC.post('/api/v1/nifi/update_processor_state', x)
   }
 
 }
