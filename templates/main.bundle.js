@@ -16,7 +16,7 @@ webpackEmptyAsyncContext.id = "../../../../../src lazy recursive";
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n<mat-toolbar color=\"primary\" id=\"#navbar\">\n  <span [routerLink]=\"['']\" class=\"logo-wrapper\">\n    <mat-icon svgIcon=\"lmLogo\" class=\"logo\"></mat-icon>\n\n    <span class=\"logo-text\">Liberty Mutual</span>\n  </span>\n  <span class=\"spacer\"></span>\n  <span>\n    <button style=\"color:white\" mat-button [routerLink]=\"['sources']\" routerLinkActive=\"active-link\">Sources</button>\n    <button style=\"color:white\" mat-button [routerLink]=\"['profiling']\" routerLinkActive=\"active-link\">Profiling</button>\n    <button style=\"color:white\" mat-button [matMenuTriggerFor]=\"menuFingerprint\">Fingerprint</button>\n    <mat-menu #menuFingerprint=\"matMenu\" yPosition=\"below\" [overlapTrigger]=\"false\">\n      <button mat-menu-item [routerLink]=\"['fingerprint']\" routerLinkActive=\"active-link\">Fingerprint Interactive</button>\n      <button mat-menu-item [routerLink]=\"['fingerprint-on-demand']\" routerLinkActive=\"active-link\">Fingerprint On Demand</button>\n    </mat-menu>\n    <button style=\"color:white\" mat-button [matMenuTriggerFor]=\"menuCurate\">Curate</button>\n    <mat-menu #menuCurate=\"matMenu\" yPosition=\"below\" [overlapTrigger]=\"false\">\n      <button mat-menu-item [routerLink]=\"['curate-tag-correction']\" routerLinkActive=\"active-link\">Curate Tag Correction</button>\n      <button mat-menu-item [routerLink]=\"['curate-corpus-correction']\" routerLinkActive=\"active-link\">Curate Corpus Correction</button>\n    </mat-menu>\n    <button style=\"color:white\" mat-button [routerLink]=\"['catalog']\" routerLinkActive=\"active-link\">Catalog</button>\n    <button style=\"color:white\" mat-button [routerLink]=\"['knowledge-graph']\" routerLinkActive=\"active-link\">Knowledge-Graph</button>\n    <button mat-raised-button color=\"primary\" *ngIf=\"!this.globals.loggedIn\" (click)=\"openLoginForm()\">Logout</button>\n    <button mat-raised-button color=\"primary\" *ngIf=\"this.globals.loggedIn\">Log Out</button>\n  </span>\n\n</mat-toolbar>\n<router-outlet></router-outlet>\n<div class=\"footer\">\n  <div class=\"container\">\n    <div class=\"row\">\n      <div class=\"col-md-4\" style=\"text-align:center\">\n        <h6>Copyright Liberty Mutual Insurance</h6>\n      </div>\n      <div class=\"col-md-4\">\n\n      </div>\n      <div class=\"col-md-4\" style=\"text-align:center\">\n        <h6>Developed by Team Labrats 2017</h6>\n      </div>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n<mat-toolbar color=\"primary\" id=\"#navbar\">\n  <span [routerLink]=\"['']\" class=\"logo-wrapper\">\n    <mat-icon svgIcon=\"lmLogo\" class=\"logo\"></mat-icon>\n\n    <span class=\"logo-text\">Liberty Mutual</span>\n  </span>\n  <span class=\"spacer\"></span>\n  <span>\n    <button style=\"color:white\" mat-button [routerLink]=\"['sources']\" routerLinkActive=\"active-link\">Sources</button>\n    <button style=\"color:white\" mat-button [routerLink]=\"['profiling']\" routerLinkActive=\"active-link\">Profiling</button>\n    <button style=\"color:white\" mat-button [matMenuTriggerFor]=\"menuFingerprint\">Fingerprint</button>\n    <mat-menu #menuFingerprint=\"matMenu\" yPosition=\"below\" [overlapTrigger]=\"false\">\n      <button mat-menu-item [routerLink]=\"['fingerprint']\" routerLinkActive=\"active-link\">Fingerprint Interactive</button>\n      <button mat-menu-item [routerLink]=\"['fingerprint-on-demand']\" routerLinkActive=\"active-link\">Fingerprint On Demand</button>\n    </mat-menu>\n    <button style=\"color:white\" mat-button [matMenuTriggerFor]=\"menuCurate\">Curate</button>\n    <mat-menu #menuCurate=\"matMenu\" yPosition=\"below\" [overlapTrigger]=\"false\">\n      <button mat-menu-item [routerLink]=\"['curate-tag-correction']\" routerLinkActive=\"active-link\">Curate Tag Correction</button>\n      <button mat-menu-item [routerLink]=\"['curate-corpus-correction']\" routerLinkActive=\"active-link\">Curate Corpus Correction</button>\n    </mat-menu>\n    <button style=\"color:white\" mat-button [routerLink]=\"['catalog']\" routerLinkActive=\"active-link\">Catalog</button>\n    <button style=\"color:white\" mat-button [routerLink]=\"['knowledge-graph']\" routerLinkActive=\"active-link\">Knowledge-Graph</button>\n    <button mat-raised-button color=\"primary\" (click)=\"logOut()\">Log Out</button>\n  </span>\n\n</mat-toolbar>\n<router-outlet></router-outlet>\n<div class=\"footer\">\n  <div class=\"container\">\n    <div class=\"row\">\n      <div class=\"col-md-4\" style=\"text-align:center\">\n        <h6>Copyright Liberty Mutual Insurance</h6>\n      </div>\n      <div class=\"col-md-4\">\n\n      </div>\n      <div class=\"col-md-4\" style=\"text-align:center\">\n        <h6>Developed by Team Labrats 2017</h6>\n      </div>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -47,8 +47,7 @@ module.exports = module.exports.toString();
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__globals__ = __webpack_require__("../../../../../src/app/globals.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__ = __webpack_require__("../../../platform-browser/@angular/platform-browser.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_material__ = __webpack_require__("../../../material/esm5/material.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_form_login_form_login_component__ = __webpack_require__("../../../../../src/app/components/form-login/form-login.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_api_service__ = __webpack_require__("../../../../../src/app/services/api.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_api_service__ = __webpack_require__("../../../../../src/app/services/api.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -58,7 +57,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-
 
 
 
@@ -75,8 +73,10 @@ var AppComponent = (function () {
         // this.apiCall.loginCheck().subscribe(data=>{
         // })
     }
-    AppComponent.prototype.openLoginForm = function () {
-        var dialogRef = this.dialog.open(__WEBPACK_IMPORTED_MODULE_4__components_form_login_form_login_component__["a" /* FormLoginComponent */], { width: '40vw' });
+    AppComponent.prototype.logOut = function () {
+        this.apiCall.logOut().subscribe(function (data) {
+            console.log(data);
+        });
     };
     return AppComponent;
 }());
@@ -86,7 +86,7 @@ AppComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/app.component.html"),
         styles: [__webpack_require__("../../../../../src/app/app.component.sass")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_5__services_api_service__["a" /* ApiService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__services_api_service__["a" /* ApiService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__globals__["a" /* Globals */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__globals__["a" /* Globals */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__angular_material__["e" /* MatDialog */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_material__["e" /* MatDialog */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__angular_material__["i" /* MatIconRegistry */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_material__["i" /* MatIconRegistry */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__["c" /* DomSanitizer */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__["c" /* DomSanitizer */]) === "function" && _e || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_4__services_api_service__["a" /* ApiService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__services_api_service__["a" /* ApiService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__globals__["a" /* Globals */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__globals__["a" /* Globals */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__angular_material__["e" /* MatDialog */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_material__["e" /* MatDialog */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__angular_material__["i" /* MatIconRegistry */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_material__["i" /* MatIconRegistry */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__["c" /* DomSanitizer */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__["c" /* DomSanitizer */]) === "function" && _e || Object])
 ], AppComponent);
 
 var _a, _b, _c, _d, _e;
@@ -1925,6 +1925,9 @@ var ApiService = (function () {
     ApiService.prototype.fingerprintFlow = function (params, status) {
         var x = { "data": { "processor_group_id": "bb75b7fb-347a-3f59-b4a2-ca412e7829be", "processor_state": "" + status, "nifi_user": "sacid_lmb_hdp_mdmsvc", "nifi_url": "https://ip-10-224-71-221.aws.lmig.com:9093", "aws_env": "nonprod", "app_env": "integration", "start_processor_group_name": ["AtlasBatchProcessing"] } };
         return this.httpC.post('http://10.224.69.47:8081/api/v1/nifi/update_processor_state', x);
+    };
+    ApiService.prototype.logOut = function () {
+        return this.httpC.get('/logout');
     };
     return ApiService;
 }());
