@@ -23,9 +23,10 @@ export class AppComponent {
   }
 
 
-  openLoginForm(){
-    let dialogRef = this.dialog.open(FormLoginComponent, {width: '40vw'})
-
-    
+  logOut() {
+    this.apiCall.logOut().subscribe((data)=>{
+      console.log(data);
+      
+    })
   }
 }

@@ -172,4 +172,7 @@ export class ApiService {
     return this.httpC.post('http://10.224.69.47:8081/api/v1/nifi/update_processor_state', x)
   }
 
+  logOut() {
+    return this.httpC.get('/logout')
+  }
 }
