@@ -1550,9 +1550,12 @@ var ProfilingComponent = (function () {
         });
     };
     ProfilingComponent.prototype.profileData = function () {
+        var _this = this;
         var op = this.profilingForm.value;
+        this.showProfile = false;
         this.api.profileData(op).subscribe(function (data) {
             console.log(data);
+            _this.showProfile = true;
         });
     };
     return ProfilingComponent;

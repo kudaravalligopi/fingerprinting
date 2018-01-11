@@ -56,15 +56,21 @@
           <button mat-raised-button color="accent" style="float:right" (click)="profileData()">Profile Data</button>
         </div>
         <div class="col-md-4">
-          <button mat-raised-button color="accent" style="float:left" disabled>Re-profile Data</button>
+          <button mat-raised-button color="accent" style="float:left" [disabled]="reProfile">Re-profile Data</button>
         </div>
         <div class="col-md-2">
 
         </div>
       </div>
+      <div class="row" *ngIf="showProgressSpinner">
+        <div class="col-sm-12">
+          <mat-progress-spinner mode="indeterminate" color="primary" [strokeWidth]="5" style="margin: 0 auto"></mat-progress-spinner>
+        </div>
+      </div>
       <div class="row" *ngIf="showProfile">
         <div class="col-md-12">
-          <iframe src="http://ip-10-224-69-47.aws.lmig.com/profile/profile_nonprod-lmb_dl_otis_raw-custinfo_cd_chgreas_t_dltbl-tables.html" class="iframe-class"></iframe>
+          <iframe src="{{link}}"
+            class="iframe-class"></iframe>
         </div>
       </div>
 

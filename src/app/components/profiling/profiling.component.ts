@@ -18,12 +18,13 @@ export class ProfilingComponent implements OnInit {
   envName: FormControl
   databases: any
   elements: any
-  link = "https://drive.google.com/a/quantiphi.com/file/d/11RmdbFcwXNR40Ny4wK8O6HikaYEpGP7g/view?usp=sharing"
-
+  link: string
+  showProgressSpinner
   showProfile: boolean = false
-  newLink
+  
+  reProfile: boolean
   constructor(public sanitizer: DomSanitizer, public api: ApiService) {
-    this.newLink = this.sanitizer.bypassSecurityTrustResourceUrl(this.link)
+  
    }
 
   ngOnInit() {
@@ -80,9 +81,14 @@ export class ProfilingComponent implements OnInit {
   profileData() {
     let op = this.profilingForm.value
     this.showProfile = false
+    this.showProgressSpinner = true
+    this.reProfile = true //disable button reprofile
     this.api.profileData(op).subscribe((data)=>{
-      console.log(data);
+      console.log(data["data"]["profile_data_html_url"]);
+      this.link = data["data"]["profile_data_html_url"]
+      this.showProgressSpinner = false
       this.showProfile = true
+      this.reProfile = false //enable button reprofile
       
     })
   }
