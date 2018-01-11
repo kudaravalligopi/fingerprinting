@@ -1457,7 +1457,7 @@ OutputCurateComponent = __decorate([
 /***/ "../../../../../src/app/components/profiling/profiling.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"flex-container\">\n  <div class=\"container\">\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <h2 class=\"title\">Data Profiling</h2>\n        <h5 class=\"subtitle\">Take advantage of on-demand profiling of any Datalake table or view for smart exploratory data analysis\n        </h5>\n        <health-check-non-prod></health-check-non-prod>\n      </div>\n    </div>\n\n\n    <form [formGroup]=\"profilingForm\" novalidate>\n      <div class=\"row\">\n        <div class=\"col-md-3\">\n          <mat-form-field class=\"block-margin\">\n            <mat-select placeholder=\"Select Environment\" autofocus formControlName=\"envName\">\n              <mat-option value=\"prodstage\" (click)=\"getDatabase('prodstage')\">Prod Stage</mat-option>\n              <mat-option value=\"prod\" (click)=\"getDatabase('prod')\">Prod</mat-option>\n              <mat-option value=\"nonprod\" (click)=\"getDatabase('nonprod')\">NP Integration</mat-option>\n            </mat-select>\n          </mat-form-field>\n        </div>\n        <div class=\"col-md-3\">\n          <mat-form-field class=\"block-margin\">\n            <mat-select placeholder=\"Select Database\" autofocus formControlName=\"dbName\">\n              <mat-option *ngFor=\"let db of databases\" [value]=\"db\">{{db}}</mat-option>\n              <!-- <mat-option value=\"otis\">otis</mat-option> -->\n            </mat-select>\n          </mat-form-field>\n        </div>\n        <div class=\"col-md-3\">\n          <mat-form-field class=\"block-margin\">\n            <mat-select placeholder=\"Select Category\" formControlName=\"categoryName\">\n              <mat-option value=\"tables\" (click)=\"getElements()\">Tables</mat-option>\n              <mat-option value=\"views\" (click)=\"getElements()\">Views</mat-option>\n            </mat-select>\n          </mat-form-field>\n        </div>\n        <div class=\"col-md-3\">\n          <mat-form-field class=\"block-margin\">\n            <mat-select placeholder=\"Select Element\" formControlName=\"elementName\">\n              <!-- <mat-option value=\"custinfo_cd_chgreas_t\">custinfo_cd_chgreas_t</mat-option> -->\n              <mat-option *ngFor=\"let el of elements\" [value]=\"el\">{{el}}</mat-option>\n            </mat-select>\n          </mat-form-field>\n        </div>\n      </div>\n\n      <!-- Button Row 1 -->\n      <div class=\"row\">\n        <div class=\"col-md-2\">\n\n        </div>\n        <div class=\"col-md-4\">\n          <button mat-raised-button color=\"accent\" style=\"float:right\" (click)=\"profileData()\">Profile Data</button>\n        </div>\n        <div class=\"col-md-4\">\n          <button mat-raised-button color=\"accent\" style=\"float:left\" [disabled]=\"reProfile\">Re-profile Data</button>\n        </div>\n        <div class=\"col-md-2\">\n\n        </div>\n      </div>\n      <div class=\"row\" *ngIf=\"showProgressSpinner\">\n        <div class=\"col-sm-12\">\n          <mat-progress-spinner mode=\"indeterminate\" color=\"primary\" [strokeWidth]=\"5\" style=\"margin: 0 auto\"></mat-progress-spinner>\n        </div>\n      </div>\n      <div class=\"row\" *ngIf=\"showProfile\">\n        <div class=\"col-md-12\">\n          <iframe src=\"{{link}}\"\n            class=\"iframe-class\"></iframe>\n        </div>\n      </div>\n\n\n\n    </form>\n  </div>\n</div>\n"
+module.exports = "<div class=\"flex-container\">\n  <div class=\"container\">\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <h2 class=\"title\">Data Profiling</h2>\n        <h5 class=\"subtitle\">Take advantage of on-demand profiling of any Datalake table or view for smart exploratory data analysis\n        </h5>\n        <health-check-non-prod></health-check-non-prod>\n      </div>\n    </div>\n\n\n    <form [formGroup]=\"profilingForm\" novalidate>\n      <div class=\"row\">\n        <div class=\"col-md-3\">\n          <mat-form-field class=\"block-margin\">\n            <mat-select placeholder=\"Select Environment\" autofocus formControlName=\"envName\">\n              <mat-option value=\"prodstage\" (click)=\"getDatabase('prodstage')\">Prod Stage</mat-option>\n              <mat-option value=\"prod\" (click)=\"getDatabase('prod')\">Prod</mat-option>\n              <mat-option value=\"nonprod\" (click)=\"getDatabase('nonprod')\">NP Integration</mat-option>\n            </mat-select>\n          </mat-form-field>\n        </div>\n        <div class=\"col-md-3\">\n          <mat-form-field class=\"block-margin\">\n            <mat-select placeholder=\"Select Database\" autofocus formControlName=\"dbName\">\n              <mat-option *ngFor=\"let db of databases\" [value]=\"db\">{{db}}</mat-option>\n              <!-- <mat-option value=\"otis\">otis</mat-option> -->\n            </mat-select>\n          </mat-form-field>\n        </div>\n        <div class=\"col-md-3\">\n          <mat-form-field class=\"block-margin\">\n            <mat-select placeholder=\"Select Category\" formControlName=\"categoryName\">\n              <mat-option value=\"tables\" (click)=\"getElements()\">Tables</mat-option>\n              <mat-option value=\"views\" (click)=\"getElements()\">Views</mat-option>\n            </mat-select>\n          </mat-form-field>\n        </div>\n        <div class=\"col-md-3\">\n          <mat-form-field class=\"block-margin\">\n            <mat-select placeholder=\"Select Element\" formControlName=\"elementName\">\n              <!-- <mat-option value=\"custinfo_cd_chgreas_t\">custinfo_cd_chgreas_t</mat-option> -->\n              <mat-option *ngFor=\"let el of elements\" [value]=\"el\">{{el}}</mat-option>\n            </mat-select>\n          </mat-form-field>\n        </div>\n      </div>\n\n      <!-- Button Row 1 -->\n      <div class=\"row\">\n        <div class=\"col-md-2\">\n\n        </div>\n        <div class=\"col-md-4\">\n          <button mat-raised-button color=\"accent\" style=\"float:right\" (click)=\"profileData('profile')\">Profile Data</button>\n        </div>\n        <div class=\"col-md-4\">\n          <button mat-raised-button color=\"accent\" style=\"float:left\" [disabled]=\"reProfile\" (click)=\"profileData('reprofile')\">Re-profile Data</button>\n        </div>\n        <div class=\"col-md-2\">\n\n        </div>\n      </div>\n      <div class=\"row\" *ngIf=\"showProgressSpinner\">\n        <div class=\"col-sm-12\">\n          <mat-progress-spinner mode=\"indeterminate\" color=\"primary\" [strokeWidth]=\"5\" style=\"margin: 0 auto\"></mat-progress-spinner>\n        </div>\n      </div>\n      <div class=\"row\" *ngIf=\"showProfile\">\n        <div class=\"col-md-12\">\n          <iframe src=\"{{link}}\"\n            class=\"iframe-class\"></iframe>\n        </div>\n      </div>\n\n\n\n    </form>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -1550,13 +1550,13 @@ var ProfilingComponent = (function () {
             }
         });
     };
-    ProfilingComponent.prototype.profileData = function () {
+    ProfilingComponent.prototype.profileData = function (state) {
         var _this = this;
         var op = this.profilingForm.value;
         this.showProfile = false;
         this.showProgressSpinner = true;
         this.reProfile = true; //disable button reprofile
-        this.api.profileData(op).subscribe(function (data) {
+        this.api.profileData(op, state).subscribe(function (data) {
             console.log(data["data"]["profile_data_html_url"]);
             _this.link = data["data"]["profile_data_html_url"];
             _this.showProgressSpinner = false;
@@ -1885,8 +1885,9 @@ var ApiService = (function () {
         }
         return this.httpC.get(link);
     };
-    ApiService.prototype.profileData = function (params) {
+    ApiService.prototype.profileData = function (params, state) {
         console.log(params);
+        console.log(state);
         var nParams = {
             "data": {
                 "source_type": "hive",
@@ -1894,7 +1895,7 @@ var ApiService = (function () {
                 "database_name": "" + params.dbName,
                 "category_type": "" + params.categoryName,
                 "category_element": "" + params.elementName,
-                "profile_type": "profile"
+                "profile_type": "" + state
             }
         };
         return this.httpC.post('/api/v1/profiledata', nParams);
