@@ -1,0 +1,74 @@
+<div class="flex-container">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2 class="title">Curate: Corpus Correction</h2>
+        <h5 class="subtitle">Make curated tag entries into the ops_table and subsequently re-tag in Atlas.</h5>
+        <health-check-non-prod></health-check-non-prod>
+      </div>
+    </div>
+    <div class="row">
+      <section id="inputs" class="col-mat-12">
+        <form [formGroup]="curateCorpusForm" novalidate>
+          <div class="row">
+            <div class="col-md-3">
+              <mat-form-field>
+                <mat-select placeholder="Select Corpus Type" class="fingerprint-select" autofocus formControlName="corpusType">
+                  <mat-option value="distinct">Distinct</mat-option>
+                  <mat-option value="fuzzy">Fuzzy</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="col-md-3">
+
+              <mat-form-field>
+                <mat-select placeholder="Select Correction Mode" class="fingerprint-select" formControlName="correctionMode">
+                  <mat-option value="overwrite">Overwrite</mat-option>
+                  <mat-option value="append">Append</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="col-md-3">
+              <mat-form-field>
+                <mat-select placeholder="Select Destination" class="fingerprint-select" formControlName="destination">
+                  <mat-option value="s3">S3</mat-option>
+                  <mat-option value="hive">Hive</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="col-md-3">
+              <mat-form-field>
+                <mat-select placeholder="Select Format" class="fingerprint-select" autofocus formControlName="format">
+                  <mat-option value="csv">CSV</mat-option>
+                  <mat-option value="json">JSON</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+              <textarea formControlName="corpusCorrection" placeholder="Enter Corpus Corrections">
+
+              </textarea>
+            </div>
+            <div class="col-md-2"></div>
+          </div>
+        </form>
+      </section>
+    </div>
+    <div class="row" *ngIf="showProgressSpinner">
+      <div class="col-sm-12">
+        <mat-progress-spinner mode="indeterminate" color="primary" [strokeWidth]="5" style="margin: 0 auto"></mat-progress-spinner>
+      </div>
+    </div>
+    <div class="row">
+      <section id="outputs" class="col-mat-12">
+        <div id="buttonsOP">
+          <button mat-raised-button color="accent" (click)="submitTag()">Submit Tag Corrections</button>
+          <button mat-raised-button color="accent" disabled>Tag in Atlas</button>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>

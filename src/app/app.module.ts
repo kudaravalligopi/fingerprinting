@@ -38,7 +38,8 @@ import { FormLoginComponent } from './components/form-login/form-login.component
 import {Globals} from './globals';
 import { OutputCurateComponent } from './components/output-curate/output-curate.component';
 import { HealthCheckProdComponent } from './components/health-check-prod/health-check-prod.component';
-import { HealthCheckNonProdComponent } from './components/health-check-non-prod/health-check-non-prod.component'
+import { HealthCheckNonProdComponent } from './components/health-check-non-prod/health-check-non-prod.component';
+import { CurateCorpusCorrectionComponent } from './components/curate-corpus-correction/curate-corpus-correction.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,7 +55,8 @@ import { HealthCheckNonProdComponent } from './components/health-check-non-prod/
     FormLoginComponent,
     OutputCurateComponent,
     HealthCheckProdComponent,
-    HealthCheckNonProdComponent
+    HealthCheckNonProdComponent,
+    CurateCorpusCorrectionComponent
   ],
   entryComponents: [
     ConfigureSourceComponent,
