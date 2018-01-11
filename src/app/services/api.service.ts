@@ -126,8 +126,10 @@ export class ApiService {
     
   }
 
-  profileData(params) {
+  profileData(params, state) {
     console.log(params)
+    console.log(state);
+    
 
     let nParams = {
       "data":{
@@ -141,7 +143,7 @@ export class ApiService {
     
         "category_element": `${params.elementName}`,
     
-        "profile_type":"profile"
+        "profile_type": `${state}`
       }
     }
 

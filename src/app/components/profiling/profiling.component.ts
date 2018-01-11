@@ -78,12 +78,12 @@ export class ProfilingComponent implements OnInit {
     })
   }
 
-  profileData() {
+  profileData(state) {
     let op = this.profilingForm.value
     this.showProfile = false
     this.showProgressSpinner = true
     this.reProfile = true //disable button reprofile
-    this.api.profileData(op).subscribe((data)=>{
+    this.api.profileData(op,state).subscribe((data)=>{
       console.log(data["data"]["profile_data_html_url"]);
       this.link = data["data"]["profile_data_html_url"]
       this.showProgressSpinner = false

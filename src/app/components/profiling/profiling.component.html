@@ -53,10 +53,10 @@
 
         </div>
         <div class="col-md-4">
-          <button mat-raised-button color="accent" style="float:right" (click)="profileData()">Profile Data</button>
+          <button mat-raised-button color="accent" style="float:right" (click)="profileData('profile')">Profile Data</button>
         </div>
         <div class="col-md-4">
-          <button mat-raised-button color="accent" style="float:left" [disabled]="reProfile">Re-profile Data</button>
+          <button mat-raised-button color="accent" style="float:left" [disabled]="reProfile" (click)="profileData('reprofile')">Re-profile Data</button>
         </div>
         <div class="col-md-2">
 
