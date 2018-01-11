@@ -79,9 +79,10 @@ export class ProfilingComponent implements OnInit {
 
   profileData() {
     let op = this.profilingForm.value
-
+    this.showProfile = false
     this.api.profileData(op).subscribe((data)=>{
       console.log(data);
+      this.showProfile = true
       
     })
   }
